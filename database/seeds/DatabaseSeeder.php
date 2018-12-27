@@ -16,7 +16,7 @@ class DatabaseSeeder extends Seeder
             CollegeListsTableSeeder::class,
             UserDetailsTableSeeder::class,
             EventCategoriesTableSeeder::class,
-            EventsTableSeeder::class
+         //   EventsTableSeeder::class
         ]);
     }
 }
