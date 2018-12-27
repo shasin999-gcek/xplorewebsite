@@ -190,8 +190,8 @@ class EventController extends Controller
             $client = new Client(); //GuzzleHttp\Client
             $result = $client->post($request_uri, [
                 'query' => [
-                    'message' => $event->name,
-                    'link' => 'https://www.manoramanews.com/news/kerala/2018/12/27/opposition-closed-councillor-in-room.html', // urldecode(route('display_event', $event->slug)),
+                    'message' => $event->name . '|' . $event->category->name,
+                    'link' =>  route('display_event', $event->slug),
                     'access_token' => env('FBPAGE_ACCESS_TOKEN')
                 ]
             ]);
