@@ -1,0 +1,104 @@
+@extends('admin.layouts.master')
+
+@section('content')
+
+    <div class="row">
+        <div class="col-lg-12">
+            <h1 class="page-header">
+                Events
+            </h1>
+            <ol class="breadcrumb">
+                <li>
+                    <i class="fa fa-dashboard"></i> <a href="{{ route('admin.dashboard') }}">Dashboard</a>
+                </li>
+                <li class="active">
+                    <i class="fa fa-calender"></i> Events
+                </li>
+            </ol>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="panel panel-info">
+                <!-- Default panel contents -->
+                <div class="panel-heading">
+                    Added Events
+                    <span class="pull-right">
+                        <a href="{{ route('admin.events.create') }}" class="btn btn-xs btn-success"><i class="fa fa-plus" aria-hidden="true"></i> Add Event
+                        </a>
+                    </span>
+                </div>
+
+                <div class="panel-body">
+                    <table id="example" class="table table-striped table-bordered" style="width:100%;">
+                        <thead>
+                        <tr>
+                            <th>Event Name</th>
+                            <th>Event Category</th>
+                            <th>Share On FB</th>
+                            <th>Action</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                            @foreach($events as $event)
+                                <tr>
+                                    <td>{{ $event->name }}</td>
+                                    <td>{{ $event->category->name }}</td>
+                                    <td class="text-center">
+                                        @if($event->shared_post_url)
+                                            <a href="{{ $event->shared_post_url }}" target="_blank">View Post</a>
+                                        @else
+                                            <button id="{{ 'share_btn_id_'. $event->id }}" class="btn btn-xs btn-primary" onclick="shareOnFB({{ $event->id }})">
+                                                <i class="fa fa-facebook-official" aria-hidden="true"></i>
+                                                <span>Share</span>
+                                            </button>
+                                        @endif
+                                    </td>
+                                    <td class="text-center">
+                                        <a href="{{ route('admin.events.show', ['event' => $event->id ]) }}" class="btn btn-xs btn-primary"><i class="fa fa-eye" aria-hidden="true"></i> View</a>
+                                        <a href="{{ route('display_event', $event->slug) }}" class="btn btn-xs btn-primary"><i class="fa fa-external-link" aria-hidden="true"></i> View on website</a>
+                                    </td>
+                                </tr>
+                            @endforeach
+                        </tbody>
+                        <tfoot>
+                        <tr>
+                            <th>Event Name</th>
+                            <th>Event Category</th>
+                            <th>Share On FB</th>
+                            <th>Action</th>
+                        </tr>
+                        </tfoot>
+                    </table>
+                </div>
+
+            </div>
+
+
+        </div>
+    </div>
+@endsection
+
+@section('scripts')
+    <script>
+        function shareOnFB(eventId) {
+            var base_uri = '{{ url('') }}';
+            var share_btn = document.getElementById(`share_btn_id_${eventId}`);
+            share_btn.disabled = true;
+            share_btn.lastElementChild.textContent = 'Sharing...';
+            axios.post(`${base_uri}/admin/events/share/${eventId}`)
+                .then(res => {
+                    share_btn.style.display = 'none';
+                    var link = document.createElement('a');
+                    link.href = res.data.shared_post_url;
+                    link.textContent = 'View Post';
+                    share_btn.parentElement.appendChild(link);
+                }).catch((e) => console.error(e));
+        }
+
+        $(document).ready(function() {
+            $('#example').DataTable();
+        } );
+    </script>
+@endsection
