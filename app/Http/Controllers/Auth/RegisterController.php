@@ -50,12 +50,9 @@ class RegisterController extends Controller
     protected function validator(array $data)
     {
         return Validator::make($data, [
-            'name' => 'required|string|max:255',
-            'email' => 'required|string|email|max:255|unique:users',
-            'mobile_number' => 'required|numeric|min:10|max:10|unique:user_details,mobile_number',
-            'college_id' => 'required|numeric',
-            'branch' => 'required|string',
-            'semester' => 'required|string|min:2',
+            'name' => 'required|string|max:50',
+            'email' => 'required|string|email|max:255|unique:users,email',
+            'mobile_number' => 'required|regex:/[0-9]{10}/|unique:users,mobile_number',
             'password' => 'required|string|min:6|confirmed',
         ]);
     }
@@ -68,24 +65,12 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        $user = User::create([
+        return User::create([
             'name' => $data['name'],
             'email' => $data['email'],
+            'mobile_number' => $data['mobile_number'],
             'password' => bcrypt($data['password']),
         ]);
 
-        $user_details = new UserDetails();
-        $user_details->mobile_number = $data['mobile_number'];
-        $user_details->branch = $data['branch'];
-        $user_details->semester = $data['semester'];
-
-        // associate given college to the user, (auto populate college_id)
-        $college = CollegeList::find($data['college_id']);
-        $user_details->college()->associate($college);
-
-        // auto populate user_id of user_details and save to database
-        $user->details()->save($user_details);
-
-        return $user;
     }
 }

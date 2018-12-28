@@ -68,7 +68,7 @@
                             <i class="fa fa-users fa-5x"></i>
                         </div>
                         <div class="col-xs-9 text-right">
-                            <div class="huge">124</div>
+                            <div class="huge">0</div>
                             <div>Event Regs</div>
                         </div>
                     </div>
@@ -120,9 +120,8 @@
                                 <th>Name</th>
                                 <th>Email</th>
                                 <th>Mobile Number</th>
-                                <th>College</th>
-                                <th>Branch</th>
-                                <th>Semester</th>
+                                <th>Referral ID</th>
+                                <th>Referred By</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -130,10 +129,9 @@
                                 <tr>
                                     <td>{{ $user->name }}</td>
                                     <td>{{ $user->email }}</td>
-                                    <td>{{ $user->details->mobile_number }}</td>
-                                    <td>{{ $user->details->college->college_name }}</td>
-                                    <td>{{ $user->details->branch }}</td>
-                                    <td>{{ $user->details->semester }}</td>
+                                    <td>{{ $user->mobile_number }}</td>
+                                    <td><kbd>{{ $user->referral_id }}</kbd></td>
+                                    <td><kbd>{{ ($user->referred_by) ? $user->referred_by : 'No one' }}</kbd></td>
                                 </tr>
                             @endforeach
                         </tbody>
@@ -142,9 +140,8 @@
                                 <th>Name</th>
                                 <th>Email</th>
                                 <th>Mobile Number</th>
-                                <th>College</th>
-                                <th>Branch</th>
-                                <th>Semester</th>
+                                <th>Referral ID</th>
+                                <th>Referred By</th>
                             </tr>
                         </tfoot>
                     </table>

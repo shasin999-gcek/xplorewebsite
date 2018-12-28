@@ -197,6 +197,20 @@
                             </div>
                         </div>
 
+                        <div class="form-group{{ $errors->has('thumbnail_image') ? ' has-error' : '' }}">
+                            <label for="thumbnail_image" class="col-md-2 control-label">Upload Poster</label>
+
+                            <div class="col-md-6">
+                                <input type="file" class="form-control" id="thumbnail_image" name="thumbnail_image" value="{{ old('thumbnail_image') }}" required autofocus>
+
+                                @if ($errors->has('thumbnail_image'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('thumbnail_image') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+
                         <div class="form-group">
                             <div class="col-md-6 col-md-offset-2">
                                 <button type="submit" class="btn btn-primary">

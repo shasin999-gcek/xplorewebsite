@@ -13,10 +13,7 @@ class DatabaseSeeder extends Seeder
     {
         $this->call([
             AdminUserSeeder::class,
-            CollegeListsTableSeeder::class,
-            UserDetailsTableSeeder::class,
-            EventCategoriesTableSeeder::class,
-         //   EventsTableSeeder::class
+            CategoriesTableSeeder::class,
         ]);
     }
 }
@@ -28,24 +25,11 @@ class AdminUserSeeder extends Seeder
         factory(\App\User::class, 1)->create([
             'name' => 'admin',
             'email' => 'xplore19gcek@gmail.com',
+            'mobile_number' => '9645100464',
+            'referred_by' => 'NO_REFERER_FOR_ADMIN',
             'is_admin' => true
         ]);
 
     }
 }
 
-class EventCategoriesTableSeeder extends Seeder
-{
-    public function run()
-    {
-        DB::table('event_categories')->insert([
-            ['name' => 'Computer Science And Engineering'],
-            ['name' => 'Electronics And Communication Engineering'],
-            ['name' => 'Mechanical Engineering'],
-            ['name' => 'Electrical And Electronics Engineering'],
-            ['name' => 'Civil Engineering'],
-            ['name' => 'Cultural'],
-            ['name' => 'Robotics']
-        ]);
-    }
-}

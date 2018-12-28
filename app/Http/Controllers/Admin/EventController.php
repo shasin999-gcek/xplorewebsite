@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Event;
-use App\EventCategory;
+use App\Category;
 use App\Http\Requests\StoreEvent;
 use App\Http\Controllers\Controller;
 
@@ -43,7 +43,7 @@ class EventController extends Controller
      */
     public function create()
     {
-        $categories = EventCategory::all();
+        $categories = Category::all();
         $data = [
             'active_menu' => 'events',
             'categories' => $categories
@@ -61,7 +61,7 @@ class EventController extends Controller
     public function store(StoreEvent $request)
     {
         // find category from id else 404
-        $event_category = EventCategory::findOrFail($request['category_id']);
+        $event_category = Category::findOrFail($request['category_id']);
 
         // new Event instance
         $event = new Event();
@@ -74,13 +74,19 @@ class EventController extends Controller
         $event->s_price_money = $request['s_price'];
         $event->t_price_money = $request['t_price'];
 
-        // associate EventCategory with Event (autopopulate category_id)
+        // associate Category with Event (autopopulate category_id)
         $event->category()->associate($event_category);
 
-        $poster_image = $request->file('poster_image');
-        $path = $poster_image->store('public/event_posters');
+        // store the poster and thumbnail images in public/events directory
+        $poster_img = $request->file('poster_image');
+        $thumbnail_img = $request->file('thumbnail_image');
+        $poster_img_path = $poster_img->store('public/events');
+        $thumbnail_img_path = $thumbnail_img->store('public/events');
 
-        $event->poster_image_name =   str_replace_first('public/', '', $path);
+        // store the filepath's to the database
+        $event->poster_image =   str_replace_first('public/', '', $poster_img_path);
+        $event->thumbnail_image =   str_replace_first('public/', '', $thumbnail_img_path);
+
 
         $event->saveOrFail();
 
@@ -112,7 +118,7 @@ class EventController extends Controller
     public function edit(Event $event)
     {
         //
-        $categories = EventCategory::all();
+        $categories = Category::all();
 
         $data = [
             'active_menu' => 'events',
@@ -133,7 +139,7 @@ class EventController extends Controller
     public function update(StoreEvent $request, Event $event)
     {
         // find category from id else 404
-        $event_category = EventCategory::findOrFail($request['category_id']);
+        $event_category = Category::findOrFail($request['category_id']);
 
         $event->name = $request['name'];
         $event->slug = str_slug($request['name']);
@@ -144,16 +150,23 @@ class EventController extends Controller
         $event->s_price_money = $request['s_price'];
         $event->t_price_money = $request['t_price'];
 
-        // associate EventCategory with Event (autopopulate category_id)
+        // associate Category with Event (autopopulate category_id)
         $event->category()->associate($event_category);
 
-        // delete previous file before storing new file
-        Storage::delete('public/' . $event->poster_image_name);
+        // delete previous image files before storing new file
+        Storage::delete('public/' . $event->poster_image);
+        Storage::delete('public/' . $event->thumbnail_image);
 
-        $poster_image = $request->file('poster_image');
-        $path = $poster_image->store('public/event_posters');
+       
+        // store the poster and thumbnail images in public/events directory
+        $poster_img = $request->file('poster_image');
+        $thumbnail_img = $request->file('thumbnail_image');
+        $poster_img_path = $poster_img->store('public/events');
+        $thumbnail_img_path = $thumbnail_img->store('public/events');
 
-        $event->poster_image_name =   str_replace_first('public/', '', $path);
+        // store the filepath's to the database
+        $event->poster_image =   str_replace_first('public/', '', $poster_img_path);
+        $event->thumbnail_image =   str_replace_first('public/', '', $thumbnail_img_path);
 
         $event->saveOrFail();
 
@@ -168,51 +181,25 @@ class EventController extends Controller
      */
     public function destroy(Event $event)
     {
-        //
-        Storage::delete('public/' . $event->poster_image_name);
+        // delete associated poster and thumbnail also
+        Storage::delete('public/' . $event->poster_image);
+        Storage::delete('public/' . $event->thumbnail_image);
+
         $event->delete();
 
         return redirect()->route('admin.events.index');
     }
 
+
     /**
      * @param Event $event
-     * @return \Psr\Http\Message\ResponseInterface
+     * @return array
+     * @throws \Throwable
      */
-//    public function share_on_facebook(Event $event)
-//    {
-//        $request_uri = 'https://graph.facebook.com/v3.2/' . env('FBPAGE_ID') . '/feed';
-//
-//        try {
-//            $client = new Client(); //GuzzleHttp\Client
-//            $result = $client->post($request_uri, [
-//                'query' => [
-//                    'message' => $event->name . '|' . $event->category->name,
-//                    'link' =>  route('display_event', $event->slug),
-//                    'access_token' => env('FBPAGE_ACCESS_TOKEN')
-//                ]
-//            ]);
-//
-//            $json_data= json_decode($result->getBody()->getContents());
-//            $post_id = $json_data->id;
-//
-//            // create facebook post url and save to database
-//            $shared_post_url = 'https://www.facebook.com/' . $post_id;
-//            $event->shared_post_url = $shared_post_url;
-//            $event->saveOrFail();
-//
-//            return ['shared_post_url' => $shared_post_url];
-//        } catch (RequestException $e) {
-//           return $e->getResponse();
-//        }
-//
-//
-//    }
-
     public function share_on_facebook(Event $event)
     {
         $link =  route('display_event', $event->slug);
-        $message =  $event->name . '|' . $event->category->name;
+        $message =  "Event Name: " . $event->name . "\nEvent Category: " . $event->category->name;
 
         try {
             $post_id = FacebookApi::sendLink($link, $message);

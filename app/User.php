@@ -5,6 +5,8 @@ namespace App;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
+use Uuid;
+
 class User extends Authenticatable
 {
     use Notifiable;
@@ -15,7 +17,11 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'name',
+        'email',
+        'mobile_number',
+        'password', 
+        'needs_accomadation',
     ];
 
     /**
@@ -27,11 +33,18 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
-    public function isAdmin() {
+
+    public static function boot()
+    {
+        parent::boot();
+        self::creating(function ($user) {
+            $user->referral_id = (string) Uuid::generate(4);
+        });
+    }
+
+    public function isAdmin() 
+    {
         return $this->is_admin;
     }
 
-    public function details() {
-        return $this->hasOne('App\UserDetails');
-    }
 }

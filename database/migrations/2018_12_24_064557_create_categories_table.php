@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateEventCategoriesTable extends Migration
+class CreateCategoriesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,9 @@ class CreateEventCategoriesTable extends Migration
      */
     public function up()
     {
-        Schema::create('event_categories', function (Blueprint $table) {
+        Schema::create('categories', function (Blueprint $table) {
             $table->increments('id');
+            $table->string('short_name')->unique();
             $table->string('name');
             $table->timestamps();
         });
@@ -22,7 +23,7 @@ class CreateEventCategoriesTable extends Migration
         Schema::table('events', function (Blueprint $table) {
            $table->foreign('category_id')
                ->references('id')
-               ->on('event_categories')
+               ->on('categories')
                ->onDelete('cascade');
         });
     }
@@ -38,6 +39,6 @@ class CreateEventCategoriesTable extends Migration
            $table->dropForeign('events_category_id_foreign');
         });
 
-        Schema::dropIfExists('event_categories');
+        Schema::dropIfExists('categories');
     }
 }

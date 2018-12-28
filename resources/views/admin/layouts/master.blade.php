@@ -94,9 +94,6 @@
                     <a href="#"><i class="fa fa-fw fa-list"></i> Workshop Registrations</a>
                 </li>
                 <li class="">
-                    <a href="#"><i class="fa fa-fw fa-university"></i> College Lists</a>
-                </li>
-                <li class="">
                     <a href="#"><i class="fa fa-fw fa-cog"></i> Settings</a>
                 </li>
             </ul>

@@ -78,6 +78,20 @@
 
         </div>
     </div>
+
+    <div id="alert_modal" class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog">
+        <div class="modal-dialog modal-sm" role="document">
+            <div class="modal-content">
+                <div class="modal-header bg-danger">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="myModalLabel"> <i class="fa fa-facebook-official" aria-hidden="true"></i> Error in Sharing</h4>
+                </div>
+                <div id="error_from_faceboook" class="modal-body">
+
+                </div>
+            </div>
+        </div>
+    </div>
 @endsection
 
 @section('scripts')
@@ -89,11 +103,20 @@
             share_btn.lastElementChild.textContent = 'Sharing...';
             axios.post(`${base_uri}/admin/events/share/${eventId}`)
                 .then(res => {
-                    share_btn.style.display = 'none';
-                    var link = document.createElement('a');
-                    link.href = res.data.shared_post_url;
-                    link.textContent = 'View Post';
-                    share_btn.parentElement.appendChild(link);
+                    if(res.data.shared_post_url) {
+                        share_btn.style.display = 'none';
+                        var link = document.createElement('a');
+                        link.href = res.data.shared_post_url;
+                        link.target = '_blank';
+                        link.textContent = 'View Post';
+                        share_btn.parentElement.appendChild(link);
+                    } else {
+                        var error_display_div = document.getElementById('error_from_faceboook');
+                        error_display_div.textContent = res.data.error_msg;
+                        $('#alert_modal').modal('show');
+                        share_btn.disabled = false;
+                        share_btn.lastElementChild.textContent = 'Share';
+                    }
                 }).catch((e) => console.error(e));
         }
 

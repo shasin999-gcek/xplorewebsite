@@ -20,7 +20,8 @@ class CreateEventsTable extends Migration
             $table->text('description');
             $table->string('reg_fee');
             $table->string('type');  // Team or individual
-            $table->string('poster_image_name'); // poster image name (default storage path)
+            $table->string('poster_image'); // poster image name (default storage path)
+            $table->string('thumbnail_image'); // Thumbnail image
             $table->string('f_price_money')->default('Rs 0');
             $table->string('s_price_money')->default('Rs 0');
             $table->string('t_price_money')->default('Rs 0');

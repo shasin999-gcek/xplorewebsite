@@ -32,7 +32,8 @@ class StoreEvent extends FormRequest
             'f_price' => 'required|numeric',
             's_price' => 'required|numeric',
             't_price' => 'required|numeric',
-            'poster_image' => 'required|file|mimes:jpeg,bmp,png'
+            'poster_image' => 'required|file|mimes:jpeg,bmp,png',
+            'thumbnail_image' => 'required|file|mimes:jpeg,bmp,png'
         ];
     }
 }

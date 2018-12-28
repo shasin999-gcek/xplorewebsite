@@ -23,7 +23,7 @@ class DashboardController extends Controller
 
     public function index()
     {
-        $builder = User::with('details.college')->where('is_admin', false);
+        $builder = User::where('is_admin', false);
         $users_count = $builder->count();
         $users = $builder->get();
 

@@ -137,10 +137,18 @@
                         </div>
 
                         <div class="form-group">
-                            <label for="poster_image" class="col-md-2 control-label">Upload Poster</label>
+                            <label for="poster_image" class="col-md-2 control-label">Poster</label>
 
                             <div class="col-md-6">
-                                <img src="{{ asset('storage/' . $event->poster_image_name) }}" alt="..." class="img-thumbnail">
+                                <img src="{{ asset('storage/' . $event->poster_image) }}" alt="..." class="img-thumbnail">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="thumbnail_image" class="col-md-2 control-label">Thumbnail</label>
+
+                            <div class="col-md-6">
+                                <img src="{{ asset('storage/' . $event->thumbnail_image) }}" alt="..." class="img-thumbnail">
                             </div>
                         </div>
 
