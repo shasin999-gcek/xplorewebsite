@@ -5,12 +5,9 @@ namespace App\Http\Controllers\Admin;
 use App\Event;
 use App\EventCategory;
 use App\Http\Requests\StoreEvent;
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
-use GuzzleHttp\Exception\RequestException;
-use GuzzleHttp\Client;
-use GuzzleHttp\Psr7;
+use Toolkito\Larasap\Facebook\Api AS FacebookApi;
 use Illuminate\Support\Facades\Storage;
 
 
@@ -182,22 +179,43 @@ class EventController extends Controller
      * @param Event $event
      * @return \Psr\Http\Message\ResponseInterface
      */
+//    public function share_on_facebook(Event $event)
+//    {
+//        $request_uri = 'https://graph.facebook.com/v3.2/' . env('FBPAGE_ID') . '/feed';
+//
+//        try {
+//            $client = new Client(); //GuzzleHttp\Client
+//            $result = $client->post($request_uri, [
+//                'query' => [
+//                    'message' => $event->name . '|' . $event->category->name,
+//                    'link' =>  route('display_event', $event->slug),
+//                    'access_token' => env('FBPAGE_ACCESS_TOKEN')
+//                ]
+//            ]);
+//
+//            $json_data= json_decode($result->getBody()->getContents());
+//            $post_id = $json_data->id;
+//
+//            // create facebook post url and save to database
+//            $shared_post_url = 'https://www.facebook.com/' . $post_id;
+//            $event->shared_post_url = $shared_post_url;
+//            $event->saveOrFail();
+//
+//            return ['shared_post_url' => $shared_post_url];
+//        } catch (RequestException $e) {
+//           return $e->getResponse();
+//        }
+//
+//
+//    }
+
     public function share_on_facebook(Event $event)
     {
-        $request_uri = 'https://graph.facebook.com/v3.2/' . env('FBPAGE_ID') . '/feed';
+        $link =  route('display_event', $event->slug);
+        $message =  $event->name . '|' . $event->category->name;
 
         try {
-            $client = new Client(); //GuzzleHttp\Client
-            $result = $client->post($request_uri, [
-                'query' => [
-                    'message' => $event->name . '|' . $event->category->name,
-                    'link' =>  route('display_event', $event->slug),
-                    'access_token' => env('FBPAGE_ACCESS_TOKEN')
-                ]
-            ]);
-
-            $json_data= json_decode($result->getBody()->getContents());
-            $post_id = $json_data->id;
+            $post_id = FacebookApi::sendLink($link, $message);
 
             // create facebook post url and save to database
             $shared_post_url = 'https://www.facebook.com/' . $post_id;
@@ -205,10 +223,9 @@ class EventController extends Controller
             $event->saveOrFail();
 
             return ['shared_post_url' => $shared_post_url];
-        } catch (RequestException $e) {
-           return $e->getResponse();
+        } catch (\Exception $e) {
+            return ['error_msg' => $e->getMessage()];
         }
-
 
     }
 }
