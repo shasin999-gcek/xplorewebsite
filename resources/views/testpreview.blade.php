@@ -26,13 +26,14 @@
 	<meta property="fb:pages" content="335205793240413"/>
 
 	<meta property="article:author" content="https://www.facebook.com/xplore19"/> 
+	<meta property="article:publisher" content="https://www.facebook.com/xplore19"/>
 
     <title>{{ $event->name }}</title>
 </head>
 <body>
 <img src="{{ asset('storage/' . $event->poster_image) }}" alt="{{ $event->name }}">
 <h1>{{ $event->name }}</h1>
-<p>{{ $event->description }}</p>
+<p>Sample description abount event must show here</p>
 
 </body>
 </html>
