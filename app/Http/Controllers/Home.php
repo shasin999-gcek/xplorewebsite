@@ -26,7 +26,7 @@ class Home extends Controller
     public function technical() {
 
         $data = [
-            'active_menu' => 'dashboard'
+            'active_menu' => 'technical'
         ];
         return view('technical', $data);
     }

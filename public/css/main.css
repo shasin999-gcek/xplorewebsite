@@ -21327,6 +21327,14 @@ input.datetimepicker[data-color="yellow"]+.bootstrap-datetimepicker-widget.dropd
     transition: all .3s;
     border: 2px solid rgb(40, 219, 219);
   }
+
+  .event-div:nth-child(odd) .blog-slider {
+    float:right;
+  }
+  .event-div:nth-child(even) .blog-slider {
+    float: left;
+  }
+  
   @media screen and (max-width: 992px) {
     .blog-slider {
       max-width: 680px;

@@ -87,7 +87,13 @@ class EventController extends Controller
         //
     }
 
-    public function getCse() {
-        
+    public function getEvent($id) {
+
+        $event = Event::with('category')->where('category_id', $id)->get();
+        $data = [
+            'event' => $event,
+            'active_menu' => 'event'
+        ];
+        return view('event',$data);
     }
 }
