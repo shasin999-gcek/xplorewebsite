@@ -40,3 +40,9 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => 'is_admin',
 Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('/event/{slug}', 'EventController@show')->name('display_event');
+
+Route::get('/', 'Home@index');
+Route::get('/about', 'Home@about');
+Route::get('/contact', 'Home@contact');
+Route::get('/technical', 'Home@services');
+Route::get('/portfolio', 'Home@portfolio');
