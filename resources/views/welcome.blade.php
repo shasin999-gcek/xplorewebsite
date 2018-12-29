@@ -87,11 +87,11 @@
                 <div class="container-fluid">
                     <div class="row">
                         <div class="owl-carousel">
-                          <div ><div ><img src="img/cultural.jpg" class="img-fluid" ></div></div>
-                          <div ><div ><img src="img/cultural.jpg" class="img-fluid" ></div></div>
-                          <div ><div ><img src="img/cultural.jpg" class="img-fluid" ></div></div>
-                          <div ><div ><img src="img/cultural.jpg" class="img-fluid" ></div></div>
-                          <div ><div ><img src="img/cultural.jpg" class="img-fluid" ></div></div>
+                          <div ><div ><img src="{{ asset('img/cultural.jpg') }}" class="img-fluid" ></div></div>
+                          <div ><div ><img src="{{ asset('img/cultural.jpg') }}" class="img-fluid" ></div></div>
+                          <div ><div ><img src="{{ asset('img/cultural.jpg') }}" class="img-fluid" ></div></div>
+                          <div ><div ><img src="{{ asset('img/cultural.jpg') }}" class="img-fluid" ></div></div>
+                          <div ><div ><img src="{{ asset('img/cultural.jpg') }}" class="img-fluid" ></div></div>
                         </div>
                     </div>
                 </div>

@@ -83,11 +83,12 @@
           <li class="nav-item">
           @if (Route::has('login'))
                     @auth
-                    <a href="{{ url('/login') }}" class="nav-link btn btn-default d-none d-lg-block" href="javascript:void(0)" >
-              <i class="tim-icons icon-cloud-download-93"></i> Register/Login
-                    @else
                     <a href="{{ url('/logout') }}" class="nav-link btn btn-default d-none d-lg-block" href="javascript:void(0)" >
-              <i class="tim-icons icon-cloud-download-93"></i> Logout
+              <i class="tim-icons icon-cloud-download-93"></i> Logout</a>
+                    @else
+                    
+              <a href="{{ url('/login') }}" class="nav-link btn btn-default d-none d-lg-block" href="javascript:void(0)" >
+              <i class="tim-icons icon-cloud-download-93"></i> Register/Login </a>
                     @endauth
                 </div>
             @endif
@@ -105,8 +106,8 @@
       <div class="container">
         <div class="row">
           <div class="col-md-3">
-              <img src="assets/img/Xplore.svg" class="img-fluid img-responsive" width="200" height="200">
-              <img src="assets/img/logo.svg" class="img-fluid img-responsive" width="200" height="100">
+              <img src="{{ asset('img/Xplore.svg') }}" class="img-fluid img-responsive" width="200" height="200">
+              <img src="{{ asset('img/logo.svg') }}" class="img-fluid img-responsive" width="200" height="100">
           </div>
           <div class="col-md-3">
             <ul class="nav">
@@ -116,17 +117,17 @@
                 </a>
               </li>
               <li class="nav-item">
-                <a href="./examples/landing-page.html" class="nav-link">
+                <a href="" class="nav-link">
                   Technical
                 </a>
               </li>
               <li class="nav-item">
-                <a href="./examples/register-page.html" class="nav-link">
+                <a href="" class="nav-link">
                   Management
                 </a>
               </li>
               <li class="nav-item">
-                <a href="./examples/profile-page.html" class="nav-link">
+                <a href="" class="nav-link">
                   Cultural
                 </a>
               </li>
@@ -135,22 +136,22 @@
           <div class="col-md-3">
             <ul class="nav">
               <li class="nav-item">
-                <a href="https://creative-tim.com/contact-us" class="nav-link">
+                <a href="" class="nav-link">
                   Contact Us
                 </a>
               </li>
               <li class="nav-item">
-                <a href="https://creative-tim.com/about-us" class="nav-link">
+                <a href="" class="nav-link">
                   About Us
                 </a>
               </li>
               <li class="nav-item">
-                <a href="https://creative-tim.com/blog" class="nav-link">
+                <a href="" class="nav-link">
                   Sponsors
                 </a>
               </li>
               <li class="nav-item">
-                <a href="https://opensource.org/licenses/MIT" class="nav-link">
+                <a href="" class="nav-link">
                   Register/Login
                 </a>
               </li>
@@ -159,13 +160,13 @@
           <div class="col-md-3">
             <h3 class="title">Follow us:</h3>
             <div class="btn-wrapper profile">
-              <a target="_blank" href="https://twitter.com/creativetim" class="btn btn-icon btn-neutral btn-round btn-simple" data-toggle="tooltip" data-original-title="Follow us">
+              <a target="_blank" href="" class="btn btn-icon btn-neutral btn-round btn-simple" data-toggle="tooltip" data-original-title="Follow us">
                 <i class="fab fa-twitter"></i>
               </a>
-              <a target="_blank" href="https://www.facebook.com/creativetim" class="btn btn-icon btn-neutral btn-round btn-simple" data-toggle="tooltip" data-original-title="Like us">
+              <a target="_blank" href="" class="btn btn-icon btn-neutral btn-round btn-simple" data-toggle="tooltip" data-original-title="Like us">
                 <i class="fab fa-facebook-square"></i>
               </a>
-              <a target="_blank" href="https://dribbble.com/creativetim" class="btn btn-icon btn-neutral  btn-round btn-simple" data-toggle="tooltip" data-original-title="Follow us">
+              <a target="_blank" href="" class="btn btn-icon btn-neutral  btn-round btn-simple" data-toggle="tooltip" data-original-title="Follow us">
                 <i class="fab fa-dribbble"></i>
               </a>
             </div>
