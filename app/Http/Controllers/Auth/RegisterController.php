@@ -9,6 +9,8 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
 
+use Cookie;
+
 class RegisterController extends Controller
 {
     /*
@@ -65,10 +67,17 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
+        $referred_by = null;
+        if(Cookie::has('ref_code'))
+        {
+            $referred_by = explode('"', Cookie::get('ref_code'))[1];
+        }
+        
         return User::create([
             'name' => $data['name'],
             'email' => $data['email'],
             'mobile_number' => $data['mobile_number'],
+            'referred_by' => $referred_by,
             'password' => bcrypt($data['password']),
         ]);
 

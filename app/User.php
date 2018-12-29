@@ -20,6 +20,7 @@ class User extends Authenticatable
         'name',
         'email',
         'mobile_number',
+        'referred_by',
         'password', 
         'needs_accomadation',
     ];
@@ -45,6 +46,11 @@ class User extends Authenticatable
     public function isAdmin() 
     {
         return $this->is_admin;
+    }
+
+    public static function isReferralIdValid($referral_id)
+    {
+        return self::where('referral_id', $referral_id)->count() ? true : false;
     }
 
 }
