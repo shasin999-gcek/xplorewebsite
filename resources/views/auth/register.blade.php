@@ -91,7 +91,7 @@
 
 @endsection
 
-@section('scripts')
+{{-- @section('scripts')
     <script>
         function getCollegeList() {
             const API_URL = 'http://localhost:8000';
@@ -121,4 +121,4 @@
         });
 
     </script>
-@endsection
+@endsection --}}
