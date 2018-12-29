@@ -23,5 +23,20 @@ class Home extends Controller
         return view('contact');
     }
 
+    public function technical() {
+
+        $data = [
+            'active_menu' => 'dashboard'
+        ];
+        return view('technical', $data);
+    }
+
+    public function cultural() {
+        return view('cultural');
+    }
+
+    public function management() {
+        return view('management');
+    }
 
 }

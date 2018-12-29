@@ -44,5 +44,6 @@ Route::get('/event/{slug}', 'EventController@show')->name('display_event');
 Route::get('/', 'Home@index');
 Route::get('/about', 'Home@about');
 Route::get('/contact', 'Home@contact');
-Route::get('/technical', 'Home@services');
-Route::get('/portfolio', 'Home@portfolio');
+Route::get('/technical', 'Home@technical');
+Route::get('/cultural', 'Home@cultural');
+Route::get('/management', 'Home@management');
