@@ -86,4 +86,8 @@ class EventController extends Controller
     {
         //
     }
+
+    public function getCse() {
+        
+    }
 }

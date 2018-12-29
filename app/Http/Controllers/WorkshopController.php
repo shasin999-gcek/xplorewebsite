@@ -44,9 +44,13 @@ class WorkshopController extends Controller
      * @param  \App\Workshop  $workshop
      * @return \Illuminate\Http\Response
      */
-    public function show(Workshop $workshop)
+    public function show($slug)
     {
         //
+
+       $workshop = Workshop::with('category')->where('slug', $slug)->first();
+
+       return view('testpreview_workshop', ['workshop' => $workshop]);
     }
 
     /**

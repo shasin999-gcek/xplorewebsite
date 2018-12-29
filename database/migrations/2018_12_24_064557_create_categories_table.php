@@ -26,6 +26,13 @@ class CreateCategoriesTable extends Migration
                ->on('categories')
                ->onDelete('cascade');
         });
+
+         Schema::table('workshops', function (Blueprint $table) {
+           $table->foreign('category_id')
+               ->references('id')
+               ->on('categories')
+               ->onDelete('cascade');
+        });
     }
 
     /**

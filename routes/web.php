@@ -19,21 +19,14 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::prefix('api')->group(function () {
-    Route::get('colleges', function () {
-        // Matches The "/api/colleges" URL
-        $colleges = \App\CollegeList::get(['id', 'college_name']);
-        return $colleges;
-    });
-});
-
 // admin routes
 Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => 'is_admin', 'namespace' => 'Admin'], function () {
     Route::get('dashboard', 'DashboardController@index')->name('dashboard');
     Route::resource('events', 'EventController');
+    Route::resource('workshops', 'WorkshopController');
 
     // facebook sharing
-    Route::post('events/share/{event}', 'EventController@share_on_facebook')->name('share_on_fb');
+    // Route::post('events/share/{event}', 'EventController@share_on_facebook')->name('share_on_fb');
 });
 
 
@@ -47,3 +40,4 @@ Route::get('/contact', 'Home@contact');
 Route::get('/technical', 'Home@technical');
 Route::get('/cultural', 'Home@cultural');
 Route::get('/management', 'Home@management');
+Route::get('/workshop/{slug}', 'WorkshopController@show')->name('display_workshop');

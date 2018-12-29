@@ -76,7 +76,7 @@
                             </div>
                         </div>
 
-                        <div class="form-group{{ $errors->has('category_id') ? ' has-error' : '' }}">
+                        <div class="form-group{{ $errors->has('type') ? ' has-error' : '' }}">
                             <label for="type" class="col-md-2 control-label">Event Type</label>
 
                             <div class="col-md-6">

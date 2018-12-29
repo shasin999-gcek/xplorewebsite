@@ -12,4 +12,9 @@ class Category extends Model
     {
         return $this->hasMany('App\Event');
     }
+
+    public function workshops()
+    {
+        return $this->hasMany('App\Workshop');
+    }
 }

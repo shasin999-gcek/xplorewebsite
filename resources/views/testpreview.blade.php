@@ -14,7 +14,7 @@
 
 	<meta property="og:title" content="{{ $event->name }} By {{ $event->category->name }}"/>
 
-	<meta property="og:description" content="{{ $event->description }}">
+	<meta property="og:description" content="{{ str_before($event->description, '.') }}">
 	
 
 	<meta property="og:type" content="article"/>

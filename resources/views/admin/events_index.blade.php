@@ -46,14 +46,10 @@
                                     <td>{{ $event->name }}</td>
                                     <td>{{ $event->category->name }}</td>
                                     <td class="text-center">
-                                        @if($event->shared_post_url)
-                                            <a href="{{ $event->shared_post_url }}" target="_blank">View Post</a>
-                                        @else
-                                            <button id="{{ 'share_btn_id_'. $event->id }}" class="btn btn-xs btn-primary" onclick="shareOnFB({{ $event->id }})">
-                                                <i class="fa fa-facebook-official" aria-hidden="true"></i>
-                                                <span>Share</span>
-                                            </button>
-                                        @endif
+                                      <div class="fb-share-button" 
+                                        data-href="{{ route('display_event', $event->slug) }}" 
+                                        data-layout="button_count">
+                                      </div>
                                     </td>
                                     <td class="text-center">
                                         <a href="{{ route('admin.events.show', ['event' => $event->id ]) }}" class="btn btn-xs btn-primary"><i class="fa fa-eye" aria-hidden="true"></i> View</a>
