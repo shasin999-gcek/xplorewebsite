@@ -5,14 +5,14 @@
     <div class="row">
         <div class="col-lg-12">
             <h1 class="page-header">
-                Events
+                Workshops
             </h1>
             <ol class="breadcrumb">
                 <li>
                     <i class="fa fa-dashboard"></i> <a href="{{ route('admin.dashboard') }}">Dashboard</a>
                 </li>
                 <li>
-                    <i class="fa fa-calender"></i> <a href="{{ route('admin.events.index') }}">Events</a>
+                    <i class="fa fa-calender"></i> <a href="{{ route('admin.workshops.index') }}">Workshops</a>
                 </li>
                 <li class="active">
                     <i class="fa fa-calender"></i> Add
@@ -26,7 +26,7 @@
             <div class="panel panel-info">
                 <!-- Default panel contents -->
                 <div class="panel-heading">
-                    Add New Event
+                    Add New Workshop
                 </div>
 
                 <div class="panel-body">
@@ -40,11 +40,11 @@
                         </div>
                     @endif
 
-                    <form class="form-horizontal" method="POST" action="{{ route('admin.events.store') }}" enctype="multipart/form-data">
+                    <form class="form-horizontal" method="POST" action="{{ route('admin.workshops.store') }}" enctype="multipart/form-data">
                         {{ csrf_field() }}
 
                         <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
-                            <label for="name" class="col-md-2 control-label">Event Name</label>
+                            <label for="name" class="col-md-2 control-label">Workshop Name</label>
 
                             <div class="col-md-6">
                                 <input id="name" type="text" class="form-control" name="name" value="{{ old('name') }}" required autofocus>
@@ -58,7 +58,7 @@
                         </div>
 
                         <div class="form-group{{ $errors->has('category_id') ? ' has-error' : '' }}">
-                            <label for="category_id" class="col-md-2 control-label">Event Category</label>
+                            <label for="category_id" class="col-md-2 control-label">Workshop Category</label>
 
                             <div class="col-md-6">
                                 <select class="form-control" id="category_id" name="category_id" required>
@@ -76,25 +76,9 @@
                             </div>
                         </div>
 
-                        <div class="form-group{{ $errors->has('type') ? ' has-error' : '' }}">
-                            <label for="type" class="col-md-2 control-label">Event Type</label>
-
-                            <div class="col-md-6">
-                                <select class="form-control" id="type" name="type"  required>
-                                    <option value="Individual" {{ old('type') == 'Individual' ? 'selected': '' }} >Individual</option>
-                                    <option value="Team"  {{ old('type') == 'Team' ? 'selected': '' }}>Team</option>
-                                </select>
-
-                                @if ($errors->has('type'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('type') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
-                        </div>
-
+                       
                         <div class="form-group{{ $errors->has('description') ? ' has-error' : '' }}">
-                            <label for="name" class="col-md-2 control-label">Event Description</label>
+                            <label for="name" class="col-md-2 control-label">Workshop Description</label>
 
                             <div class="col-md-6">
                                 <textarea id="description" name="description"  required autofocus>{{ old('description') }}</textarea>
@@ -123,54 +107,7 @@
                             </div>
                         </div>
 
-                        <div class="form-group{{ $errors->has('f_price') ? ' has-error' : '' }}">
-                            <label for="f_price" class="col-md-2 control-label">First Prize</label>
-
-                            <div class="col-md-6">
-                                <div class="input-group">
-                                    <div class="input-group-addon">Rs</div>
-                                    <input type="number" class="form-control" id="f_price" name="f_price" value="{{ old('f_price') }}" required autofocus>
-                                </div>
-                                @if ($errors->has('f_price'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('f_price') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
-                        </div>
-
-                        <div class="form-group{{ $errors->has('s_price') ? ' has-error' : '' }}">
-                            <label for="s_price" class="col-md-2 control-label">Second Prize</label>
-
-                            <div class="col-md-6">
-                                <div class="input-group">
-                                    <div class="input-group-addon">Rs</div>
-                                    <input type="number" class="form-control" id="s_price" name="s_price" value="{{ old('s_price') }}" required autofocus>
-                                </div>
-                                @if ($errors->has('s_price'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('s_price') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
-                        </div>
-
-                        <div class="form-group{{ $errors->has('t_price') ? ' has-error' : '' }}">
-                            <label for="t_price" class="col-md-2 control-label">Third Prize</label>
-
-                            <div class="col-md-6">
-                                <div class="input-group">
-                                    <div class="input-group-addon">Rs</div>
-                                    <input type="number" class="form-control" id="t_price" name="t_price" value="{{ old('t_price') }}" required autofocus>
-                                </div>
-                                @if ($errors->has('t_price'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('t_price') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
-                        </div>
-
+                       
                         <div class="form-group{{ $errors->has('datetime') ? ' has-error' : '' }}">
                             <label for="datetime" class="col-md-2 control-label">Date & Time</label>
 

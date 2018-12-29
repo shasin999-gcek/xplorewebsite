@@ -8,19 +8,19 @@
 
     <meta name="robots" content="index,archive,follow">
 
-    <meta name="description" content="{{ $event->description }}">
+    <meta name="description" content="{{ $workshop->description }}">
 
 	<meta property="og:tags">
 
-	<meta property="og:title" content="{{ $event->name }} By {{ $event->category->name }}"/>
+	<meta property="og:title" content="{{ $workshop->name }} By {{ $workshop->category->name }}"/>
 
-	<meta property="og:description" content="{{ str_before($event->description, '.') }}">
+	<meta property="og:description" content="{{ str_before($workshop->description, '.') }}">
 	
 
 	<meta property="og:type" content="article"/>
-	<meta property="og:image" content="{{ asset('storage/' . $event->poster_image) }}"/>
+	<meta property="og:image" content="{{ asset('storage/' . $workshop->poster_image) }}"/>
 	<meta property="og:site_name" content="Xplore 19"/>
-	<meta property="og:url" content="{{ route('display_event', $event->slug) }}"/>
+	<meta property="og:url" content="{{ route('display_workshop', $workshop->slug) }}"/>
 
 	<meta property="fb:app_id" content="300872960546512"/>
 	<meta property="fb:pages" content="335205793240413"/>
@@ -28,12 +28,12 @@
 	<meta property="article:author" content="https://www.facebook.com/xplore19"/> 
 	<meta property="article:publisher" content="https://www.facebook.com/xplore19"/>
 
-    <title>{{ $event->name }}</title>
+    <title>{{ $workshop->name }}</title>
 </head>
 <body>
-<img src="{{ asset('storage/' . $event->poster_image) }}" alt="{{ $event->name }}">
-<h1>{{ $event->name }}</h1>
-<p>Sample description abount event must show here</p>
+<img src="{{ asset('storage/' . $workshop->poster_image) }}" alt="{{ $workshop->name }}">
+<h1>{{ $workshop->name }}</h1>
+<p>Sample description abount workshop must show here</p>
 
 </body>
 </html>
