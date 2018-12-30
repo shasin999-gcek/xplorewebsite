@@ -21156,13 +21156,23 @@ input.datetimepicker[data-color="yellow"]+.bootstrap-datetimepicker-widget.dropd
           animation: fill .5s ease-out;
   -webkit-animation-fill-mode: forwards;
           animation-fill-mode: forwards;
+          color:white;
 }
 .skew-button:hover:after {
   -webkit-animation: swoosh .7s ease-in;
           animation: swoosh .7s ease-in;
+          color:white;
 }
 .skew-button:active:before {
   background-color: #030d1b;
+  color:white;
+}
+
+.skew-button:focus {
+  color:#0073e2;
+}
+.skew-button:hover {
+  color:#fff;
 }
 
 @-webkit-keyframes swoosh {

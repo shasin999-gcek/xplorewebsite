@@ -42,8 +42,8 @@
                               </div>
                             </div>
                             <div class="card-footer text-center">
-                              <button class="skew-button"><span>WORKSHOP</span></button>
-                              <button class="skew-button"><span>EVENT</span></button>
+                              <a href=""><button class="skew-button"><span>WORKSHOP</span></button></a>
+                              <a href="{{ route('events','cse') }}" class="skew-button"><span>EVENT</span></a>
                             </div>
                           </div>
                         </div>
@@ -63,7 +63,7 @@
                             </div>
                             <div class="card-footer text-center">
                                     <button class="skew-button"><span>WORKSHOP</span></button>
-                                    <button class="skew-button"><span>EVENT</span></button>
+                                    <a href="{{ route('events','ce') }}" class="skew-button"><span>EVENT</span></a>
                             </div>
                           </div>
                         </div>
@@ -87,7 +87,7 @@
                                               </div>
                                               <div class="card-footer text-center">
                                                     <button class="skew-button"><span>WORKSHOP</span></button>
-                                                    <button class="skew-button"><span>EVENT</span></button>
+                                                    <a href="{{ route('events','ece') }}" class="skew-button"><span>EVENT</span></a>
                                               </div>
                                             </div>
                                     </div>
@@ -107,10 +107,36 @@
                                               </div>
                                               <div class="card-footer text-center">
                                                     <button class="skew-button"><span>WORKSHOP</span></button>
-                                                    <button class="skew-button"><span>EVENT</span></button>
+                                                    <a href="{{ route('events','eee') }}" class="skew-button"><span>EVENT</span></a>
                                               </div>
                                             </div>
                                     </div>
+                              </div>
+                    </div>
+                    </div>
+                    <div style="margin-top:10%">
+                            <div class="row">
+                                    <div class="col-md-6 offset-md-3">
+                                            <div class="card card-coin card-plain">
+                                              <div class="card-header">
+                                                <img src="{{ asset('img/me.svg') }}" class="img-center img-fluid">
+                                              </div>
+                                              <div class="card-body">
+                                                <div class="row">
+                                                  <div class="col-md-12 text-center">
+                                                    <h4 class="text-uppercase">Mechanical Engineering</h4>
+                                                    
+                                                    <hr class="line-info">
+                                                  </div>
+                                                </div>
+                                              </div>
+                                              <div class="card-footer text-center">
+                                                    <button class="skew-button"><span>WORKSHOP</span></button>
+                                                    <a href="{{ route('events','me') }}" class="skew-button"><span>EVENT</span></a>
+                                              </div>
+                                            </div>
+                                    </div>
+                                    
                               </div>
                     </div>
                     </div>
