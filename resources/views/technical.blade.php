@@ -31,7 +31,7 @@
                         <div class="col-md-6">
                           <div class="card card-coin card-plain">
                             <div class="card-header">
-                              <img src="{{ asset('img/CSE.svg') }}" class="img-center img-fluid">
+                              <img src="{{ asset('img/cse.svg') }}" class="img-center img-fluid">
                             </div>
                             <div class="card-body">
                               <div class="row">
@@ -50,7 +50,7 @@
                         <div class="col-md-6">
                           <div class="card card-coin card-plain">
                             <div class="card-header">
-                              <img src="{{ asset('img/CE.svg') }}" class="img-center img-fluid">
+                              <img src="{{ asset('img/civil.svg') }}" class="img-center img-fluid">
                             </div>
                             <div class="card-body">
                               <div class="row">
@@ -74,7 +74,7 @@
                                     <div class="col-md-6">
                                             <div class="card card-coin card-plain">
                                               <div class="card-header">
-                                                <img src="{{ asset('img/ECE.svg') }}" class="img-center img-fluid">
+                                                <img src="{{ asset('img/ece.svg') }}" class="img-center img-fluid">
                                               </div>
                                               <div class="card-body">
                                                 <div class="row">
@@ -94,7 +94,7 @@
                                     <div class="col-md-6">
                                             <div class="card card-coin card-plain">
                                               <div class="card-header">
-                                                <img src="{{ asset('img/EEE.svg') }}" class="img-center img-fluid">
+                                                <img src="{{ asset('img/eee.svg') }}" class="img-center img-fluid">
                                               </div>
                                               <div class="card-body">
                                                 <div class="row">
