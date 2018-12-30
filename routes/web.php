@@ -34,3 +34,5 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('/event/{slug}', 'EventController@show')->name('display_event');
 Route::get('/workshop/{slug}', 'WorkshopController@show')->name('display_workshop');
+
+Route::get('/api/events/{short_name}', 'EventController@index');
