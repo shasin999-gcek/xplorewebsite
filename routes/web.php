@@ -32,7 +32,20 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => 'is_admin',
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-//Route::get('/event/{slug}', 'EventController@show')->name('display_event');
+/* 
+   /events/short_name 
+   eg: /events/cse	
+*/
+Route::get('/events/{category}/', 'EventController@getEventsByCategory')->name('events');
+
+/* 
+   /events/short_name/slug 
+   eg: /events/cse/the-first-event	
+*/
+
+Route::get('/events/{category}/{slug}', 'EventController@show')->name('display_event');
+Route::get('/workshops/{category}/{slug}', 'WorkshopController@show')->name('display_workshop');
+
 
 Route::get('/', 'Home@index');
 Route::get('/about', 'Home@about');
@@ -40,5 +53,3 @@ Route::get('/contact', 'Home@contact');
 Route::get('/technical', 'Home@technical');
 Route::get('/cultural', 'Home@cultural');
 Route::get('/management', 'Home@management');
-Route::get('/event/{id}', 'EventController@getEvent');
-Route::get('/workshop/{slug}', 'WorkshopController@show')->name('display_workshop');
