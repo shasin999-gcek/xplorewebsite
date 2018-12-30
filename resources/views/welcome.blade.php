@@ -1,4 +1,4 @@
-@extends('layouts.master')
+@extends('layouts.master',['bodyclass' => 'index-page','navbar' => 'navbar-transparent'])
 
 @section('content')
 <div class="wrapper">

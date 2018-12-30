@@ -21,12 +21,12 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css" />
 </head>
 
-<body class="index-page">
+<body class="{{ $bodyclass }}">
   <!-- Navbar -->
-  <nav class="navbar navbar-expand-lg navbar-transparent fixed-top bg-default" color-on-scroll="600">
+  <nav class="navbar navbar-expand-lg {{ $navbar }} fixed-top bg-default" color-on-scroll="600">
     <div class="container">
       <div class="navbar-translate">
-        <a class="navbar-brand" href="#" rel="tooltip" title="Designed and Coded by Creative Tim" data-placement="bottom" target="_blank">
+        <a class="navbar-brand" href="#"  target="_blank">
           <span>Xplore'19</span> 
         </a>
         <button class="navbar-toggler navbar-toggler" type="button" data-toggle="collapse" data-target="#navigation" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
