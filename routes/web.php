@@ -17,7 +17,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Auth::routes();
+Auth::routes(['verify' => true]);
 
 // admin routes
 Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => 'is_admin', 'namespace' => 'Admin'], function () {
@@ -53,3 +53,33 @@ Route::get('/contact', 'Home@contact');
 Route::get('/technical', 'Home@technical');
 Route::get('/cultural', 'Home@cultural');
 Route::get('/management', 'Home@management');
+
+
+use Kreait\Firebase\Factory;
+use Kreait\Firebase\ServiceAccount;
+
+
+Route::get('/test', function() {
+	$json_file_path = storage_path('app/xplore-19-firebase-adminsdk-nruu5-850911ab91.json');
+	$serviceAccount = ServiceAccount::fromJsonFile($json_file_path);
+
+	$firebase = (new Factory)
+	    ->withServiceAccount($serviceAccount)
+	    ->create();
+
+	$auth = $firebase->getAuth();
+
+	$userProperties = [
+	    'email' => 'user@example.com',
+	    'emailVerified' => false,
+	    'phoneNumber' => '+15555550100',
+	    'password' => 'secretPassword',
+	    'displayName' => 'Shimbu annan',
+	    'photoUrl' => 'http://www.example.com/12345678/photo.png',
+	    'disabled' => false,
+	];
+
+	$createdUser = $auth->createUser($userProperties);
+
+	dd($createdUser);
+});
