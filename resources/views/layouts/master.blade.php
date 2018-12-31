@@ -23,7 +23,7 @@
 
 <body class="{{ $bodyclass }}">
   <!-- Navbar -->
-  <nav class="navbar navbar-expand-lg {{ $navbar }} fixed-top bg-default" color-on-scroll="600">
+  <nav class="navbar navbar-expand-lg {{ $navbar }}  bg-default" color-on-scroll="600">
     <div class="container">
       <div class="navbar-translate">
         <a class="navbar-brand" href="#"  target="_blank">
