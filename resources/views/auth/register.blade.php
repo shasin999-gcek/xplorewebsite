@@ -1,4 +1,4 @@
-@extends('layouts.master',['bodyclass' => 'register-page','active_menu' => 'login'])
+@extends('layouts.master',['bodyclass' => 'register-page','active_menu' => 'login' ,'navbar' => ' '])
 
 
 @section('content')
@@ -82,7 +82,7 @@
                   
                 </div>
                 <div class="card-footer">
-                  <a href="javascript:void(0)" type="submit" class="btn btn-info btn-round btn-lg">Register</a>
+                  <button type="submit" class="btn btn-info btn-round btn-lg">Register</button>
                 </div>
                 </form>
               </div>
