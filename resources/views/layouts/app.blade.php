@@ -14,6 +14,60 @@
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/css/select2.min.css" rel="stylesheet" />
 
+    <script src="https://www.gstatic.com/firebasejs/5.7.0/firebase.js"></script>
+    <script>
+  // Initialize Firebase
+  // TODO: Replace with your project's customized code snippet
+  var config = {
+    apiKey: "AIzaSyChyTusGDckRdjvIuUhvVrYWS1azayN0nQ",
+    authDomain: "xplore-19.firebaseapp.com",
+    databaseURL: "https://xplore-19.firebaseio.com",
+    projectId: "xplore-19",
+    storageBucket: "xplore-19.appspot.com",
+    messagingSenderId: "1018819383666",
+  };
+  firebase.initializeApp(config);
+</script>
+  <script>
+    function handleSignUp() {
+      var email = document.getElementById('email').value;
+      var password = document.getElementById('password').value;
+      if (email.length < 4) {
+        alert('Please enter an email address.');
+        return;
+      }
+      if (password.length < 4) {
+        alert('Please enter a password.');
+        return;
+      }
+      // Sign in with email and pass.
+      // [START createwithemail]
+      firebase.auth().createUserWithEmailAndPassword(email, password).catch(function(error) {
+        // Handle Errors here.
+        var errorCode = error.code;
+        var errorMessage = error.message;
+        // [START_EXCLUDE]
+        if (errorCode == 'auth/weak-password') {
+          alert('The password is too weak.');
+        } else {
+          alert(errorMessage);
+        }
+        console.log(error);
+        // [END_EXCLUDE]
+      });
+      // [END createwithemail]
+    }
+
+
+      function initApp() {
+
+            document.getElementById('signup').addEventListener('click', handleSignUp, false);
+      }
+      window.onload = function() {
+      initApp();
+    };
+  </script>
+
 </head>
 <body>
     <div id="app">

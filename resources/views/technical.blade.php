@@ -1,4 +1,4 @@
-@extends('layouts.master')
+@extends('layouts.master',['bodyclass' => 'index-page','navbar' => 'navbar-transparent'])
 
 @section('content')
 <div class="wrapper">
@@ -113,7 +113,6 @@
                                     </div>
                               </div>
                     </div>
-                    </div>
                     <div style="margin-top:10%">
                             <div class="row">
                                     <div class="col-md-6 offset-md-3">
@@ -139,6 +138,8 @@
                                     
                               </div>
                     </div>
+                    </div>
+                    
                     </div>
                   </section>
                   <section>

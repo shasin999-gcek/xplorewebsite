@@ -1,4 +1,4 @@
-@extends('layouts.master')
+@extends('layouts.master',['bodyclass' => 'index-page','navbar' => 'navbar-transparent'])
 
 @section('content')
 <div class="wrapper">
@@ -8,7 +8,7 @@
         <div class="content-center brand">  
             <img src="{{ asset('img/'.$event_group->short_name.'.svg') }}" class="img-center img-fluid" width="400" height="400">
             <br>
-            <h1 class="h1-seo">Events</h1>
+            <h1 class="h1-seo">EVENTS</h1>
         </div>
       </div>
     </div>
@@ -25,10 +25,10 @@
                                             <img src="{{ asset('storage/' . $event->thumbnail_image) }}" alt="">
                                           </div>
                                           <div class="blog-slider__content">
-                                            <span class="blog-slider__code">26 December 2019</span>
+                                            <span class="blog-slider__code">{{$event->type}}</span>
                                             <div class="blog-slider__title">{{$event->name}}</div>
                                             <div class="blog-slider__text">{!! $event->description !!} </div>
-                                            <a href="" class="blog-slider__button">READ MORE</a>
+                                            <a href="{{ route('display_event', ['category' => $event->category->short_name, 'slug' => $event->slug]) }}" class="blog-slider__button">READ MORE</a>
                                           </div>
                                         </div>
                                     </div>
