@@ -5,6 +5,9 @@ namespace App\Providers;
 use Illuminate\Support\Facades\Event;
 use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
 
+use App\Listeners\UpdateFirebasePassword;
+use Illuminate\Auth\Events\PasswordReset;
+
 class EventServiceProvider extends ServiceProvider
 {
     /**

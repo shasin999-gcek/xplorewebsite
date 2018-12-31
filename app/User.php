@@ -20,6 +20,7 @@ class User extends Authenticatable
         'name',
         'email',
         'mobile_number',
+        'firebase_uid',
         'referred_by',
         'password', 
         'needs_accomadation',

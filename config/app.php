@@ -179,6 +179,9 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
 
+        // Firebase Admin Sdk
+        App\Providers\FirebaseServiceProvider::class,
+
     ],
 
     /*

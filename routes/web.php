@@ -17,7 +17,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Auth::routes();
+Auth::routes(['verify' => true]);
 
 // admin routes
 Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => 'is_admin', 'namespace' => 'Admin'], function () {
@@ -53,3 +53,4 @@ Route::get('/contact', 'Home@contact');
 Route::get('/technical', 'Home@technical');
 Route::get('/cultural', 'Home@cultural');
 Route::get('/management', 'Home@management');
+
