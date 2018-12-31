@@ -35,7 +35,7 @@
                   
                 </div>
                 <div class="container">
-                    <p>{{ $event->description }}</p><br><br>
+                    <p>{!! $event->description !!}</p><br><br>
 					<h4> First Price :  {{ $event->f_price_money }} <br>
 					Second Price :  {{ $event->s_price_money }} <br>
 					Third Price :  {{ $event->t_price_money }}</h4>

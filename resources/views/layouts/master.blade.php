@@ -50,50 +50,49 @@
             </div>
           </div>
         </div>
+
         <ul class="navbar-nav">
-          
-          
-          
-            <li class="nav-item @if($active_menu == 'technical') active @endif">
-                <a class="nav-link" href="{{URL::to('/technical')}}">
-                  <p>Technical</p>
-                </a>
+          <li class="nav-item @if($active_menu == 'technical') active @endif">
+              <a class="nav-link" href="{{URL::to('/technical')}}">
+                <p>Technical</p>
+              </a>
           </li>
           
-            <li class="nav-item @if($active_menu == 'cultural') active @endif">
-                <a class="nav-link" href="{{URL::to('/cultural')}}">
-                  <p>Cultural</p>
-                </a>
+          <li class="nav-item @if($active_menu == 'cultural') active @endif">
+            <a class="nav-link" href="{{URL::to('/cultural')}}">
+              <p>Cultural</p>
+            </a>
           </li>
           <li class="nav-item @if($active_menu == 'management') active @endif">
-              <a class="nav-link" href="{{URL::to('/management')}}">
-                <p>Management</p>
-              </a>
-        </li>
+            <a class="nav-link" href="{{URL::to('/management')}}">
+              <p>Management</p>
+            </a>
+          </li>
           <li class="nav-item @if($active_menu == 'about') active @endif">
-                <a class="nav-link" href="{{URL::to('/about')}}">
-                  <p>About</p>
-                </a>
+              <a class="nav-link" href="{{URL::to('/about')}}">
+                <p>About</p>
+              </a>
           </li>
           <li class="nav-item @if($active_menu == 'contact') active @endif">
               <a class="nav-link" href="{{URL::to('/contact')}}">
                 <p>Contact</p>
               </a>
-        </li>  
+          </li>  
           <li class="nav-item">
-          @if (Route::has('login'))
-                    @auth
-                    <a href="{{ url('/logout') }}" class="nav-link btn btn-default d-none d-lg-block" href="javascript:void(0)" >
-              <i class="tim-icons icon-cloud-download-93"></i> Logout</a>
-                    @else
-                    
-              <a href="{{ url('/login') }}" class="nav-link btn btn-default d-none d-lg-block" href="javascript:void(0)" >
-              <i class="tim-icons icon-cloud-download-93"></i> Register/Login </a>
-                    @endauth
-                </div>
+            @if (Route::has('login'))
+                @auth
+                  <a class="nav-link btn btn-default d-none d-lg-block" onclick="event.preventDefault(); document.getElementById('logout-form').submit();"> 
+                      <i class="tim-icons icon-cloud-download-93"></i> Logout
+                  </a>
+                  <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                      {{ csrf_field() }}
+                  </form>
+                @else
+                      
+                <a href="{{ route('login') }}" class="nav-link btn btn-default d-none d-lg-block" href="javascript:void(0)" >
+                <i class="tim-icons icon-cloud-download-93"></i> Register/Login </a>
+                @endauth  
             @endif
-            
-            </a>
           </li>
         </ul>
       </div>

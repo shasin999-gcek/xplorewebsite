@@ -3,8 +3,6 @@
 namespace App\Http\Controllers\Auth;
 
 use App\User;
-use App\UserDetails;
-use App\CollegeList;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
@@ -73,6 +71,10 @@ class RegisterController extends Controller
         if(Cookie::has('ref_code'))
         {
             $referred_by = explode('"', Cookie::get('ref_code'))[1];
+            if(!User::isReferralIdValid($referred_by))
+            {
+                $referred_by = null;
+            }
         }
         
         // create a firebase user as well

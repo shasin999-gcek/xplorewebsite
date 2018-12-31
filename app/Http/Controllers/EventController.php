@@ -56,7 +56,7 @@ class EventController extends Controller
             abort(404);
         }
 
-        return view('testpreview', ['event' => $event]);
+        return view('event_show', ['event' => $event]);
     }
 
     /**
@@ -95,7 +95,7 @@ class EventController extends Controller
 
     public function getEventsByCategory($category) {
 
-        $event_group = Category::with('events')->where('short_name', $category)->first();
+        $event_group = Category::with('events')->where('short_name', $category)->firstOrFail();
         $data = [
             'event_group' => $event_group,
             'active_menu' => 'event'
