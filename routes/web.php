@@ -55,3 +55,4 @@ Route::group(['middleware' => 'no-cache', 'as' => 'event.'], function () {
     Route::post('/event/register/{event}', 'EventRegistrationController@store')->name('register');
     Route::post('/event/payment-callback', 'PaymentController@paytmCallback')->name('payment.callback');
 });
+
