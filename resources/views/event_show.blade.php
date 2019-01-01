@@ -42,9 +42,12 @@
 
                     <br><br>
 					<h3> Registration Fee: {{ $event->reg_fee }}</h3>
-                    <button class="btn btn-info btn-lg ">Buy Ticket</button><br>
 
-                    
+              <button class="btn btn-info btn-lg " onclick="event.preventDefault(); document.getElementById('event_reg_form').submit();">Buy Ticket</button><br>
+
+              <form id="event_reg_form" method="post" action="{{ route('event.register', $event->id) }}" style="display: none;">
+                {{ csrf_field() }}
+              </form>
 
                 </div>
               </section>

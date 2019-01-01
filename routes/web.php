@@ -25,6 +25,9 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => 'is_admin',
     Route::resource('events', 'EventController');
     Route::resource('workshops', 'WorkshopController');
 
+    Route::get('event-registrations', 'EventRegistrationController@index')->name('event_regs.index');
+    Route::get('payments', 'PaymentController@index')->name('payments.index');
+
     // facebook sharing
     // Route::post('events/share/{event}', 'EventController@share_on_facebook')->name('share_on_fb');
 });
@@ -32,16 +35,9 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => 'is_admin',
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-/* 
-   /events/short_name 
-   eg: /events/cse	
-*/
+
 Route::get('/events/{category}/', 'EventController@getEventsByCategory')->name('events');
 
-/* 
-   /events/short_name/slug 
-   eg: /events/cse/the-first-event	
-*/
 
 Route::get('/events/{category}/{slug}', 'EventController@show')->name('display_event');
 Route::get('/workshops/{category}/{slug}', 'WorkshopController@show')->name('display_workshop');
@@ -54,3 +50,8 @@ Route::get('/technical', 'Home@technical');
 Route::get('/cultural', 'Home@cultural');
 Route::get('/management', 'Home@management');
 
+// Registrations
+Route::group(['middleware' => 'no-cache', 'as' => 'event.'], function () {
+    Route::post('/event/register/{event}', 'EventRegistrationController@store')->name('register');
+    Route::post('/event/payment-callback', 'PaymentController@paytmCallback')->name('payment.callback');
+});
