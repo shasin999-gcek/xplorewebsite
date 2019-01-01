@@ -6,6 +6,9 @@ use Illuminate\Http\Request;
 use App\Event;
 use App\Category;
 
+use DB;
+
+
 class EventController extends Controller
 {
     /**
@@ -45,13 +48,17 @@ class EventController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($slug)
+    public function show($category, $slug)
     {
         //
+        $event = Event::with('category')->where('slug', $slug)->firstOrFail();
 
-       $event = Event::with('category')->where('slug', $slug)->first();
+        if($event->category->short_name != $category)
+        {
+            abort(404);
+        }
 
-        return view('testpreview', ['event' => $event]);
+        return view('event_show', ['event' => $event]);
     }
 
     /**
@@ -86,5 +93,15 @@ class EventController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function getEventsByCategory($category) {
+
+        $event_group = Category::with('events')->where('short_name', $category)->firstOrFail();
+        $data = [
+            'event_group' => $event_group,
+            'active_menu' => 'event'
+        ];
+        return view('event_index',$data);
     }
 }

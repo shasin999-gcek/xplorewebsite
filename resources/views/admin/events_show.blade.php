@@ -24,7 +24,7 @@
     <div class="row">
         <div class="col-lg-12">
             <div class="well">
-                <a href="{{ url('/event/' . $event->slug) }}">{{ url('/events/' . $event->slug) }}</a>
+                <a href="{{ route('display_event', ['category' => $event->category->short_name, 'slug' => $event->slug]) }}">{{ route('display_event', ['category' => $event->category->short_name, 'slug' => $event->slug]) }}</a>
                 <div class="pull-right">
                     <a href="{{ route('admin.events.edit', ['id' => $event->id]) }}" class="btn btn-sm btn-primary">
                         <i class="fa fa-pencil" aria-hidden="true"></i> Edit</a>

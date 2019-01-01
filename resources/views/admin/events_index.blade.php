@@ -47,13 +47,13 @@
                                     <td>{{ $event->category->name }}</td>
                                     <td class="text-center">
                                       <div class="fb-share-button" 
-                                        data-href="{{ route('display_event', $event->slug) }}" 
+                                        data-href="{{ route('display_event', ['category' => $event->category->short_name, 'slug' => $event->slug]) }}" 
                                         data-layout="button_count">
                                       </div>
                                     </td>
                                     <td class="text-center">
                                         <a href="{{ route('admin.events.show', ['event' => $event->id ]) }}" class="btn btn-xs btn-primary"><i class="fa fa-eye" aria-hidden="true"></i> View</a>
-                                        <a href="{{ route('display_event', $event->slug) }}" class="btn btn-xs btn-primary"><i class="fa fa-external-link" aria-hidden="true"></i> View on website</a>
+                                        <a href="{{ route('display_event', ['category' => $event->category->short_name, 'slug' => $event->slug]) }}" class="btn btn-xs btn-primary"><i class="fa fa-external-link" aria-hidden="true"></i> View on website</a>
                                     </td>
                                 </tr>
                             @endforeach

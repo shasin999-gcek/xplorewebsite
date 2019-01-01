@@ -31,6 +31,7 @@
     <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
     <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
+    
 
 </head>
 
@@ -98,14 +99,14 @@ fjs.parentNode.insertBefore(js, fjs);
                 <li class="@if($active_menu == 'workshops') active @endif">
                     <a href="{{ route('admin.workshops.index') }}"><i class="fa fa-fw fa-cogs"></i> Workshops</a>
                 </li>
-                <li class="">
-                    <a href="#"><i class="fa fa-fw fa-list"></i> Event Registrations</a>
+                <li class="@if($active_menu == 'event_regs') active @endif">
+                    <a href="{{ route('admin.event_regs.index') }}"><i class="fa fa-fw fa-list"></i> Event Registrations</a>
                 </li>
-                <li class="">
+                <li>
                     <a href="#"><i class="fa fa-fw fa-list"></i> Workshop Registrations</a>
                 </li>
-                <li class="">
-                    <a href="#"><i class="fa fa-fw fa-cog"></i> Settings</a>
+                <li class="@if($active_menu == 'payments') active @endif">
+                    <a href="{{ route('admin.payments.index') }}"><i class="fa fa-usd" aria-hidden="true"></i> Payments</a>
                 </li>
             </ul>
         </div>

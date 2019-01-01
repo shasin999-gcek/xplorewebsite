@@ -20,6 +20,7 @@ class User extends Authenticatable
         'name',
         'email',
         'mobile_number',
+        'firebase_uid',
         'referred_by',
         'password', 
         'needs_accomadation',
@@ -51,6 +52,19 @@ class User extends Authenticatable
     public static function isReferralIdValid($referral_id)
     {
         return self::where('referral_id', $referral_id)->count() ? true : false;
+    }
+
+    public function events()
+    {
+        return $this->belongsToMany('App\Event', 'event_registrations', 'user_id', 'event_id')
+            ->withPivot('user_id', 'event_id', 'order_id', 'is_reg_success');
+    }
+
+    public function s_events()
+    {
+        return $this->belongsToMany('App\Event', 'event_registrations', 'user_id', 'event_id')
+            ->withPivot('user_id', 'event_id', 'order_id', 'is_reg_success')
+            ->wherePivot('is_reg_success', true);
     }
 
 }

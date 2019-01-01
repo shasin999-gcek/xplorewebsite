@@ -1,0 +1,12 @@
+{
+	"version": 3,
+	"file": "../../../scss/blk-design-system/custom/mixins/opacity.css",
+	"sources": [
+		"../../../scss/blk-design-system/custom/mixins/opacity.scss"
+	],
+	"sourcesContent": [
+		"// Opacity\n\n@mixin opacity($opacity) {\n  opacity: $opacity;\n  // IE8 filter\n  $opacity-ie: ($opacity * 100);\n  filter: #{alpha(opacity=$opacity-ie)};\n}\n"
+	],
+	"mappings": "",
+	"names": []
+}

@@ -1,89 +1,111 @@
-<!doctype html>
-<html lang="{{ app()->getLocale() }}">
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
+@extends('layouts.master',['bodyclass' => 'index-page','navbar' => 'navbar-transparent'])
 
-        <title>Laravel</title>
-
-        <!-- Fonts -->
-        <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
-
-        <!-- Styles -->
-        <style>
-            html, body {
-                background-color: #fff;
-                color: #636b6f;
-                font-family: 'Raleway', sans-serif;
-                font-weight: 100;
-                height: 100vh;
-                margin: 0;
-            }
-
-            .full-height {
-                height: 100vh;
-            }
-
-            .flex-center {
-                align-items: center;
-                display: flex;
-                justify-content: center;
-            }
-
-            .position-ref {
-                position: relative;
-            }
-
-            .top-right {
-                position: absolute;
-                right: 10px;
-                top: 18px;
-            }
-
-            .content {
-                text-align: center;
-            }
-
-            .title {
-                font-size: 84px;
-            }
-
-            .links > a {
-                color: #636b6f;
-                padding: 0 25px;
-                font-size: 12px;
-                font-weight: 600;
-                letter-spacing: .1rem;
-                text-decoration: none;
-                text-transform: uppercase;
-            }
-
-            .m-b-md {
-                margin-bottom: 30px;
-            }
-        </style>
-    </head>
-    <body>
-        <div class="flex-center position-ref full-height">
-            @if (Route::has('login'))
-                <div class="top-right links">
-                    @auth
-                        <a href="{{ url('/home') }}">Home</a>
-                    @else
-                        <a href="{{ route('login') }}">Login</a>
-                        <a href="{{ route('register') }}">Register</a>
-                    @endauth
+@section('content')
+<div class="wrapper">
+    <div class="page-header header-filter">
+      <div class="gear"></div>
+      
+      <div class="stars stars-1"></div>
+      <div class="stars stars-2"></div>
+      <div class="stars stars-3"></div>
+      <div class="stars stars-4"></div>
+      <div class="ec"></div>
+      <div class="electrical"></div>
+      <div class="city">  
+      </div>
+      <div class="container">
+        <div class="content-center brand">
+          <div class="rocket"></div>
+          <img src="{{ asset('img/Xplore.svg') }}" class="img-fluid img-responsive" width="300" height="300">
+          <img src="{{ URL::asset('img/logo.svg') }}" class="img-fluid img-responsive" width="250" height="200">
+          <h5>Dabble in the Extraordinary</h5>
+        </div>
+      </div>
+    </div>
+    <div class="main">
+        
+        <div class="section section-management" style="margin-top: 20vh">
+            <div class="container">
+              <div class="rellax squares square-1" data-rellax-percentage="0.5" data-rellax-speed="5" ></div>
+              <div class="rellax squares square-2" data-rellax-percentage="0.5" data-rellax-speed="1"></div>
+              <div class="rellax squares square-3" data-rellax-percentage="0.5" data-rellax-speed="5"></div>
+              <div class="rellax squares square-4" data-rellax-percentage="0.5" data-rellax-speed="2"></div>
+              <div class="row row-grid justify-content-between align-items-center">
+                <div class="col-lg-6">
+                  <h3 class="display-3 text-white">Management Conclave
+                    <span class="text-white"></span>
+                  </h3>
+                  <p class="text-white mb-3">Management Conclave of Xplore’19 will offer a platform that brings together industry leaders, budding entrepreneurs, inspiring personalities, and motivated students to discuss, debate and re-think business and society through motley of competitions & events.</p>
+                  <div class="btn-wrapper">
+                    <a href="examples/register-page.html" class="btn btn-info">Show Details</a>
+                  </div>
                 </div>
-            @endif
-
-            <div class="content">
-                <div class="title m-b-md">
-                    Xplore website landing page
+                <div class="col-lg-6 mb-lg-auto">
+                    <img src="{{ URL::asset('img/management.png') }}" alt="Raised image" class="img-fluid rounded shadow-lg" style="">
                 </div>
-
-
+              </div>
             </div>
         </div>
-    </body>
-</html>
+        
+          <div class="section section-cultural" style="margin-top: 20vh">
+              <div class="container">
+                <div class="rellax squares square-1"  data-rellax-speed="3" ></div>
+                <div class="rellax squares square-2"  data-rellax-speed="2"></div>
+                <div class="rellax squares square-3"  data-rellax-speed="1"></div>
+                <div class="rellax squares square-4"  data-rellax-speed="2"></div>
+                <div class="row row-grid justify-content-between align-items-center">
+                  <div class="col-lg-6 mb-lg-auto">
+                      <img src="{{ URL::asset('img/cultural.jpg') }}" alt="Raised image" class="img-fluid rounded shadow-lg" style="">
+                  </div>
+                  <div class="col-lg-6">
+                    <div class="px-md-5">
+                        <h3 class="display-3 text-white">Cultural Fest
+                            <span class="text-white"></span>
+                          </h3>
+                          <p class="text-white mb-3">The Cultural Conclave of Xplore'19 is a cathartic and therapeutic medium to let go of all the inhibitions and set the stage ablaze with immense talent. With a broad spectrum of events, ranging from varied genres like dramatics to literary, sizzling dance competitions to heated sports matches, the conclave offers a perfect blend of arts, sports, and culture. The interesting repertoire of pro-nights and shows, enriched with the presence of gifted artists, serves just right to tantalize everyone.</p>
+                          <div class="btn-wrapper">
+                            <a href="" class="btn btn-warning">Show Details</a>
+                          </div>
+                    </div>
+                    </div>
+                </div>
+              </div>
+            </div>  
+            <section class="section section-lg section-technical">
+                <img src="assets/img/path3.png" class="path">
+                <div class="container">
+                  <div class="row">
+                    <div class="col-md-6">
+                      <hr class="line-info">
+                      <h1>Technical Fest
+                        <span class="text-info">Explore the Disruptive Technology</span>
+                      </h1>
+                    </div>
+                  </div>
+                  
+                </div>
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="owl-carousel">
+                          <div ><div ><img src="{{ asset('img/cultural.jpg') }}" class="img-fluid" ></div></div>
+                          <div ><div ><img src="{{ asset('img/cultural.jpg') }}" class="img-fluid" ></div></div>
+                          <div ><div ><img src="{{ asset('img/cultural.jpg') }}" class="img-fluid" ></div></div>
+                          <div ><div ><img src="{{ asset('img/cultural.jpg') }}" class="img-fluid" ></div></div>
+                          <div ><div ><img src="{{ asset('img/cultural.jpg') }}" class="img-fluid" ></div></div>
+                        </div>
+                    </div>
+                </div>
+              </section> 
+              <section>
+                  <div class="flowers-container">
+                      <div class="flowers-left"></div>
+                      <div class="flowers-right"></div>
+                    </div>
+              </section> 
+              
+      <!-- Form Modal -->
+      
+      <!--  End Modal -->
+    </div>
+@endsection
+
