@@ -35,4 +35,13 @@ return [
         'secret' => env('STRIPE_SECRET'),
     ],
 
+    'paytm' => [
+        'mid' => env('PAYTM_MERCHANT_MID'),
+        'key'=> env('PAYTM_MERCHANT_KEY'),
+        'website' => env('PAYTM_MERCHANT_WEBSITE', 'WEBSTAGING'),
+        'channel_id' => env('PAYTM_MERCHANT_CHANNEL_ID', 'WEB'),
+        'industry_type_id' => env('PAYTM_MERCHANT_INDUSTRY_TYPE_ID', 'Retail'),
+        'txn_url' => env('PAYTM_TXN_URL', 'https://securegw-stage.paytm.in/theia/processTransaction'),
+    ],
+
 ];

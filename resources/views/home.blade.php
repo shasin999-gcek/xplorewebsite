@@ -13,11 +13,11 @@
               <div class="card card-plain" style="margin-top: 30%">
               <div class="card-header">
                 <img class="img-center img-fluid rounded-circle" src="{{ asset('img/user.png') }}" width="150" height="150">
-                <h4 class="title" style="text-align: center;">Elon Musk</h4>
+                <h4 class="title" style="text-align: center;">{{ $currentUser->name }}</h4>
               </div>
               <div class="card-body text-center">
-                <h5>akkiakshay1997@gmail.com</h5>
-                <h5>8129151079</h5>
+                <h5>{{ $currentUser->email }}</h5>
+                <h5>{{ $currentUser->mobile_number }}</h5>
                 
               </div>
             </div>
@@ -35,67 +35,23 @@
                 </div>
                 <div class="container">
                     <div class="row">
-                        <div class="col-md-4">
-                            <div class="card card-plain">
-                              <div class="card-header">
-                                <img class="card-img" src="assets/img/management.png">
-                                <div class="card-body">
-                                  <h3>Event Name</h3>
+                        @if($registered_events->count() > 0)
+                            @foreach($registered_events as $e)
+                                <div class="col-md-4">
+                                    <div class="card card-plain">
+                                      <div class="card-header">
+                                        <img class="card-img" src="{{ asset('storage/' . $e->thumbnail_image) }}">
+                                        <div class="card-body">
+                                          <h3>{{ $e->name }}</h3>
+                                            <h4>RegId: <kbd>{{ $e->pivot->order_id }}</kbd></h4>
+                                        </div>
+                                      </div>
+                                    </div>
                                 </div>
-                              </div>
-                            </div>
-                        </div>
-                        <div class="col-md-4">
-                            <div class="card card-plain">
-                              <div class="card-header">
-                                <img class="card-img" src="assets/img/management.png">
-                                <div class="card-body">
-                                  <h3>Event Name</h3>
-                                </div>
-                              </div>
-                            </div>
-                        </div>
-                        <div class="col-md-4">
-                            <div class="card card-plain">
-                              <div class="card-header">
-                                <img class="card-img" src="assets/img/management.png">
-                                <div class="card-body">
-                                  <h3>Event Name</h3>
-                                </div>
-                              </div>
-                            </div>
-                        </div>
-                    </div><div class="row">
-                        <div class="col-md-4">
-                            <div class="card card-plain">
-                              <div class="card-header">
-                                <img class="card-img" src="assets/img/management.png">
-                                <div class="card-body">
-                                  <h3>Event Name</h3>
-                                </div>
-                              </div>
-                            </div>
-                        </div>
-                        <div class="col-md-4">
-                            <div class="card card-plain">
-                              <div class="card-header">
-                                <img class="card-img" src="assets/img/management.png">
-                                <div class="card-body">
-                                  <h3>Event Name</h3>
-                                </div>
-                              </div>
-                            </div>
-                        </div>
-                        <div class="col-md-4">
-                            <div class="card card-plain">
-                              <div class="card-header">
-                                <img class="card-img" src="assets/img/management.png">
-                                <div class="card-body">
-                                  <h3>Event Name</h3>
-                                </div>
-                              </div>
-                            </div>
-                        </div>
+                            @endforeach
+                        @else
+                            <h1>No events and workshops registered</h1>
+                        @endif
                     </div>
                 </div>
               </section>

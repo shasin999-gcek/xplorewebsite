@@ -3,14 +3,13 @@
 namespace App\Http\Controllers\Auth;
 
 use App\User;
-use App\UserDetails;
-use App\CollegeList;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
 
 use Kreait\Firebase\Factory;
 use Kreait\Firebase\ServiceAccount;
+use Kreait\Firebase\Exception\Auth\EmailExists;
 use Cookie;
 
 class RegisterController extends Controller
@@ -73,6 +72,10 @@ class RegisterController extends Controller
         if(Cookie::has('ref_code'))
         {
             $referred_by = explode('"', Cookie::get('ref_code'))[1];
+            if(!User::isReferralIdValid($referred_by))
+            {
+                $referred_by = null;
+            }
         }
         
         // create a firebase user as well
@@ -85,7 +88,12 @@ class RegisterController extends Controller
             'password' => $data['password'],
         ];
 
-        $firebaseUser = $auth->createUser($userProperties);
+        try 
+        {
+            $firebaseUser = $auth->createUser($userProperties);             
+        } catch (EmailExists $e) {
+            abort(404);          
+        }
 
         return User::create([
             'name' => $data['name'],
@@ -94,7 +102,6 @@ class RegisterController extends Controller
             'firebase_uid' => $firebaseUser->uid,
             'referred_by' => $referred_by,
             'password' => bcrypt($data['password']),
-        ]);
-
+        ]);  
     }
 }

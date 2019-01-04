@@ -6,7 +6,6 @@
 
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="Admin panel for Xplore 19">
     <meta name="author" content="Muhammed Shasin P">
 
@@ -45,7 +44,8 @@ if (d.getElementById(id)) return;
 js = d.createElement(s); js.id = id;
 js.src = "https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v3.0";
 fjs.parentNode.insertBefore(js, fjs);
-}(document, 'script', 'facebook-jssdk'));</script>
+}(document, 'script', 'facebook-jssdk'));
+</script>
 
 
 <div id="wrapper">
@@ -99,14 +99,14 @@ fjs.parentNode.insertBefore(js, fjs);
                 <li class="@if($active_menu == 'workshops') active @endif">
                     <a href="{{ route('admin.workshops.index') }}"><i class="fa fa-fw fa-cogs"></i> Workshops</a>
                 </li>
-                <li class="">
-                    <a href="#"><i class="fa fa-fw fa-list"></i> Event Registrations</a>
+                <li class="@if($active_menu == 'event_regs') active @endif">
+                    <a href="{{ route('admin.event_regs.index') }}"><i class="fa fa-fw fa-list"></i> Event Registrations</a>
                 </li>
-                <li class="">
+                <li>
                     <a href="#"><i class="fa fa-fw fa-list"></i> Workshop Registrations</a>
                 </li>
-                <li class="">
-                    <a href="#"><i class="fa fa-fw fa-cog"></i> Settings</a>
+                <li class="@if($active_menu == 'payments') active @endif">
+                    <a href="{{ route('admin.payments.index') }}"><i class="fa fa-fw fa-credit-card-alt" aria-hidden="true"></i> Payments</a>
                 </li>
             </ul>
         </div>
@@ -128,6 +128,7 @@ fjs.parentNode.insertBefore(js, fjs);
 </div>
 <!-- /#wrapper -->
 
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
 <script src="{{ asset('js/app.js') }}"></script>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>

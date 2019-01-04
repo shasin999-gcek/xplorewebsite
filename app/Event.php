@@ -12,4 +12,10 @@ class Event extends Model
     {
         return $this->belongsTo('App\Category');
     }
+
+    public function users()
+    {
+        return $this->belongsToMany('App\User', 'event_registrations', 'event_id', 'user_id')
+                ->withPivot('user_id', 'event_id', 'order_id', 'is_reg_success');
+    }
 }

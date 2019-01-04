@@ -63,7 +63,7 @@
                             </div>
                             <div class="card-footer text-center">
                                     <button class="skew-button"><span>WORKSHOP</span></button>
-                                    <a href="{{ route('events','ce') }}" class="skew-button"><span>EVENT</span></a>
+                                    <a href="{{ route('events','civil') }}" class="skew-button"><span>EVENT</span></a>
                             </div>
                           </div>
                         </div>

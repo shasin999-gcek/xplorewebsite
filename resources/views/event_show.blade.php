@@ -35,16 +35,20 @@
                   
                 </div>
                 <div class="container">
-                    <p>{{ $event->description }}</p><br><br>
+                    <p>{!! $event->description !!}</p><br><br>
 					<h4> First Price :  {{ $event->f_price_money }} <br>
 					Second Price :  {{ $event->s_price_money }} <br>
 					Third Price :  {{ $event->t_price_money }}</h4>
 
                     <br><br>
 					<h3> Registration Fee: {{ $event->reg_fee }}</h3>
-                    <button class="btn btn-info btn-lg ">Buy Ticket</button><br>
 
-                    
+              <button class="btn btn-info btn-lg " onclick="event.preventDefault(); document.getElementById('event_reg_form').submit();">Buy Ticket</button><br>
+
+              <form id="event_reg_form" method="post" action="{{ route('event.register') }}" style="display: none;">
+                {{ csrf_field() }}
+                <input type="text" name="event_id" value="{{ $event->id }}">
+              </form>
 
                 </div>
               </section>

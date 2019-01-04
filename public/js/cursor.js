@@ -83,8 +83,10 @@ function Sim() {
 // Create a new system
 var sim = new Sim(),
     old = new Date().getTime(),
-    canvas = document.getElementById('world'),
-    context = canvas.getContext('2d');
+    canvas = document.getElementById('world');
+
+if(canvas)    
+var context = canvas.getContext('2d');
 
 function init() {
 

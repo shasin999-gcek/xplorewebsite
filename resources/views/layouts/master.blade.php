@@ -50,58 +50,58 @@
             </div>
           </div>
         </div>
+
         <ul class="navbar-nav">
-          
-          
-          
-            <li class="nav-item @if($active_menu == 'technical') active @endif">
-                <a class="nav-link" href="{{URL::to('/technical')}}">
-                  <p>Technical</p>
-                </a>
+          <li class="nav-item @if($active_menu == 'technical') active @endif">
+              <a class="nav-link" href="{{URL::to('/technical')}}">
+                <p>Technical</p>
+              </a>
           </li>
           
-            <li class="nav-item @if($active_menu == 'cultural') active @endif">
-                <a class="nav-link" href="{{URL::to('/cultural')}}">
-                  <p>Cultural</p>
-                </a>
+          <li class="nav-item @if($active_menu == 'cultural') active @endif">
+            <a class="nav-link" href="{{URL::to('/cultural')}}">
+              <p>Cultural</p>
+            </a>
           </li>
           <li class="nav-item @if($active_menu == 'management') active @endif">
-              <a class="nav-link" href="{{URL::to('/management')}}">
-                <p>Management</p>
-              </a>
-        </li>
+            <a class="nav-link" href="{{URL::to('/management')}}">
+              <p>Management</p>
+            </a>
+          </li>
           <li class="nav-item @if($active_menu == 'about') active @endif">
-                <a class="nav-link" href="{{URL::to('/about')}}">
-                  <p>About</p>
-                </a>
+              <a class="nav-link" href="{{URL::to('/about')}}">
+                <p>About</p>
+              </a>
           </li>
           <li class="nav-item @if($active_menu == 'contact') active @endif">
               <a class="nav-link" href="{{URL::to('/contact')}}">
                 <p>Contact</p>
               </a>
-        </li>  
+          </li>  
           <li class="nav-item">
-          @if (Route::has('login'))
-                    @auth
+            @if (Route::has('login'))
+                @auth
+                
                     <div class="dropdown">
                         <button class="btn btn-success dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                           Hello User
                         </button>
                       <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                         <a class="dropdown-item" href="{{ url('/home') }}">View Profile</a>
-                        <a class="dropdown-item" href="{{ url('/logout') }}">Logout</a>
+                        <a class="dropdown-item" href="{{ url('/logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Logout</a>
                         
                       </div>
                     </div>
-                    @else
-                    
-              <a href="{{ url('/login') }}" class="nav-link btn btn-default d-none d-lg-block" href="javascript:void(0)" >
-              <i class="tim-icons icon-cloud-download-93"></i> Register/Login </a>
-                    @endauth
-                </div>
+                   
+                  <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                      {{ csrf_field() }}
+                  </form>
+                @else
+                      
+                <a href="{{ route('login') }}" class="nav-link btn btn-default d-none d-lg-block" href="javascript:void(0)" >
+                <i class="tim-icons icon-cloud-download-93"></i> Register/Login </a>
+                @endauth  
             @endif
-            
-            </a>
           </li>
         </ul>
       </div>
@@ -183,6 +183,7 @@
       </div>
     </footer>
   </div>
+  
   <!--   Core JS Files   -->
   <script src="{{ URL::asset('js/core/jquery.min.js')}}" type="text/javascript"></script>
   <script src="{{ URL::asset('js/core/popper.min.js')}}" type="text/javascript"></script>

@@ -54,4 +54,17 @@ class User extends Authenticatable
         return self::where('referral_id', $referral_id)->count() ? true : false;
     }
 
+    public function events()
+    {
+        return $this->belongsToMany('App\Event', 'event_registrations', 'user_id', 'event_id')
+            ->withPivot('user_id', 'event_id', 'order_id', 'is_reg_success');
+    }
+
+    public function s_events()
+    {
+        return $this->belongsToMany('App\Event', 'event_registrations', 'user_id', 'event_id')
+            ->withPivot('user_id', 'event_id', 'order_id', 'is_reg_success')
+            ->wherePivot('is_reg_success', true);
+    }
+
 }

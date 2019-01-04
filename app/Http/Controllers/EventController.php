@@ -5,7 +5,9 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Event;
 use App\Category;
+
 use DB;
+
 
 class EventController extends Controller
 {
@@ -14,9 +16,9 @@ class EventController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index($short_name)
     {
-        //
+        return Category::where('short_name', $short_name)->with('events')->first();
     }
 
     /**
@@ -56,7 +58,7 @@ class EventController extends Controller
             abort(404);
         }
 
-        return view('testpreview', ['event' => $event]);
+        return view('event_show', ['event' => $event]);
     }
 
     /**
@@ -95,7 +97,7 @@ class EventController extends Controller
 
     public function getEventsByCategory($category) {
 
-        $event_group = Category::with('events')->where('short_name', $category)->first();
+        $event_group = Category::with('events')->where('short_name', $category)->firstOrFail();
         $data = [
             'event_group' => $event_group,
             'active_menu' => 'event'

@@ -28,6 +28,11 @@ class HomeController extends Controller
            return redirect()->route('admin.dashboard');
        }
 
-       return view('home');
+       $user = Auth::user();
+
+       $registered_events = $user->s_events;
+
+       return view('home', ['registered_events' => $registered_events, 'currentUser' => $user]);
+
     }
 }
