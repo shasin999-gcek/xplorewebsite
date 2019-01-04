@@ -17,7 +17,8 @@ class EventRegistrationController extends Controller
 
     public function index()
     {
-        $event_regs = EventRegistration::with('event', 'user')->get();
+        $event_regs = EventRegistration::with('event', 'user')
+                        ->where('is_reg_success', true)->get();
         $data = [
           'active_menu' => 'event_regs',
           'event_regs' => $event_regs

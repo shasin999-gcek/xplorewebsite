@@ -45,8 +45,9 @@
 
               <button class="btn btn-info btn-lg " onclick="event.preventDefault(); document.getElementById('event_reg_form').submit();">Buy Ticket</button><br>
 
-              <form id="event_reg_form" method="post" action="{{ route('event.register', $event->id) }}" style="display: none;">
+              <form id="event_reg_form" method="post" action="{{ route('event.register') }}" style="display: none;">
                 {{ csrf_field() }}
+                <input type="text" name="event_id" value="{{ $event->id }}">
               </form>
 
                 </div>
