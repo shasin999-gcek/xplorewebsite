@@ -25,10 +25,32 @@
                                     
                 @endif
                 @if ($errors->has('mobile_number'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('mobile_number') }}</strong>
-                                    </span>
+                <div class="alert alert-danger alert-with-icon">
+                                <button type="button" aria-hidden="true" class="close" data-dismiss="alert" aria-label="Close">
+                                    <i class="tim-icons icon-simple-remove"></i>
+                                </button>
+                                
+                                <span><b> Error! - </b> {{ $errors->first('mobile_number') }} </span>
+                            </div>
                                 @endif
+                @if ($errors->has('password'))
+                <div class="alert alert-danger alert-with-icon">
+                                <button type="button" aria-hidden="true" class="close" data-dismiss="alert" aria-label="Close">
+                                    <i class="tim-icons icon-simple-remove"></i>
+                                </button>
+                                
+                                <span><b> Error! - </b> {{ $errors->first('password') }} </span>
+                            </div>
+                                @endif    
+                                @if ($errors->has('email'))
+                <div class="alert alert-danger alert-with-icon">
+                                <button type="button" aria-hidden="true" class="close" data-dismiss="alert" aria-label="Close">
+                                    <i class="tim-icons icon-simple-remove"></i>
+                                </button>
+                                
+                                <span><b> Error! - </b> {{ $errors->first('email') }} </span>
+                            </div>
+                                @endif            
               
               <div class="card card-register">
                 <div class="card-header">
