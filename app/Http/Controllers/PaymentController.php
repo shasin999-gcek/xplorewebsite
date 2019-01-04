@@ -20,10 +20,13 @@ class PaymentController extends Controller
 
     public  function paytmCallback(PaytmCallback $request)
     {
+        $key = config('services.paytm.key');
+        $mid = config('services.paytm.mid');
+
         $PAYTM_RESPONSE_PARAMS = $request->validated();
 
         $paytm_checksum = $request['CHECKSUMHASH'];
-        $is_valid_checksum = verifychecksum_e($PAYTM_RESPONSE_PARAMS, env('PAYTM_MERCHANT_KEY'), $paytm_checksum);
+        $is_valid_checksum = verifychecksum_e($PAYTM_RESPONSE_PARAMS, $key, $paytm_checksum);
 
         if($is_valid_checksum == "TRUE")
         {
@@ -42,9 +45,9 @@ class PaymentController extends Controller
 
                 // Verify Transaction again by Paytm Transaction api
                 // Create an array having all required parameters for status query.
-                $requestParamList = array("MID" => env('PAYTM_MERCHANT_MID') , "ORDERID" => $order_id);
+                $requestParamList = array("MID" => $mid, "ORDERID" => $order_id);
 
-                $StatusCheckSum = getChecksumFromArray($requestParamList,env('PAYTM_MERCHANT_KEY'));
+                $StatusCheckSum = getChecksumFromArray($requestParamList, $key);
 
                 $requestParamList['CHECKSUMHASH'] = $StatusCheckSum;
 
@@ -54,9 +57,9 @@ class PaymentController extends Controller
                 // Verify the response
 
                 unset($responseParamList['REFUNDAMT']);
-                foreach ($responseParamList as $key => $value)
+                foreach ($responseParamList as $name => $value)
                 {
-                    if(isset($PAYTM_RESPONSE_PARAMS[$key]) && $PAYTM_RESPONSE_PARAMS[$key] != $value)
+                    if(isset($PAYTM_RESPONSE_PARAMS[$name]) && $PAYTM_RESPONSE_PARAMS[$name] != $value)
                     {
                         // Transaction failure
                         // Todo: Redirect to the event page with Transaction Failure

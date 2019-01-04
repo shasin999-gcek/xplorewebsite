@@ -31,5 +31,12 @@ class Payment extends Model
 
     public $timestamps = false;
 
+    protected $dates = ['TXNDATE'];
+
+    protected function getDateFormat()
+    {
+        return 'Y-m-d H:i:s.u';
+    }
+
 }
 

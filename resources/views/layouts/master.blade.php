@@ -174,6 +174,7 @@
       </div>
     </footer>
   </div>
+  
   <!--   Core JS Files   -->
   <script src="{{ URL::asset('js/core/jquery.min.js')}}" type="text/javascript"></script>
   <script src="{{ URL::asset('js/core/popper.min.js')}}" type="text/javascript"></script>

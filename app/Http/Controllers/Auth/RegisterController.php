@@ -9,6 +9,7 @@ use Illuminate\Foundation\Auth\RegistersUsers;
 
 use Kreait\Firebase\Factory;
 use Kreait\Firebase\ServiceAccount;
+use Kreait\Firebase\Exception\Auth\EmailExists;
 use Cookie;
 
 class RegisterController extends Controller
@@ -87,7 +88,12 @@ class RegisterController extends Controller
             'password' => $data['password'],
         ];
 
-        $firebaseUser = $auth->createUser($userProperties);
+        try 
+        {
+            $firebaseUser = $auth->createUser($userProperties);             
+        } catch (EmailExists $e) {
+            abort(404);          
+        }
 
         return User::create([
             'name' => $data['name'],
@@ -96,7 +102,6 @@ class RegisterController extends Controller
             'firebase_uid' => $firebaseUser->uid,
             'referred_by' => $referred_by,
             'password' => bcrypt($data['password']),
-        ]);
-
+        ]);  
     }
 }

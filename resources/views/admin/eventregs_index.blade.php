@@ -5,7 +5,7 @@
     <div class="row">
         <div class="col-lg-12">
             <h1 class="page-header">
-                Events
+                Events Registration
             </h1>
             <ol class="breadcrumb">
                 <li>
@@ -41,7 +41,10 @@
                                 <tr>
                                     <td>{{ $reg->user->name }}</td>
                                     <td>{{ $reg->event->name }}</td>
-                                    <td>{{ $reg->order_id }}</td>
+                                    <td>
+                                        {{ $reg->order_id }} 
+                                        <a id="{{ $reg->order_id }}" class="text-muted" style="cursor: pointer;" data-toggle="tooltip" data-placement="right" title="Copy" onclick="event.preventDefault(); copyOrderIdToClipboard('{{ $reg->order_id }}');"> <i class="fa fa-fw fa-clone"></i></a>
+                                    </td>
                                     <td>{{ $reg->created_at->toDayDateTimeString() }}</td>
                                 </tr>
                             @endforeach
@@ -80,8 +83,22 @@
 
 @section('scripts')
     <script>
+
+        function copyOrderIdToClipboard(orderId) {
+            if('clipboard' in navigator) {
+                navigator.clipboard.writeText(orderId)
+                    .then(() => {
+                        var copyIcon = document.getElementById(orderId);
+                        $(orderId).tooltip('hide');
+                        copyIcon.setAttribute('data-original-title', 'Copied')
+                        $(orderId).tooltip('show');
+                    });
+            }
+        }
+
         $(document).ready(function() {
+            $('[data-toggle="tooltip"]').tooltip()
             $('#example').DataTable();
-        } );
+        });
     </script>
 @endsection

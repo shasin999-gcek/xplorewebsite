@@ -60,25 +60,25 @@ class EventRegistrationController extends Controller
         ]);
 
         $PAYTM_POST_PARAMS = [
-            'MID' => env('PAYTM_MERCHANT_MID'),
+            'MID' => config('services.paytm.mid'),
             'ORDER_ID' => $order_id,
             'CUST_ID' => $user->firebase_uid,
             'TXN_AMOUNT' => $event->reg_fee,
-            'CHANNEL_ID' => env('PAYTM_MERCHANT_CHANNEL_ID'),
-            'WEBSITE' => env('PAYTM_MERCHANT_WEBSITE'),
+            'CHANNEL_ID' => config('services.paytm.channel_id'),
+            'WEBSITE' => config('services.paytm.website'),
             'MOBILE_NO' => $user->mobile_number,
             'EMAIL' => $user->email,
-            'INDUSTRY_TYPE_ID' => env('PAYTM_MERCHANT_INDUSTRY_TYPE_ID'),
+            'INDUSTRY_TYPE_ID' => config('services.paytm.industry_type_id'),
             'CALLBACK_URL' => route('event.payment.callback'),
         ];
 
-        $CHECK_SUM = getChecksumFromArray($PAYTM_POST_PARAMS, env('PAYTM_MERCHANT_KEY'));
+        $CHECK_SUM = getChecksumFromArray($PAYTM_POST_PARAMS, config('services.paytm.key'));
 
         $PAYTM_POST_PARAMS['CHECKSUMHASH'] = $CHECK_SUM;
 
         $formData = [
             'PAYTM_POST_PARAMS' => $PAYTM_POST_PARAMS,
-            'PAYTM_TXN_URL' => env('PAYTM_TXN_URL'),
+            'PAYTM_TXN_URL' => config('services.paytm.txn_url'),
         ];
 
         //dd($formData);

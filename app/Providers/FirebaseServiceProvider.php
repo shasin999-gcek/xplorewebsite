@@ -30,7 +30,7 @@ class FirebaseServiceProvider extends ServiceProvider
         //
         $this->app->singleton(Firebase::class, function() {
               
-            $json_file_path = config_path('xplore-19-firebase-adminsdk-nruu5-850911ab91.json');
+            $json_file_path = config_path('firebase.json');
             $serviceAccount = ServiceAccount::fromJsonFile($json_file_path);
 
             return (new Factory())
