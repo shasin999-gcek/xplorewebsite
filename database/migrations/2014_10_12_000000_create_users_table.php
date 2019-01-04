@@ -16,8 +16,8 @@ class CreateUsersTable extends Migration
         Schema::create('users', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
-            $table->string('email')->unique();
-            $table->string('mobile_number')->unique();
+            $table->string('email',190)->unique();
+            $table->string('mobile_number',190)->unique();
             $table->boolean('is_admin')->default(false);
             $table->string('firebase_uid')->index();
             $table->string('referral_id')->index();

@@ -81,9 +81,18 @@
           <li class="nav-item">
             @if (Route::has('login'))
                 @auth
-                  <a class="nav-link btn btn-default d-none d-lg-block" onclick="event.preventDefault(); document.getElementById('logout-form').submit();"> 
-                      <i class="tim-icons icon-cloud-download-93"></i> Logout
-                  </a>
+                
+                    <div class="dropdown">
+                        <button class="btn btn-success dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                          Hello User
+                        </button>
+                      <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                        <a class="dropdown-item" href="{{ url('/home') }}">View Profile</a>
+                        <a class="dropdown-item" href="{{ url('/logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Logout</a>
+                        
+                      </div>
+                    </div>
+                   
                   <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                       {{ csrf_field() }}
                   </form>
