@@ -98,7 +98,7 @@
                   </form>
                 @else
                       
-                <a href="{{ route('login') }}" class="nav-link btn btn-default d-none d-lg-block" href="javascript:void(0)" >
+                <a href="{{ route('login') }}" class=" btn btn-warning"  >
                 <i class="tim-icons icon-cloud-download-93"></i> Register/Login </a>
                 @endauth  
             @endif
@@ -202,7 +202,6 @@
   <!-- Control Center for Black UI Kit: parallax effects, scripts for the example pages etc -->
   <script src="{{ URL::asset('js/main.min.js?v=1.0.0')}}" type="text/javascript"></script>
   <script src="{{ URL::asset('js/plugins/rellax.min.js')}}" type="text/javascript"></script>
-  <script src="{{ URL::asset('js/cursor.js')}}" type="text/javascript"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
   
   <script>
