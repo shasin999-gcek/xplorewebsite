@@ -83,7 +83,7 @@
                 @auth
                 
                     <div class="dropdown">
-                        <button class="btn btn-success dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <button class="btn btn-success btn-sm dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                           Hello User
                         </button>
                       <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
@@ -98,7 +98,7 @@
                   </form>
                 @else
                       
-                <a href="{{ route('login') }}" class=" btn btn-warning"  >
+                <a href="{{ route('login') }}" class=" btn btn-sm btn-warning"  >
                 <i class="tim-icons icon-cloud-download-93"></i> Register/Login </a>
                 @endauth  
             @endif

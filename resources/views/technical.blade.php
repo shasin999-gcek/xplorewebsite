@@ -42,7 +42,7 @@
                               </div>
                             </div>
                             <div class="card-footer text-center">
-                              <a href=""><button class="skew-button"><span>WORKSHOP</span></button></a>
+                              <a href="#" class="skew-button"><span>WORKSHOP</span></a>
                               <a href="{{ route('events','cse') }}" class="skew-button"><span>EVENT</span></a>
                             </div>
                           </div>

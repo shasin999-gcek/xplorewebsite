@@ -16445,10 +16445,10 @@ textarea.form-control:active {
 
 .index-page .page-header .category-absolute {
   position: absolute;
-  top: 100vh;
+  top: 33vh;
   margin-top: -60px;
   padding: 0 15px;
-  width: 100%;
+ 
   color: rgba(255, 255, 255, 0.5);
 }
 
@@ -17785,6 +17785,7 @@ hr.line-deafult {
 }
 
 .section-management .square-1, .section-technical .square-1 {
+  
   height: 300px;
   width: 300px;
   background-image: url("../img/square1.png");
@@ -17795,6 +17796,8 @@ hr.line-deafult {
 }
 
 .section-management .square-2, .section-technical .square-2 {
+  
+
   height: 200px;
   width: 200px;
   background: url("../img/square3.png");
@@ -17806,6 +17809,8 @@ hr.line-deafult {
 }
 
 .section-management .square-3, .section-technical .square-3 {
+  
+
   height: 100px;
   width: 100px;
   background: url("../img/square2.png");
@@ -17816,6 +17821,8 @@ hr.line-deafult {
 }
 
 .section-management .square-4, .section-technical .square-4  {
+  
+
   height: 250px;
   width: 250px;
   background: url("../img/square3.png");
@@ -17827,21 +17834,58 @@ hr.line-deafult {
 }
 
 @media screen and (max-width: 768px) {
+  .section-cultural .square-1 {
+    height: 70px;
+    width: 70px;
+    top: 40px;
+    left: 80px;
+    visibility: hidden;
+  
+  }
   .section-cultural .square-2 {
+    height: 50px;
+    width: 50px;
     right: 40px;
+    visibility: hidden;
     
   }
   .section-cultural .square-3 {
+    height: 60px;
+    width: 60px;
     right: 40px;
-    
+    visibility: hidden;
+  }
+
+  .section-cultural .square-4 {
+    height: 40px;
+    width: 40px;
+    visibility: hidden;
+  }
+  .section-management .square-1 {
+    height: 70px;
+    width: 70px;
+    left: 60px;
+    visibility: hidden;
   }
 
   .section-management .square-2 {
+    height: 50px;
+    width: 50px;
     left: 60px;
+    visibility: hidden;
   }
   .section-management .square-3 {
+    height: 50px;
+    width: 50px;
     left: 60px;
-    top: 100px;
+    top: 90px;
+    visibility: hidden;
+  }
+  .section-management .square-4 {
+    height: 50px;
+    width: 50px;
+    left: 60px;
+    visibility: hidden;
   }
 }
 
@@ -21375,7 +21419,7 @@ input.datetimepicker[data-color="yellow"]+.bootstrap-datetimepicker-widget.dropd
   }
 
   .image-back {
-    background: linear-gradient(rgba(3, 3, 3, 0.58), rgba(9, 9, 9, 0.6)), url('../img/cul3.jpg');
+    background: linear-gradient(rgba(3, 3, 3, 0.58), rgba(9, 9, 9, 0.14)), url('../img/hhhh.png');
     background-size: cover;
     background-repeat: no-repeat;
   }
@@ -21438,7 +21482,6 @@ input.datetimepicker[data-color="yellow"]+.bootstrap-datetimepicker-widget.dropd
     width: 300px;
     flex-shrink: 0;
     height: 300px;
-    background-image: linear-gradient(147deg, #fe8a39 0%, #fd3838 74%);
     box-shadow: 4px 13px 30px 1px rgba(252, 56, 56, 0.2);
     border-radius: 20px;
     transform: translateX(-80px);
@@ -21451,7 +21494,6 @@ input.datetimepicker[data-color="yellow"]+.bootstrap-datetimepicker-widget.dropd
     left: 0;
     width: 100%;
     height: 100%;
-    background-image: linear-gradient(147deg, #fe8a39 0%, #fd3838 74%);
     border-radius: 20px;
     opacity: 0.8;
   }
@@ -21523,6 +21565,15 @@ input.datetimepicker[data-color="yellow"]+.bootstrap-datetimepicker-widget.dropd
     justify-content: center;
     text-align: center;
     letter-spacing: 1px;
+  }
+
+  .blog-slider__button:hover {
+    color:white;
+    box-shadow: 0px 16px 40px rgba(252, 56, 56, 0.4);
+  }
+  .blog-slider__button:focus {
+    color:black;
+    box-shadow: 0px 16px 40px rgba(252, 56, 56, 0.4);
   }
   @media screen and (max-width: 576px) {
     .blog-slider__button {
