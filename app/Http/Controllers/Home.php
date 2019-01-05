@@ -32,7 +32,10 @@ class Home extends Controller
     }
 
     public function cultural() {
-        return view('cultural');
+        $data = [
+            'active_menu' => 'cultural'
+        ];
+        return view('cultural',$data);
     }
 
     public function management() {

@@ -16445,10 +16445,10 @@ textarea.form-control:active {
 
 .index-page .page-header .category-absolute {
   position: absolute;
-  top: 100vh;
+  top: 33vh;
   margin-top: -60px;
   padding: 0 15px;
-  width: 100%;
+ 
   color: rgba(255, 255, 255, 0.5);
 }
 
@@ -21419,7 +21419,7 @@ input.datetimepicker[data-color="yellow"]+.bootstrap-datetimepicker-widget.dropd
   }
 
   .image-back {
-    background: linear-gradient(rgba(3, 3, 3, 0.58), rgba(9, 9, 9, 0.6)), url('../img/cul3.jpg');
+    background: linear-gradient(rgba(3, 3, 3, 0.58), rgba(9, 9, 9, 0.14)), url('../img/hhhh.png');
     background-size: cover;
     background-repeat: no-repeat;
   }
