@@ -10,16 +10,15 @@
             
           <div class="col-md-4 ml-auto mr-auto">
               <img src="{{ asset('storage/' . $event->poster_image) }}" class="img-raised img-responsive">
+              <hr>
               <div class="btn-wrapper profile">
-                        <a target="_blank" href="https://twitter.com/creativetim" class="btn btn-icon btn-neutral btn-round btn-simple" data-toggle="tooltip" data-original-title="Follow us">
+                        <a target="_blank" href="#" class="btn btn-icon btn-neutral btn-round btn-simple" data-toggle="tooltip" data-original-title="Follow us">
                           <i class="fab fa-twitter"></i>
                         </a>
-                        <a target="_blank" href="https://www.facebook.com/creativetim" class="btn btn-icon btn-neutral btn-round btn-simple" data-toggle="tooltip" data-original-title="Like us">
+                        <a target="_blank" href="#" class="btn btn-icon btn-neutral btn-round btn-simple" data-toggle="tooltip" data-original-title="Like us">
                           <i class="fab fa-facebook-square"></i>
                         </a>
-                        <a target="_blank" href="https://dribbble.com/creativetim" class="btn btn-icon btn-neutral  btn-round btn-simple" data-toggle="tooltip" data-original-title="Follow us">
-                          <i class="fab fa-dribbble"></i>
-                        </a>
+                        
                       </div>
             </div>
             <div class="col-md-8 ml-auto mr-auto">
