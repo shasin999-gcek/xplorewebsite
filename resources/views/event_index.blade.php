@@ -6,7 +6,7 @@
         <img src="assets/img/path3.png" class="path">
       <div class="container">
         <div class="content-center brand">  
-            <img src="{{ asset('img/'.$event_group->short_name.'.svg') }}" class="img-center img-fluid" width="400" height="400">
+            <img src="{{ asset('img/'.$event_group->short_name.'.png') }}" class="img-center img-fluid" width="400" height="400">
             <br>
             <h1 class="h1-seo">EVENTS</h1>
         </div>

@@ -31,7 +31,7 @@
                         <div class="col-md-6">
                           <div class="card card-coin card-plain">
                             <div class="card-header">
-                              <img src="{{ asset('img/cse.svg') }}" class="img-center img-fluid">
+                              <img src="{{ asset('img/cse.png') }}" class="img-center img-fluid">
                             </div>
                             <div class="card-body">
                               <div class="row">
@@ -50,7 +50,7 @@
                         <div class="col-md-6">
                           <div class="card card-coin card-plain">
                             <div class="card-header">
-                              <img src="{{ asset('img/civil.svg') }}" class="img-center img-fluid">
+                              <img src="{{ asset('img/civil.png') }}" class="img-center img-fluid">
                             </div>
                             <div class="card-body">
                               <div class="row">
@@ -74,7 +74,7 @@
                                     <div class="col-md-6">
                                             <div class="card card-coin card-plain">
                                               <div class="card-header">
-                                                <img src="{{ asset('img/ece.svg') }}" class="img-center img-fluid">
+                                                <img src="{{ asset('img/ece.png') }}" class="img-center img-fluid">
                                               </div>
                                               <div class="card-body">
                                                 <div class="row">
@@ -94,7 +94,7 @@
                                     <div class="col-md-6">
                                             <div class="card card-coin card-plain">
                                               <div class="card-header">
-                                                <img src="{{ asset('img/eee.svg') }}" class="img-center img-fluid">
+                                                <img src="{{ asset('img/eee.png') }}" class="img-center img-fluid">
                                               </div>
                                               <div class="card-body">
                                                 <div class="row">
@@ -118,7 +118,7 @@
                                     <div class="col-md-6 offset-md-3">
                                             <div class="card card-coin card-plain">
                                               <div class="card-header">
-                                                <img src="{{ asset('img/me.svg') }}" class="img-center img-fluid">
+                                                <img src="{{ asset('img/me.png') }}" class="img-center img-fluid">
                                               </div>
                                               <div class="card-body">
                                                 <div class="row">

@@ -10,8 +10,10 @@
       </div>
     </div>
     <div class="main">
-        <div class="section section-full-page" data-image="{{ asset('img/mainback.png') }}">
-            
+        <div class="section-full-page full-page-background" data-image="{{ asset('img/mainback.png') }}">
+            <div class="content">
+
+            </div>
     </div>
 
         </div>
