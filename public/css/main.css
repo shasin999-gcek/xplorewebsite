@@ -16498,6 +16498,16 @@ textarea.form-control:active {
   animation: spin 6s ease-in-out infinite;
 }
 
+@media screen and (max-width: 768px) {
+  .gear {
+    width:50px;
+    height: 50px;
+    top:10%;
+    right: 15%;
+  }
+  
+}
+
 .cse {
   position: absolute;
   background: url("../img/svgs/cse.png");
@@ -16534,6 +16544,15 @@ textarea.form-control:active {
   left:-2%;
   animation: float 5s infinite;
   animation-timing-function: linear;
+}
+
+@media screen and (max-width: 768px) {
+  .ec {
+    width:90px;
+    height:90px;
+    left:-3%;
+  }
+
 }
 
 @keyframes particleAnimation
@@ -16599,6 +16618,13 @@ textarea.form-control:active {
   background-size: contain;
   right: 0;
   bottom: 0;
+}
+
+@media screen and (max-width: 768px)
+{
+  .rocket {
+    visibility: hidden;
+  }
 }
 
 .index-page .squares.square1 {
@@ -17613,6 +17639,8 @@ hr.line-deafult {
   position: relative;
 }
 
+
+
 .section .row+.category {
   margin-top: 15px;
 }
@@ -17721,6 +17749,8 @@ hr.line-deafult {
   background-size: cover;
 }
 
+
+
 .section-cultural .square-2 {
   height: 200px;
   width: 200px;
@@ -17794,6 +17824,25 @@ hr.line-deafult {
   right: 100px;
   opacity: 0.8;
   animation-duration: 9s;
+}
+
+@media screen and (max-width: 768px) {
+  .section-cultural .square-2 {
+    right: 40px;
+    
+  }
+  .section-cultural .square-3 {
+    right: 40px;
+    
+  }
+
+  .section-management .square-2 {
+    left: 60px;
+  }
+  .section-management .square-3 {
+    left: 60px;
+    top: 100px;
+  }
 }
 
 .skewed {
@@ -17962,8 +18011,15 @@ hr.line-deafult {
   width: 50%;
 }
 
-.page-header .content-center.tech {
+
+.page-header .content-center.brand.tech {
   width: 65%;
+}
+
+@media screen and (max-width: 768px) {
+  .page-header .content-center.brand.tech {
+    width: 100%;
+  }
 }
 
 .page-header footer {
@@ -18878,10 +18934,7 @@ hr.line-deafult {
   .page-header .content-center .row {
     text-align: center !important;
   }
-  .page-header .content-center img {
-    height: 150px;
-    margin-top: 40px;
-  }
+  
 }
 
 .wrapper .navbar {
@@ -21173,6 +21226,13 @@ input.datetimepicker[data-color="yellow"]+.bootstrap-datetimepicker-widget.dropd
 }
 .skew-button:hover {
   color:#fff;
+}
+
+@media screen and (max-width: 768px) {
+  .skew-button {
+    font: 0.8rem 'Anton', sans-serif;
+    left: 23%;
+  }
 }
 
 @-webkit-keyframes swoosh {

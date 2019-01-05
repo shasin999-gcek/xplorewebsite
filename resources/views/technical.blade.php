@@ -5,7 +5,7 @@
     <div class="page-header header-filter">
       
       <div class="container">
-        <div class="content-center brand" style="width:65%">
+        <div class="content-center brand tech">
                 <object data="{{ asset('img/technical.svg') }}" type="image/svg+xml">
                     <img src="{{ asset('img/technical.svg') }}" class="img-fluid img-responsive" >
                   </object>
