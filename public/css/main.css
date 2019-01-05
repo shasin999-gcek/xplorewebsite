@@ -17785,6 +17785,7 @@ hr.line-deafult {
 }
 
 .section-management .square-1, .section-technical .square-1 {
+  
   height: 300px;
   width: 300px;
   background-image: url("../img/square1.png");
@@ -17795,6 +17796,8 @@ hr.line-deafult {
 }
 
 .section-management .square-2, .section-technical .square-2 {
+  
+
   height: 200px;
   width: 200px;
   background: url("../img/square3.png");
@@ -17806,6 +17809,8 @@ hr.line-deafult {
 }
 
 .section-management .square-3, .section-technical .square-3 {
+  
+
   height: 100px;
   width: 100px;
   background: url("../img/square2.png");
@@ -17816,6 +17821,8 @@ hr.line-deafult {
 }
 
 .section-management .square-4, .section-technical .square-4  {
+  
+
   height: 250px;
   width: 250px;
   background: url("../img/square3.png");
@@ -17827,21 +17834,58 @@ hr.line-deafult {
 }
 
 @media screen and (max-width: 768px) {
+  .section-cultural .square-1 {
+    height: 70px;
+    width: 70px;
+    top: 40px;
+    left: 80px;
+    visibility: hidden;
+  
+  }
   .section-cultural .square-2 {
+    height: 50px;
+    width: 50px;
     right: 40px;
+    visibility: hidden;
     
   }
   .section-cultural .square-3 {
+    height: 60px;
+    width: 60px;
     right: 40px;
-    
+    visibility: hidden;
+  }
+
+  .section-cultural .square-4 {
+    height: 40px;
+    width: 40px;
+    visibility: hidden;
+  }
+  .section-management .square-1 {
+    height: 70px;
+    width: 70px;
+    left: 60px;
+    visibility: hidden;
   }
 
   .section-management .square-2 {
+    height: 50px;
+    width: 50px;
     left: 60px;
+    visibility: hidden;
   }
   .section-management .square-3 {
+    height: 50px;
+    width: 50px;
     left: 60px;
-    top: 100px;
+    top: 90px;
+    visibility: hidden;
+  }
+  .section-management .square-4 {
+    height: 50px;
+    width: 50px;
+    left: 60px;
+    visibility: hidden;
   }
 }
 
