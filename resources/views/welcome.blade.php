@@ -86,7 +86,7 @@
                 </div>
                 <div class="container-fluid">
                     <div class="row">
-                        <div class="owl-carousel">
+                        <div class="owl-carousel1">
                           <div ><div ><img src="{{ asset('img/cultural.jpg') }}" class="img-fluid" ></div></div>
                           <div ><div ><img src="{{ asset('img/cultural.jpg') }}" class="img-fluid" ></div></div>
                           <div ><div ><img src="{{ asset('img/cultural.jpg') }}" class="img-fluid" ></div></div>
