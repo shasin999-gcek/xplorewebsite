@@ -110,7 +110,7 @@
 
   @yield('content')
 
-  <footer class="footer">
+  <footer class="footer {{$bodyclass}}">
       <div class="container">
         <div class="row">
           <div class="col-md-3">
@@ -217,9 +217,10 @@
     center: true
   }); 
   </script>
+  @if($active_menu == 'dashboard')
   <script>
     $(document).ready(function(){
-  $(".owl-carousel1").owlCarousel({
+  $(".owl-carousel").owlCarousel({
     loop:true,
     margin:20,
     autoplay:true,
@@ -246,6 +247,7 @@
   });
   });
   </script>
+  @else
   <script>
     $(document).ready(function(){
        
@@ -309,6 +311,7 @@ function doDotsCalculations(el) {
 
  
   </script>
+  @endif
 </body>
 
 </html>

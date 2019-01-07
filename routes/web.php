@@ -37,6 +37,7 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 
 Route::get('/events/{category}/', 'EventController@getEventsByCategory')->name('events');
+Route::get('/workshops/{category}/', 'WorkshopController@getWorkshopsByCategory')->name('workshops');
 
 
 Route::get('/events/{category}/{slug}', 'EventController@show')->name('display_event');

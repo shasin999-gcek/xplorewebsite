@@ -1,4 +1,4 @@
-@extends('layouts.master',['bodyclass' => 'profile-page','navbar' => 'navbar-transparent fixed-top'])
+@extends('layouts.master',['bodyclass' => 'profile-page bkg-yellow','navbar' => 'navbar-transparent fixed-top'])
 
 @section('content')
 
@@ -15,8 +15,8 @@
                         Xplore envisions itself to become one of the largest techno-management cultural festival in India by attracting the most prominent and diverse voices from various facets of the society to collaborate and integrate innovation.
                         Xplore promises a host of conclaves, competitions and workshops centered around various interdisciplinary themes enriching  the experience of innovation, competition and learning.</p>                
               </div>
-              <div class="col-lg-4 col-md-6 ml-auto mr-auto">
-                <div class="content-center brand" style="width:100%">
+              <div class="col-lg-4 col-md-6 ml-auto mr-auto ">
+                <div class="content-center brand d-xs-none" style="width:100%">
                         <img src="{{ asset('img/Xplore.svg')}}" class="img-fluid img-responsive" width="300" height="300">
                         <img src="{{ asset('img/logo.svg') }}" class="img-fluid img-responsive" width="250" height="200">
                 </div>
@@ -48,8 +48,5 @@
                       </div>
         </div>
         <section>
-                <div class="flowers-container">
-                        <div class="flowers-left"></div>
-                        <div class="flowers-right"></div>
-                      </div>
+                
         </section>

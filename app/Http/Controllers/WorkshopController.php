@@ -86,4 +86,14 @@ class WorkshopController extends Controller
     {
         //
     }
+
+    public function getWorkshopsByCategory($category) {
+
+        $event_group = Category::with('workshops')->where('short_name', $category)->firstOrFail();
+        $data = [
+            'event_group' => $event_group,
+            'active_menu' => 'workshop'
+        ];
+        return view('event_index',$data);
+    }
 }
