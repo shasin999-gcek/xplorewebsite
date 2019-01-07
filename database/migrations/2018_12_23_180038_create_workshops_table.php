@@ -21,6 +21,7 @@ class CreateWorkshopsTable extends Migration
             $table->string('reg_fee');
             $table->string('poster_image'); // poster image name (default storage path)
             $table->string('thumbnail_image'); // Thumbnail image
+            $table->string('pdf_path');
             $table->string('slug');
             $table->timestamps();
         });

@@ -150,6 +150,20 @@
                             </div>
                         </div>
 
+                        <div class="form-group{{ $errors->has('pdf_file') ? ' has-error' : '' }}">
+                            <label for="pdf_file" class="col-md-2 control-label">Upload PDF</label>
+
+                            <div class="col-md-6">
+                                <input type="file" class="form-control" id="pdf_file" name="pdf_file" value="{{ old('pdf_file') }}" required autofocus>
+
+                                @if ($errors->has('pdf_file'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('pdf_file') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+
                         <div class="form-group">
                             <div class="col-md-6 col-md-offset-2">
                                 <button type="submit" class="btn btn-primary">

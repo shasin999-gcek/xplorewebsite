@@ -152,6 +152,14 @@
                             </div>
                         </div>
 
+                        <div class="form-group">
+                            <label for="pdf_file" class="col-md-2 control-label">More Details</label>
+
+                            <div class="col-md-6">
+                                <a href="{{ asset('storage/' . $event->pdf_path) }}" alt="..." class="btn btn-primary">View</a>
+                            </div>
+                        </div>
+
                     </form>
                 </div>
 

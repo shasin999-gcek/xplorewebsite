@@ -22,11 +22,11 @@ class CreateEventsTable extends Migration
             $table->string('type');  // Team or individual
             $table->string('poster_image'); // poster image name (default storage path)
             $table->string('thumbnail_image'); // Thumbnail image
+            $table->string('pdf_path');
             $table->string('f_price_money')->default('Rs 0');
             $table->string('s_price_money')->default('Rs 0');
             $table->string('t_price_money')->default('Rs 0');
             $table->string('slug');
-            $table->string('shared_post_url')->nullable();
             $table->timestamps();
         });
     }

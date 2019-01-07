@@ -77,16 +77,19 @@ class EventController extends Controller
         // associate Category with Event (autopopulate category_id)
         $event->category()->associate($event_category);
 
-        // store the poster and thumbnail images in public/events directory
+        // store the poster, pdf and thumbnail images in public/events directory
         $poster_img = $request->file('poster_image');
         $thumbnail_img = $request->file('thumbnail_image');
+        $pdf_file = $request->file('pdf_file');
+
         $poster_img_path = $poster_img->store('public/events');
         $thumbnail_img_path = $thumbnail_img->store('public/events');
+        $pdf_file_path = $pdf_file->store('public/events');
 
         // store the filepath's to the database
         $event->poster_image =   str_replace_first('public/', '', $poster_img_path);
         $event->thumbnail_image =   str_replace_first('public/', '', $thumbnail_img_path);
-
+        $event->pdf_path =   str_replace_first('public/', '', $pdf_file_path);
 
         $event->saveOrFail();
 
@@ -153,20 +156,24 @@ class EventController extends Controller
         // associate Category with Event (autopopulate category_id)
         $event->category()->associate($event_category);
 
-        // delete previous image files before storing new file
+        // delete previous files before storing new file
         Storage::delete('public/' . $event->poster_image);
         Storage::delete('public/' . $event->thumbnail_image);
-
+        Storage::delete('public/' . $event->pdf_path);
        
-        // store the poster and thumbnail images in public/events directory
+        // store the poster, pdf and thumbnail images in public/events directory
         $poster_img = $request->file('poster_image');
         $thumbnail_img = $request->file('thumbnail_image');
+        $pdf_file = $request->file('pdf_file');
+
         $poster_img_path = $poster_img->store('public/events');
         $thumbnail_img_path = $thumbnail_img->store('public/events');
+        $pdf_file_path = $pdf_file->store('public/events');
 
         // store the filepath's to the database
         $event->poster_image =   str_replace_first('public/', '', $poster_img_path);
         $event->thumbnail_image =   str_replace_first('public/', '', $thumbnail_img_path);
+        $event->pdf_path =   str_replace_first('public/', '', $pdf_file_path);
 
         $event->saveOrFail();
 
@@ -184,6 +191,7 @@ class EventController extends Controller
         // delete associated poster and thumbnail also
         Storage::delete('public/' . $event->poster_image);
         Storage::delete('public/' . $event->thumbnail_image);
+        Storage::delete('public/' . $event->pdf_path);
 
         $event->delete();
 

@@ -73,16 +73,20 @@ class WorkshopController extends Controller
         // associate Category with Workshop (autopopulate category_id)
         $workshop->category()->associate($workshop_category);
 
-        // store the poster and thumbnail images in public/workshops directory
+        // store files in public/workshops directory
         $poster_img = $request->file('poster_image');
         $thumbnail_img = $request->file('thumbnail_image');
+        $pdf_file = $request->file('pdf_file');
+
+
         $poster_img_path = $poster_img->store('public/workshops');
         $thumbnail_img_path = $thumbnail_img->store('public/workshops');
+        $pdf_file_path = $pdf_file->store('public/workshops');
 
         // store the filepath's to the database
         $workshop->poster_image =   str_replace_first('public/', '', $poster_img_path);
         $workshop->thumbnail_image =   str_replace_first('public/', '', $thumbnail_img_path);
-
+        $workshop->pdf_path =   str_replace_first('public/', '', $pdf_file_path);
 
         $workshop->saveOrFail();
 
@@ -148,17 +152,22 @@ class WorkshopController extends Controller
         // delete previous image files before storing new file
         Storage::delete('public/' . $workshop->poster_image);
         Storage::delete('public/' . $workshop->thumbnail_image);
-
+        Storage::delete('public/' . $workshop->pdf_path);
        
-        // store the poster and thumbnail images in public/workshops directory
+        // store files in public/workshops directory
         $poster_img = $request->file('poster_image');
         $thumbnail_img = $request->file('thumbnail_image');
+        $pdf_file = $request->file('pdf_file');
+
+
         $poster_img_path = $poster_img->store('public/workshops');
         $thumbnail_img_path = $thumbnail_img->store('public/workshops');
+        $pdf_file_path = $pdf_file->store('public/workshops');
 
         // store the filepath's to the database
         $workshop->poster_image =   str_replace_first('public/', '', $poster_img_path);
         $workshop->thumbnail_image =   str_replace_first('public/', '', $thumbnail_img_path);
+        $workshop->pdf_path =   str_replace_first('public/', '', $pdf_file_path);
 
         $workshop->saveOrFail();
 
@@ -176,6 +185,7 @@ class WorkshopController extends Controller
         // delete associated poster and thumbnail also
         Storage::delete('public/' . $workshop->poster_image);
         Storage::delete('public/' . $workshop->thumbnail_image);
+        Storage::delete('public/' . $workshop->pdf_path);
 
         $workshop->delete();
 
