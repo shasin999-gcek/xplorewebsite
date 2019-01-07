@@ -32,7 +32,7 @@ class HomeController extends Controller
 
        $registered_events = $user->s_events;
 
-       return view('home', ['registered_events' => $registered_events, 'currentUser' => $user]);
+       return view('home', ['registered_events' => $registered_events, 'currentUser' => $user, 'fail' => false]);
 
     }
 }

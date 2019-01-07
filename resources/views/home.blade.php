@@ -5,25 +5,36 @@
 <div class="wrapper">
         <img src="assets/img/dots.png" class="dots">
         
-    <div style="padding-top:10vh" class="container">
+    <div class="container">
       <div class="row">
         <div class="col-md-4 ml-auto mr-auto">
           <div class="card card-plain" style="margin-top: 30%">
-            <div class="card-header">
+            <div class="card-header text-center">
               <img class="img-center img-fluid rounded-circle" src="{{ asset('img/user.png') }}" width="150" height="150" />
                 <h4 class="title" style="text-align: center;">{{ $currentUser->name }}</h4>
             </div>
             <div class="card-body text-center">
               <h5>{{ $currentUser->email }}</h5>
+              
               <h5>{{ $currentUser->mobile_number }}</h5>
+              
+            </div>
+            <div class="card-footer text-center">
+            
+            <a href="{{ url('?ref_code=').Auth::user()->referral_id }}" class="btn-simple btn-info">Copy Referral Link</a>
             </div>
           </div>
         </div>
-        <div class="col-md-8 ml-auto mr-auto">
+        <div class="col-md-8 ml-auto mr-auto pt-4">
           <section class="section section-lg " style="padding: 0;">
             <div class="container">
               <div class="row">
                 <div class="col-md-9">
+                  @if($fail)
+                <div class="alert alert-danger" role="alert">
+                  Transaction Failed
+                </div> 
+                @endif
                   <hr class="line-info">
                   <h1>Registered <span>Events</span> and <span>Workshop</span></h1>
                 </div>
