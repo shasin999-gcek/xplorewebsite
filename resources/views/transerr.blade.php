@@ -6,6 +6,13 @@
     <title>Xplore'19</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="{{ asset('css/main.css') }}">
+    <style>
+    @media screen and (max-width: 768px) {
+    .page-header .content-center.brand {
+      width: 90%;
+    }
+  }
+    </style>
 </head>
 <body class="profile-page">
     <div class="wrapper">
