@@ -19,7 +19,8 @@ class CategoriesTableSeeder extends Seeder
             ['short_name' => 'eee', 'name' => 'Electrical And Electronics Engineering'],
             ['short_name' => 'civil', 'name' => 'Civil Engineering'],
             ['short_name' => 'cultural', 'name' => 'Cultural'],
-            ['short_name' => 'robotics', 'name' => 'Robotics']
+            ['short_name' => 'robotics', 'name' => 'Robotics'],
+            
         ]);
     }
 }

@@ -1,4 +1,4 @@
-@extends('layouts.master',['bodyclass' => 'index-page bkg-yellow','navbar' => 'navbar-transparent fixed-top'])
+@extends('layouts.master',['bodyclass' => 'index-page bkg-yellow','navbar' => 'navbar-transparent fixed-top','nofooter' => 'd-none'])
 
 @section('content')
 <div class="wrapper">
