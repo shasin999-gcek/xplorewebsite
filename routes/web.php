@@ -34,7 +34,9 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => 'is_admin',
 
 
 Route::get('/home', 'HomeController@index')->name('home');
-
+Route::get('/transerr', function () {
+    return view('transerr');
+})->name('transerr');
 
 Route::get('/events/{category}/', 'EventController@getEventsByCategory')->name('events');
 Route::get('/workshops/{category}/', 'WorkshopController@getWorkshopsByCategory')->name('workshops');
