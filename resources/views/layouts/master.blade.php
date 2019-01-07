@@ -110,7 +110,7 @@
 
   @yield('content')
 
-  <footer class="footer {{$bodyclass}} @if($nofooter) {{ $nofooter }} @endif">
+  <footer class="footer {{$bodyclass}} @php $nofooter = NULL; @endphp @if($nofooter) {{ $nofooter }} @endif">
       <div class="container">
         <div class="row">
           <div class="col-md-3">

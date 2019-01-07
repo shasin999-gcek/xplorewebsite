@@ -113,7 +113,7 @@ class EventRegistrationController extends Controller
                     // Todo : Redirect to the event page with Transaction Failure message
                     // Incase he lost money ask him to contact web admin
                     dd($PAYTM_RESPONSE_PARAMS);
-                    return redirect()->route('home',['fail' => true]);
+                    return redirect()->view('/transerr');
                 }
 
                 // Verify Transaction again by Paytm Transaction api
@@ -137,7 +137,7 @@ class EventRegistrationController extends Controller
                         // Transaction failure
                         // Todo: Redirect to the event page with Transaction Failure
                         dd($responseParamList);
-                        return redirect()->route('home',['fail' => true]);
+                        return redirect()->view('/transerr');
                     }
                 }
 
@@ -157,7 +157,7 @@ class EventRegistrationController extends Controller
                 Payment::create($PAYTM_RESPONSE_PARAMS);
                 // Todo : Redirect to the event page with Transaction Failure message
                dd($PAYTM_RESPONSE_PARAMS);
-               return redirect()->route('home',['fail' => true]);
+               return redirect()->view('/transerr');
 
             }
         }

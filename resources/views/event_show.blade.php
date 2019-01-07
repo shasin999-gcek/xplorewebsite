@@ -1,4 +1,4 @@
-@extends('layouts.master',['bodyclass' => 'register-page','active_menu' => 'login','navbar' => ''])
+@extends('layouts.master',['bodyclass' => 'register-page bkg-yellow','active_menu' => 'login','navbar' => 'bkg-yellow'])
 
 @section('content')
 <div class="wrapper">

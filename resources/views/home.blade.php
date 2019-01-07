@@ -1,4 +1,4 @@
-@extends('layouts.master',['bodyclass' => 'index-page','active_menu' => 'login','navbar' => ' '])
+@extends('layouts.master',['bodyclass' => 'index-page bkg-yellow','active_menu' => 'login','navbar' => ' bkg-yellow'])
 
 
 @section('content')
@@ -21,7 +21,7 @@
             </div>
             <div class="card-footer text-center">
             
-            <a href="{{ url('?ref_code=').Auth::user()->referral_id }}" class="btn-simple btn-info">Copy Referral Link</a>
+            <h5  class="text-info">{{ url('?ref_code=').Auth::user()->referral_id }}</h5>
             </div>
           </div>
         </div>
@@ -30,11 +30,7 @@
             <div class="container">
               <div class="row">
                 <div class="col-md-9">
-                  @if($fail)
-                <div class="alert alert-danger" role="alert">
-                  Transaction Failed
-                </div> 
-                @endif
+                 
                   <hr class="line-info">
                   <h1>Registered <span>Events</span> and <span>Workshop</span></h1>
                 </div>
