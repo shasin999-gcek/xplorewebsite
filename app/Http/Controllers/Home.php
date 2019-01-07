@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Category;
 
 class Home extends Controller
 {
@@ -16,11 +17,21 @@ class Home extends Controller
 
     public function about() {
 
-        return view('about');
+        $data = [
+            'active_menu' => 'about'
+        ];
+
+        return view('about', $data);
     }
 
     public function contact() {
-        return view('contact');
+
+        $data = [
+            'active_menu' => 'contact'
+        ];
+
+
+        return view('contact',$data);
     }
 
     public function technical() {
@@ -32,14 +43,21 @@ class Home extends Controller
     }
 
     public function cultural() {
+
+        $cultural_event = Category::with('events')->where('short_name', 'cultural')->firstOrFail();
         $data = [
+            'cultural_event' => $cultural_event,
             'active_menu' => 'cultural'
         ];
+        
         return view('cultural',$data);
     }
 
     public function management() {
-        return view('management');
+        $data = [
+            'active_menu' => 'management'
+        ];
+        return view('management',$data);
     }
 
 }

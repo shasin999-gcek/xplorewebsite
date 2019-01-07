@@ -1,7 +1,7 @@
 @extends('layouts.master',['bodyclass' => 'index-page','navbar' => 'navbar-transparent fixed-top'])
 
 @section('content')
-<div class="wrapper">
+<div class="wrapper multiple-stars">
     <div class="page-header header-filter">
       <div class="gear"></div>
       
@@ -11,8 +11,25 @@
       <div class="stars stars-4"></div>
       <div class="ec"></div>
       <div class="electrical"></div>
-      <div class="city">  
+      <div class="city"></div>
+      <div class="objects">
+                
+                <div class="earth-moon">
+                    
+                    <img class="object_moon" src="http://salehriaz.com/404Page/img/moon.svg" width="80px">
+                </div>
+                <div class="box_astronaut">
+                    <img class="object_astronaut" src="http://salehriaz.com/404Page/img/astronaut.svg" width="70px">
+                </div>
       </div>
+      <div class="glowing_stars">
+                <div class="star"></div>
+                <div class="star"></div>
+                <div class="star"></div>
+                <div class="star"></div>
+                <div class="star"></div>
+
+            </div>
       <div class="container">
         <div class="content-center brand">
           <div class="rocket"></div>
