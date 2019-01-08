@@ -54,7 +54,7 @@
                   </h3>
                   <p class="text-white mb-3">Management Conclave of Xplore’19 will offer a platform that brings together industry leaders, budding entrepreneurs, inspiring personalities, and motivated students to discuss, debate and re-think business and society through motley of competitions & events.</p>
                   <div class="btn-wrapper">
-                    <a href="#" class="btn btn-info">Show Details</a>
+                    <a href="{{ " class="btn btn-info">Show Details</a>
                   </div>
                 </div>
                 <div class="col-lg-6 mb-lg-auto">
