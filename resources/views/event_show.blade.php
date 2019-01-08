@@ -33,7 +33,7 @@
           <div class="col-md-4 ml-auto mr-auto text-center">
               <img src="{{ asset('storage/' . $event->poster_image) }}" class="img-raised img-responsive">
               <hr>
-              <a href="{{ asset('storage/' . $event->pdf_path) }}" class="btn btn-simple">Download PDF</a>
+              <a href="{{ asset('storage/' . $event->pdf_path) }}" class="btn btn-warning">Download PDF</a>
               <div class="btn-wrapper profile">
                         <a target="_blank" href="#" class="btn btn-icon btn-neutral btn-round btn-simple" data-toggle="tooltip" data-original-title="Follow us">
                           <i class="fab fa-twitter"></i>
