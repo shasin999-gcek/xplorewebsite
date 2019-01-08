@@ -117,6 +117,7 @@
   @yield('content')
 
   <footer class="footer {{$bodyclass}} @isset($nofooter) {{ $nofooter }} @endisset">
+
       <div class="container">
         <div class="row">
           <div class="col-md-3">

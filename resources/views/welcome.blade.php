@@ -1,4 +1,4 @@
-@extends('layouts.master',['bodyclass' => 'index-page','navbar' => 'navbar-transparent fixed-top', 'nofooter' => ''])
+@extends('layouts.master',['bodyclass' => 'index-page','navbar' => 'navbar-transparent fixed-top', 'nofooter' => ' '])
 
 @section('content')
 <div class="wrapper multiple-stars">

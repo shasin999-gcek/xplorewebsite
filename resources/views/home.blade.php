@@ -1,4 +1,4 @@
-@extends('layouts.master',['bodyclass' => 'index-page','active_menu' => 'login','navbar' => ' '])
+@extends('layouts.master',['bodyclass' => 'index-page bkg-yellow','active_menu' => 'login','navbar' => ' bkg-yellow'])
 
 
 @section('content')
@@ -21,7 +21,8 @@
             </div>
             <div class="card-footer text-center">
             
-            <a href="#" onclick="event.preventDefault(); navigator.clipboard.writeText('{{ url('?ref_code=').Auth::user()->referral_id }}')" class="btn-simple btn-info">Copy Referral Link</a> <br> <br>
+            <h5  class="text-info">{{ url('?ref_code=').Auth::user()->referral_id }}</h5> <br><br>
+
             <a href="whatsapp://send" data-text="Join the biggest event:
 
 Xplore 19
@@ -38,11 +39,7 @@ Register using this link
             <div class="container">
               <div class="row">
                 <div class="col-md-9">
-                  @if($fail)
-                <div class="alert alert-danger" role="alert">
-                  Transaction Failed
-                </div> 
-                @endif
+                 
                   <hr class="line-info">
                   <h1>Registered <span>Events</span> and <span>Workshop</span></h1>
                 </div>

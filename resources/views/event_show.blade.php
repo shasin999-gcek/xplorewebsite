@@ -1,5 +1,4 @@
-@extends('layouts.master',['bodyclass' => 'register-page','active_menu' => 'login','navbar' => '', 'nofooter' => ''])
-
+@extends('layouts.master',['bodyclass' => 'register-page bkg-yellow','active_menu' => 'login','navbar' => 'bkg-yellow'])
 
 @section('metatags')
   <meta property="og:tags">
@@ -21,6 +20,7 @@
   <meta property="article:publisher" content="https://www.facebook.com/xplore19"/>
 
 @endsection
+
 
 @section('content')
 <div class="wrapper">
