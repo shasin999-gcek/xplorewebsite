@@ -23,6 +23,8 @@ class CreateWorkshopsTable extends Migration
             $table->string('thumbnail_image'); // Thumbnail image
             $table->string('pdf_path');
             $table->string('slug');
+            $table->datetime('starts_on');
+            $table->datetime('ends_on');
             $table->timestamps();
         });
     }

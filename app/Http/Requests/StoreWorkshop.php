@@ -30,7 +30,9 @@ class StoreWorkshop extends FormRequest
             'reg_fee' => 'required|numeric',
             'poster_image' => 'required|file|mimes:jpeg,bmp,png',
             'thumbnail_image' => 'required|file|mimes:jpeg,bmp,png',
-            'pdf_file' => 'required|file|mimes:pdf'
+            'pdf_file' => 'required|file|mimes:pdf',
+            'starts_on' => 'required|date',
+            'ends_on' => 'required|date'
         ];
     }
 }

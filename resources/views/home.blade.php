@@ -21,7 +21,15 @@
             </div>
             <div class="card-footer text-center">
             
-            <a href="{{ url('?ref_code=').Auth::user()->referral_id }}" class="btn-simple btn-info">Copy Referral Link</a>
+            <a href="#" onclick="event.preventDefault(); navigator.clipboard.writeText('{{ url('?ref_code=').Auth::user()->referral_id }}')" class="btn-simple btn-info">Copy Referral Link</a> <br> <br>
+            <a href="whatsapp://send" data-text="Join the biggest event:
+
+Xplore 19
+
+Register using this link
+
+" data-href="{{ url('?ref_code=').Auth::user()->referral_id }}" class="wa_btn wa_btn_l" style="display:none">Share</a>
+
             </div>
           </div>
         </div>

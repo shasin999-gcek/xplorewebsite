@@ -42,7 +42,7 @@
                               </div>
                             </div>
                             <div class="card-footer text-center">
-                              <a href="#" class="skew-button"><span>WORKSHOP</span></a>
+                              <a href="{{ route('workshops','cse') }}" class="skew-button"><span>WORKSHOP</span></a>
                               <a href="{{ route('events','cse') }}" class="skew-button"><span>EVENT</span></a>
                             </div>
                           </div>
@@ -62,7 +62,7 @@
                               
                             </div>
                             <div class="card-footer text-center">
-                                    <button class="skew-button"><span>WORKSHOP</span></button>
+                                    <a href="{{ route('workshops','civil') }}" class="skew-button"><span>WORKSHOP</span></a>
                                     <a href="{{ route('events','civil') }}" class="skew-button"><span>EVENT</span></a>
                             </div>
                           </div>
@@ -86,7 +86,7 @@
                                                 </div>
                                               </div>
                                               <div class="card-footer text-center">
-                                                    <button class="skew-button"><span>WORKSHOP</span></button>
+                                                    <a href="{{ route('workshops','ece') }}" class="skew-button"><span>WORKSHOP</span></a>
                                                     <a href="{{ route('events','ece') }}" class="skew-button"><span>EVENT</span></a>
                                               </div>
                                             </div>
@@ -106,7 +106,7 @@
                                                 </div>
                                               </div>
                                               <div class="card-footer text-center">
-                                                    <button class="skew-button"><span>WORKSHOP</span></button>
+                                                    <a href="{{ route('workshops','eee') }}" class="skew-button"><span>WORKSHOP</span></a>
                                                     <a href="{{ route('events','eee') }}" class="skew-button"><span>EVENT</span></a>
                                               </div>
                                             </div>
@@ -115,7 +115,7 @@
                     </div>
                     <div style="margin-top:10%">
                             <div class="row">
-                                    <div class="col-md-6 offset-md-3">
+                                    <div class="col-md-6">
                                             <div class="card card-coin card-plain">
                                               <div class="card-header">
                                                 <img src="{{ asset('img/me.png') }}" class="img-center img-fluid">
@@ -130,8 +130,29 @@
                                                 </div>
                                               </div>
                                               <div class="card-footer text-center">
-                                                    <button class="skew-button"><span>WORKSHOP</span></button>
+                                                    <a href="{{ route('workshops','me') }}" class="skew-button"><span>WORKSHOP</span></a>
                                                     <a href="{{ route('events','me') }}" class="skew-button"><span>EVENT</span></a>
+                                              </div>
+                                            </div>
+                                    </div>
+
+                                     <div class="col-md-6">
+                                            <div class="card card-coin card-plain">
+                                              <div class="card-header">
+                                                <img src="{{ asset('img/me.png') }}" class="img-center img-fluid">
+                                              </div>
+                                              <div class="card-body">
+                                                <div class="row">
+                                                  <div class="col-md-12 text-center">
+                                                    <h4 class="text-uppercase">Robotics</h4>
+                                                    
+                                                    <hr class="line-info">
+                                                  </div>
+                                                </div>
+                                              </div>
+                                              <div class="card-footer text-center">
+                                                    <a href="{{ route('workshops','robotics') }}" class="skew-button"><span>WORKSHOP</span></a>
+                                                    <a href="{{ route('events','robotics') }}" class="skew-button"><span>EVENT</span></a>
                                               </div>
                                             </div>
                                     </div>

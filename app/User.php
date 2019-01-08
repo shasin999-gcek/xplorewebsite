@@ -67,4 +67,18 @@ class User extends Authenticatable
             ->wherePivot('is_reg_success', true);
     }
 
+
+    public function workshops()
+    {
+        return $this->belongsToMany('App\Workshop', 'workshop_registrations', 'user_id', 'workshop_id')
+            ->withPivot('user_id', 'workshop_id', 'order_id', 'is_reg_success');
+    }
+
+    public function s_workshops()
+    {
+        return $this->belongsToMany('App\Workshop', 'workshop_registrations', 'user_id', 'workshop_id')
+            ->withPivot('user_id', 'workshop_id', 'order_id', 'is_reg_success')
+            ->wherePivot('is_reg_success', true);
+    }
+
 }

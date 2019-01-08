@@ -10,6 +10,7 @@ use App\Http\Controllers\Controller;
 use Toolkito\Larasap\Facebook\Api AS FacebookApi;
 use Illuminate\Support\Facades\Storage;
 
+use DateTime;
 
 class WorkshopController extends Controller
 {
@@ -69,6 +70,8 @@ class WorkshopController extends Controller
         $workshop->slug = str_slug($request['name']);
         $workshop->description = $request['description'];
         $workshop->reg_fee = $request['reg_fee'];
+        $workshop->starts_on = DateTime::createFromFormat('Y-m-d\TH:i', $request['starts_on']);
+        $workshop->ends_on = DateTime::createFromFormat('Y-m-d\TH:i', $request['ends_on']);
       
         // associate Category with Workshop (autopopulate category_id)
         $workshop->category()->associate($workshop_category);
@@ -145,6 +148,8 @@ class WorkshopController extends Controller
         $workshop->slug = str_slug($request['name']);
         $workshop->description = $request['description'];
         $workshop->reg_fee = $request['reg_fee'];
+        $workshop->starts_on = DateTime::createFromFormat('Y-m-d\TH:i', $request['starts_on']);
+        $workshop->ends_on = DateTime::createFromFormat('Y-m-d\TH:i', $request['ends_on']);
         
         // associate Category with Workshop (autopopulate category_id)
         $workshop->category()->associate($workshop_category);

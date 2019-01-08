@@ -9,7 +9,7 @@ use App\Http\Controllers\Controller;
 
 use Toolkito\Larasap\Facebook\Api AS FacebookApi;
 use Illuminate\Support\Facades\Storage;
-
+use DateTime;
 
 class EventController extends Controller
 {
@@ -73,6 +73,7 @@ class EventController extends Controller
         $event->f_price_money = $request['f_price'];
         $event->s_price_money = $request['s_price'];
         $event->t_price_money = $request['t_price'];
+        $event->date = DateTime::createFromFormat('Y-m-d\TH:i', $request['date']);
 
         // associate Category with Event (autopopulate category_id)
         $event->category()->associate($event_category);
@@ -152,7 +153,8 @@ class EventController extends Controller
         $event->f_price_money = $request['f_price'];
         $event->s_price_money = $request['s_price'];
         $event->t_price_money = $request['t_price'];
-
+        $event->date = DateTime::createFromFormat('Y-m-d\TH:i', $request['date']);
+        
         // associate Category with Event (autopopulate category_id)
         $event->category()->associate($event_category);
 

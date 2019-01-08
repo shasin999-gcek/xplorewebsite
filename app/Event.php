@@ -7,6 +7,9 @@ use Illuminate\Database\Eloquent\Model;
 class Event extends Model
 {
     //
+    protected $dates = ['date'];
+
+   // protected $dateFormat = 'Y-m-d\TH:i';
 
     public function category()
     {

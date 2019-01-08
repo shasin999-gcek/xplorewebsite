@@ -81,7 +81,7 @@
                             <label for="name" class="col-md-2 control-label">Workshop Description</label>
 
                             <div class="col-md-6">
-                                <textarea id="description" name="description"  required autofocus>{{ old('description') }}</textarea>
+                                <textarea id="description" name="description" rows="5" cols="35" required autofocus>{{ old('description') }}</textarea>
 
                                 @if ($errors->has('description'))
                                     <span class="help-block">
@@ -108,15 +108,29 @@
                         </div>
 
                        
-                        <div class="form-group{{ $errors->has('datetime') ? ' has-error' : '' }}">
-                            <label for="datetime" class="col-md-2 control-label">Date & Time</label>
+                        <div class="form-group{{ $errors->has('starts_on') ? ' has-error' : '' }}">
+                            <label for="starts_on" class="col-md-2 control-label">Starts on</label>
 
                             <div class="col-md-6">
-                                <input type="datetime-local" class="form-control" id="datetime" name="datetime"  required disabled>
+                                <input type="datetime-local" class="form-control" id="starts_on" name="starts_on" value="{{ old('starts_on') }}" required>
 
-                                @if ($errors->has('datetime'))
+                                @if ($errors->has('starts_on'))
                                     <span class="help-block">
-                                        <strong>{{ $errors->first('datetime') }}</strong>
+                                        <strong>{{ $errors->first('starts_on') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+
+                        <div class="form-group{{ $errors->has('ends_on') ? ' has-error' : '' }}">
+                            <label for="ends_on" class="col-md-2 control-label">Ends on</label>
+
+                            <div class="col-md-6">
+                                <input type="datetime-local" class="form-control" id="ends_on" name="ends_on" value="{{ old('ends_on') }}" required>
+
+                                @if ($errors->has('ends_on'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('ends_on') }}</strong>
                                     </span>
                                 @endif
                             </div>
@@ -187,21 +201,21 @@
         jQuery(document).ready(function () {
             jQuery('#category_id').select2().select2('val', '{{ old('category_id') }}' );
             jQuery('#type').select2();
-            jQuery('#description').summernote({
-                toolbar: [
-                    // [groupName, [list of button]]
-                    ['style', ['bold', 'italic', 'underline', 'strikethrough', 'clear']],
-                    ['font', ['hr', 'undo', 'redo']],
-                    ['fontsize', ['fontsize']],
-                    ['color', ['color']],
-                    ['para', ['ul', 'ol', 'paragraph']],
-                ],
-                placeholder: 'write description...',
-                height: 200,
-                minHeight: 200,
-                maxHeight: 200,
-                focus: false
-            });
+            // jQuery('#description').summernote({
+            //     toolbar: [
+            //         // [groupName, [list of button]]
+            //         ['style', ['bold', 'italic', 'underline', 'strikethrough', 'clear']],
+            //         ['font', ['hr', 'undo', 'redo']],
+            //         ['fontsize', ['fontsize']],
+            //         ['color', ['color']],
+            //         ['para', ['ul', 'ol', 'paragraph']],
+            //     ],
+            //     placeholder: 'write description...',
+            //     height: 200,
+            //     minHeight: 200,
+            //     maxHeight: 200,
+            //     focus: false
+            // });
         });
     </script>
 @endsection

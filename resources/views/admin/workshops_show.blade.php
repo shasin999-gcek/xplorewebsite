@@ -72,7 +72,7 @@
                             <label for="name" class="col-md-2 control-label">Workshop Description</label>
 
                             <div class="col-md-6">
-                                <textarea id="description" readonly>{{ $workshop->description }}</textarea>
+                                <textarea id="description" rows="5" cols="35" readonly>{{ $workshop->description }}</textarea>
 
                             </div>
                         </div>
@@ -86,6 +86,25 @@
                                     <input type="number" class="form-control" value="{{ $workshop->reg_fee }}" readonly>
                                     <div class="input-group-addon">.000</div>
                                 </div>
+                            </div>
+                        </div>
+
+                         <div class="form-group">
+                            <label for="starts_on" class="col-md-2 control-label">Starts on</label>
+
+                            <div class="col-md-6">
+                                <input type="text" class="form-control" value="{{ $workshop->starts_on->toDayDateTimeString() }}" readonly>
+
+                
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="ends_on" class="col-md-2 control-label">Ends on</label>
+
+                            <div class="col-md-6">
+                                <input type="text" class="form-control"  value="{{ $workshop->ends_on->toDayDateTimeString() }}" readonly>
+
                             </div>
                         </div>
 
@@ -128,23 +147,23 @@
     <script src="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.11/summernote.js"></script>
     <script>
         jQuery(document).ready(function () {
-            jQuery('#description').summernote({
-                toolbar: [
-                    // [groupName, [list of button]]
-                    ['style', ['bold', 'italic', 'underline', 'strikethrough', 'clear']],
-                    ['font', ['hr', 'undo', 'redo']],
-                    ['fontsize', ['fontsize']],
-                    ['color', ['color']],
-                    ['para', ['ul', 'ol', 'paragraph']],
-                ],
-                placeholder: 'write description...',
-                height: 200,
-                minHeight: 200,
-                maxHeight: 200,
-                focus: false
-            });
+            // jQuery('#description').summernote({
+            //     toolbar: [
+            //         // [groupName, [list of button]]
+            //         ['style', ['bold', 'italic', 'underline', 'strikethrough', 'clear']],
+            //         ['font', ['hr', 'undo', 'redo']],
+            //         ['fontsize', ['fontsize']],
+            //         ['color', ['color']],
+            //         ['para', ['ul', 'ol', 'paragraph']],
+            //     ],
+            //     placeholder: 'write description...',
+            //     height: 200,
+            //     minHeight: 200,
+            //     maxHeight: 200,
+            //     focus: false
+            // });
 
-            $('#description').summernote('disable');
+          //  $('#description').summernote('disable');
 
             $('#delete_workshop').on('click', function (e) {
                 e.preventDefault();

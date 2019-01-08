@@ -26,6 +26,7 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => 'is_admin',
     Route::resource('workshops', 'WorkshopController');
 
     Route::get('event-registrations', 'EventRegistrationController@index')->name('event_regs.index');
+    Route::get('workshop-registrations', 'WorkshopRegistrationController@index')->name('workshop_regs.index');
     Route::get('payments', 'PaymentController@index')->name('payments.index');
 
     // facebook sharing
@@ -55,5 +56,10 @@ Route::get('/management', 'Home@management');
 Route::group(['middleware' => 'no-cache', 'as' => 'event.'], function () {
     Route::post('/event/register', 'EventRegistrationController@store')->name('register');
     Route::post('/event/payment-callback', 'EventRegistrationController@paytmCallback')->name('payment.callback');
+}); 
+
+Route::group(['middleware' => 'no-cache', 'as' => 'workshop.'], function () {
+    Route::post('/workshop/register', 'WorkshopRegistrationController@store')->name('register');
+    Route::post('/workshop/payment-callback', 'WorkshopRegistrationController@paytmCallback')->name('payment.callback');
 }); 
 
