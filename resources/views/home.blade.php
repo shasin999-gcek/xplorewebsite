@@ -3,7 +3,7 @@
 
 @section('content')
 <div class="wrapper">
-        <img src="assets/img/dots.png" class="dots">
+        <img src="{{ asset('/img/dots.png')}}" class="dots">
         
     <div class="container">
       <div class="row">
@@ -21,7 +21,7 @@
             </div>
             <div class="card-footer text-center">
             
-            <h5  class="text-info">{{ url('?ref_code=').Auth::user()->referral_id }}</h5> <br><br>
+            <h5 id="refid" class="text-info" data-toggle="tooltip" data-placement="top" title="Copy" data-container="body" data-animation="true" data-original-title="Copy" onclick="event.preventDefault(); copyRefToClipboard('refid','{{ url('?ref_code=').Auth::user()->referral_id }}');">{{ url('?ref_code=').Auth::user()->referral_id }}</h5> <br><br>
 
             <a href="whatsapp://send" data-text="Join the biggest event:
 
@@ -148,4 +148,5 @@ Register using this link
         </div>
       </div>
     </div>
+    
 @endsection
