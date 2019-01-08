@@ -139,7 +139,7 @@
                                      <div class="col-md-6">
                                             <div class="card card-coin card-plain">
                                               <div class="card-header">
-                                                <img src="{{ asset('img/me.png') }}" class="img-center img-fluid">
+                                                <img src="{{ asset('img/robotics.png') }}" class="img-center img-fluid">
                                               </div>
                                               <div class="card-body">
                                                 <div class="row">
