@@ -324,14 +324,14 @@ function doDotsCalculations(el) {
   @endif
   <script>
 
-        function copyRefToClipboard(refId,url) {
+        function copyRefToClipboard(url) {
             if('clipboard' in navigator) {
                 navigator.clipboard.writeText(url)
                     .then(() => {
-                        var copyIcon = document.getElementById(refId);
-                        $(refId).tooltip('hide');
+                        var copyIcon = document.getElementById('refid');
+                        $('#refid').tooltip('hide');
                         copyIcon.setAttribute('data-original-title', 'Copied')
-                        $(refId).tooltip('show');
+                        $('#refid').tooltip('show');
                     });
             }
         }

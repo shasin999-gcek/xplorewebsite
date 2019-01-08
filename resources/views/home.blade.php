@@ -21,7 +21,7 @@
             </div>
             <div class="card-footer text-center">
             
-            <h5 id="refid" class="text-info" data-toggle="tooltip" data-placement="top" title="Copy" data-container="body" data-animation="true" data-original-title="Copy" onclick="event.preventDefault(); copyRefToClipboard('refid','{{ url('?ref_code=').Auth::user()->referral_id }}');">{{ url('?ref_code=').Auth::user()->referral_id }}</h5> <br><br>
+            <h5 id="refid" class="text-info" data-toggle="tooltip" data-placement="top" title="Copy" data-container="body" data-animation="true" data-original-title="Copy" onclick="event.preventDefault(); copyRefToClipboard('{{ url('?ref_code=').Auth::user()->referral_id }}');">{{ url('?ref_code=').Auth::user()->referral_id }}</h5> <br><br>
 
             <a href="whatsapp://send" data-text="Join the biggest event:
 
