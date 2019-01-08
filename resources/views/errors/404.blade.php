@@ -25,7 +25,7 @@
         <div class="container">
             <div class="content-center brand">
                 <img class="image-404" src="http://salehriaz.com/404Page/img/404.svg" width="300px">
-                <a href="http://salehriaz.com/404Page/404.html" class="btn-go-home" target="_blank">GO BACK HOME</a>
+                <a href="{{ url('/') }}" class="btn-go-home">GO BACK HOME</a>
             </div>
         </div>
     </div>

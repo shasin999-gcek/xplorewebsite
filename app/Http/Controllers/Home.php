@@ -54,7 +54,9 @@ class Home extends Controller
     }
 
     public function management() {
+        $management_event = Category::with('events')->where('short_name', 'management')->firstOrFail();
         $data = [
+            'management_event' => $management_event,
             'active_menu' => 'management'
         ];
         return view('management',$data);
