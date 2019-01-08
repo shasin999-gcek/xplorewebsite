@@ -1,17 +1,18 @@
-@extends('layouts.master',['bodyclass' => 'register-page bkg-yellow','active_menu' => 'login','navbar' => 'bkg-yellow'])
+@extends('layouts.master',['bodyclass' => 'register-page','active_menu' => 'login','navbar' => '', 'nofooter' => ''])
+
 
 @section('metatags')
   <meta property="og:tags">
 
-  <meta property="og:title" content="{{ $event->name }} By {{ $event->category->name }}"/>
+  <meta property="og:title" content="{{ $workshop->name }} By {{ $workshop->category->name }}"/>
 
-  <meta property="og:description" content="{{ str_before($event->description, '.') }}">
+  <meta property="og:description" content="{{ str_before($workshop->description, '.') }}">
 
 
   <meta property="og:type" content="article"/>
-  <meta property="og:image" content="{{ asset('storage/' . $event->poster_image) }}"/>
+  <meta property="og:image" content="{{ asset('storage/' . $workshop->poster_image) }}"/>
   <meta property="og:site_name" content="Xplore 19"/>
-  <meta property="og:url" content="{{ route('display_event', ['category' => $event->category->short_name, 'slug' => $event->slug]) }}"/>
+  <meta property="og:url" content="{{ route('display_workshop', ['category' => $workshop->category->short_name, 'slug' => $workshop->slug]) }}"/>
 
   <meta property="fb:app_id" content="300872960546512"/>
   <meta property="fb:pages" content="335205793240413"/>
@@ -20,7 +21,6 @@
   <meta property="article:publisher" content="https://www.facebook.com/xplore19"/>
 
 @endsection
-
 
 @section('content')
 <div class="wrapper">
@@ -31,9 +31,9 @@
             
             
           <div class="col-md-4 ml-auto mr-auto text-center">
-              <img src="{{ asset('storage/' . $event->poster_image) }}" class="img-raised img-responsive">
+              <img src="{{ asset('storage/' . $workshop->poster_image) }}" class="img-raised img-responsive">
               <hr>
-              <a href="{{ asset('storage/' . $event->pdf_path) }}" class="btn btn-simple">Download PDF</a>
+              <a href="{{ asset('storage/' . $workshop->pdf_path) }}" class="btn btn-simple">Download PDF</a>
               <div class="btn-wrapper profile">
                         <a target="_blank" href="#" class="btn btn-icon btn-neutral btn-round btn-simple" data-toggle="tooltip" data-original-title="Follow us">
                           <i class="fab fa-twitter"></i>
@@ -50,27 +50,26 @@
                   <div class="row">
                     <div class="col-md-9">
                       <hr class="line-info">
-                      <h1>{{ $event->name }}
+                      <h1>{{ $workshop->name }}
                       </h1>
                     </div>
                   </div>
                   
                 </div>
                 <div class="container">
-                    <p style="white-space: pre-line;">{{ $event->description }}</p><br><br>
-                    <h4>Date: {{ $event->date->format('D d-M-Y h:i:s') }} </h4> <br>
-					<h4> First Price :  {{ $event->f_price_money }} <br>
-					Second Price :  {{ $event->s_price_money }} <br>
-					Third Price :  {{ $event->t_price_money }}</h4>
+                    <p  style="white-space: pre-line;">{{ $workshop->description }}</p><br><br>
+				
 
                     <br><br>
-					<h3> Registration Fee: {{ $event->reg_fee }}</h3>
+                <h4>Starts On: {{ $workshop->starts_on->format('D d-M-Y h:i') }} <br>
+                Ends On: {{ $workshop->ends_on->format('D d-M-Y h:i') }}</h4> 
+					<h3> Registration Fee: {{ $workshop->reg_fee }}</h3>
 
-              <button class="btn btn-info btn-lg " onclick="event.preventDefault(); document.getElementById('event_reg_form').submit();">Buy Ticket</button><br>
+              <button class="btn btn-info btn-lg " onclick="event.preventDefault(); document.getElementById('workshop_reg_form').submit();">Buy Ticket</button><br>
 
-              <form id="event_reg_form" method="post" action="{{ route('event.register') }}" style="display: none;">
+              <form id="workshop_reg_form" method="post" action="{{ route('workshop.register') }}" style="display: none;">
                 {{ csrf_field() }}
-                <input type="text" name="event_id" value="{{ $event->id }}">
+                <input type="text" name="workshop_id" value="{{ $workshop->id }}">
               </form>
 
                 </div>

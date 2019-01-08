@@ -103,7 +103,7 @@
                             <label for="name" class="col-md-2 control-label">Event Description</label>
 
                             <div class="col-md-6">
-                                <textarea id="description" name="description"  required autofocus>{{ old('description', $event->description) }}</textarea>
+                                <textarea id="description" name="description"  rows="5" cols="35" required autofocus>{{ old('description', $event->description) }}</textarea>
 
                                 @if ($errors->has('description'))
                                     <span class="help-block">
@@ -169,15 +169,15 @@
                             </div>
                         </div>
 
-                        <div class="form-group{{ $errors->has('datetime') ? ' has-error' : '' }}">
-                            <label for="datetime" class="col-md-2 control-label">Date & Time</label>
+                        <div class="form-group{{ $errors->has('date') ? ' has-error' : '' }}">
+                            <label for="date" class="col-md-2 control-label">Date & Time</label>
 
                             <div class="col-md-6">
-                                <input type="datetime-local" class="form-control" id="datetime" name="datetime"  required disabled>
+                                <input type="datetime-local" class="form-control" id="date" name="date" value="{{ old('date', $event->date) }}" required>
 
-                                @if ($errors->has('datetime'))
+                                @if ($errors->has('date'))
                                     <span class="help-block">
-                                        <strong>{{ $errors->first('datetime') }}</strong>
+                                        <strong>{{ $errors->first('date') }}</strong>
                                     </span>
                                 @endif
                             </div>
@@ -211,6 +211,20 @@
                             </div>
                         </div>
 
+                         <div class="form-group{{ $errors->has('pdf_file') ? ' has-error' : '' }}">
+                            <label for="pdf_file" class="col-md-2 control-label">Upload PDF</label>
+
+                            <div class="col-md-6">
+                                <input type="file" class="form-control" id="pdf_file" name="pdf_file" value="{{ old('pdf_file') }}" required autofocus>
+
+                                @if ($errors->has('pdf_file'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('pdf_file') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+
                         <div class="form-group">
                             <div class="col-md-6 col-md-offset-2">
                                 <button type="submit" class="btn btn-primary">
@@ -235,21 +249,21 @@
             jQuery('#category_id').select2().select2('val', '{{ old('category_id', $event->category_id) }}' );
             jQuery('#type').select2();
 
-            jQuery('#description').summernote({
-                toolbar: [
-                    // [groupName, [list of button]]
-                    ['style', ['bold', 'italic', 'underline', 'strikethrough', 'clear']],
-                    ['font', ['hr', 'undo', 'redo']],
-                    ['fontsize', ['fontsize']],
-                    ['color', ['color']],
-                    ['para', ['ul', 'ol', 'paragraph']],
-                ],
-                placeholder: 'write description...',
-                height: 200,
-                minHeight: 200,
-                maxHeight: 200,
-                focus: false
-            });
+            // jQuery('#description').summernote({
+            //     toolbar: [
+            //         // [groupName, [list of button]]
+            //         ['style', ['bold', 'italic', 'underline', 'strikethrough', 'clear']],
+            //         ['font', ['hr', 'undo', 'redo']],
+            //         ['fontsize', ['fontsize']],
+            //         ['color', ['color']],
+            //         ['para', ['ul', 'ol', 'paragraph']],
+            //     ],
+            //     placeholder: 'write description...',
+            //     height: 200,
+            //     minHeight: 200,
+            //     maxHeight: 200,
+            //     focus: false
+            // });
         });
     </script>
 @endsection

@@ -83,7 +83,7 @@
                             <label for="name" class="col-md-2 control-label">Event Description</label>
 
                             <div class="col-md-6">
-                                <textarea id="description" readonly>{{ $event->description }}</textarea>
+                                <textarea id="description" rows="5" cols="35" readonly>{{ $event->description }}</textarea>
 
                             </div>
                         </div>
@@ -137,6 +137,15 @@
                         </div>
 
                         <div class="form-group">
+                            <label class="col-md-2 control-label">Date & Time</label>
+
+                            <div class="col-md-6">
+                                <input type="text" class="form-control" value="{{ $event->date->toDayDateTimeString() }}" readonly>
+
+                            </div>
+                        </div>
+
+                        <div class="form-group">
                             <label for="poster_image" class="col-md-2 control-label">Poster</label>
 
                             <div class="col-md-6">
@@ -149,6 +158,14 @@
 
                             <div class="col-md-6">
                                 <img src="{{ asset('storage/' . $event->thumbnail_image) }}" alt="..." class="img-thumbnail">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="pdf_file" class="col-md-2 control-label">More Details</label>
+
+                            <div class="col-md-6">
+                                <a href="{{ asset('storage/' . $event->pdf_path) }}" alt="..." class="btn btn-primary">View</a>
                             </div>
                         </div>
 
@@ -166,23 +183,23 @@
     <script src="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.11/summernote.js"></script>
     <script>
         jQuery(document).ready(function () {
-            jQuery('#description').summernote({
-                toolbar: [
-                    // [groupName, [list of button]]
-                    ['style', ['bold', 'italic', 'underline', 'strikethrough', 'clear']],
-                    ['font', ['hr', 'undo', 'redo']],
-                    ['fontsize', ['fontsize']],
-                    ['color', ['color']],
-                    ['para', ['ul', 'ol', 'paragraph']],
-                ],
-                placeholder: 'write description...',
-                height: 200,
-                minHeight: 200,
-                maxHeight: 200,
-                focus: false
-            });
+            // jQuery('#description').summernote({
+            //     toolbar: [
+            //         // [groupName, [list of button]]
+            //         ['style', ['bold', 'italic', 'underline', 'strikethrough', 'clear']],
+            //         ['font', ['hr', 'undo', 'redo']],
+            //         ['fontsize', ['fontsize']],
+            //         ['color', ['color']],
+            //         ['para', ['ul', 'ol', 'paragraph']],
+            //     ],
+            //     placeholder: 'write description...',
+            //     height: 200,
+            //     minHeight: 200,
+            //     maxHeight: 200,
+            //     focus: false
+            // });
 
-            $('#description').summernote('disable');
+           // $('#description').summernote('disable');
 
             $('#delete_event').on('click', function (e) {
                 e.preventDefault();

@@ -6,9 +6,15 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <link rel="apple-touch-icon" sizes="76x76" href="./assets/img/apple-icon.png">
   <link rel="icon" type="image/png" href="./assets/img/favicon.png">
+
+  <meta name="robots" content="index,archive,follow">
+
   <title>
     Xplore'19
   </title>
+
+  @yield('metatags')
+
   <!--     Fonts and icons     -->
   <link href="https://fonts.googleapis.com/css?family=Poppins:200,300,400,600,700,800" rel="stylesheet" />
   <link href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet">
@@ -110,7 +116,8 @@
 
   @yield('content')
 
-  <footer class="footer {{$bodyclass}} @php $nofooter = NULL; @endphp @if($nofooter) {{ $nofooter }} @endif">
+  <footer class="footer {{$bodyclass}} @isset($nofooter) {{ $nofooter }} @endisset">
+
       <div class="container">
         <div class="row">
           <div class="col-md-3">
@@ -203,7 +210,8 @@
   <script src="{{ URL::asset('js/main.min.js?v=1.0.0')}}" type="text/javascript"></script>
   <script src="{{ URL::asset('js/plugins/rellax.min.js')}}" type="text/javascript"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
-  
+  <script type="text/javascript">if(typeof wabtn4fg==="undefined"){wabtn4fg=1;h=document.head||document.getElementsByTagName("head")[0],s=document.createElement("script");s.type="text/javascript";s.src="{{ asset('js/whatsapp-button.js') }}";h.appendChild(s);}</script>
+
   <script>
     $(document).ready(function() {
       blackKit.initDatePicker();

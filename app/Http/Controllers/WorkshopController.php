@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Workshop;
 use Illuminate\Http\Request;
+use App\Category;
 
 class WorkshopController extends Controller
 {
@@ -44,13 +45,17 @@ class WorkshopController extends Controller
      * @param  \App\Workshop  $workshop
      * @return \Illuminate\Http\Response
      */
-    public function show($slug)
+    public function show($category, $slug)
     {
         //
+        $workshop = Workshop::with('category')->where('slug', $slug)->firstOrFail();
 
-       $workshop = Workshop::with('category')->where('slug', $slug)->first();
+        if($workshop->category->short_name != $category)
+        {
+            abort(404);
+        }
 
-       return view('testpreview_workshop', ['workshop' => $workshop]);
+        return view('workshop_show', ['workshop' => $workshop]);
     }
 
     /**
@@ -89,11 +94,16 @@ class WorkshopController extends Controller
 
     public function getWorkshopsByCategory($category) {
 
-        $event_group = Category::with('workshops')->where('short_name', $category)->firstOrFail();
+        $workshop_group = Category::with('workshops')->where('short_name', $category)->firstOrFail();
+        $workshop_group->workshops->each(function($workshop) {
+            $workshop->duration = $workshop->starts_on->format('d') . ' - ' . $workshop->ends_on->format('d') . ' ' . $workshop->ends_on->format('M'); 
+        });
+
         $data = [
-            'event_group' => $event_group,
+            'workshop_group' => $workshop_group,
             'active_menu' => 'workshop'
         ];
-        return view('event_index',$data);
+
+        return view('workshop_index',$data);
     }
 }

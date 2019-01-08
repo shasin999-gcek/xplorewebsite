@@ -14,8 +14,24 @@ class CreateWorkshopRegistrationsTable extends Migration
     public function up()
     {
         Schema::create('workshop_registrations', function (Blueprint $table) {
-            $table->increments('id');
+            $table->unsignedInteger('user_id');
+            $table->unsignedInteger('workshop_id');
+            $table->string('order_id');
+            $table->boolean('is_reg_success')->default(false);
             $table->timestamps();
+        });
+
+        Schema::table('workshop_registrations', function (Blueprint $table) {
+           $table->foreign('user_id')
+               ->references('id')
+               ->on('users')
+               ->onDelete('cascade');
+
+            $table->foreign('workshop_id')
+               ->references('id')
+               ->on('workshops')
+               ->onDelete('cascade');
+
         });
     }
 
@@ -26,6 +42,11 @@ class CreateWorkshopRegistrationsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('workshop_registrations');
+        Schema::table('workshop_registrations', function (Blueprint $table) {
+            $table->dropForeign('workshop_registrations_user_id_foreign');
+            $table->dropForeign('workshop_registrations_workshop_id_foreign');
+         });
+ 
+         Schema::dropIfExists('workshop_registrations');
     }
 }
