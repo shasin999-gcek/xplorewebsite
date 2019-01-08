@@ -21892,10 +21892,11 @@ input.datetimepicker[data-color="yellow"]+.bootstrap-datetimepicker-widget.dropd
 
 .bkg-yellow {
   background-color: #130f40;
-  background-image: linear-gradient(315deg, #130f40 0%, #000000 74%);
+  background-image: linear-gradient(315deg, #130f40 0%, #000000 74%);  
+}
 
-  
-  
+.h3-contact {
+  margin-bottom: 1px;
 }
 
 /*# sourceMappingURL=kit-free.css.map */
