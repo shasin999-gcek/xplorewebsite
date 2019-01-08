@@ -127,22 +127,22 @@
           <div class="col-md-3">
             <ul class="nav">
               <li class="nav-item">
-                <a href="./index.html" class="nav-link">
+                <a href="{{URL::to('/')}}" class="nav-link">
                   Home
                 </a>
               </li>
               <li class="nav-item">
-                <a href="" class="nav-link">
+                <a href="{{URL::to('/technical')}}" class="nav-link">
                   Technical
                 </a>
               </li>
               <li class="nav-item">
-                <a href="" class="nav-link">
+                <a href="{{URL::to('/management')}}" class="nav-link">
                   Management
                 </a>
               </li>
               <li class="nav-item">
-                <a href="" class="nav-link">
+                <a href="{{URL::to('/cultural')}}" class="nav-link">
                   Cultural
                 </a>
               </li>
@@ -151,22 +151,22 @@
           <div class="col-md-3">
             <ul class="nav">
               <li class="nav-item">
-                <a href="" class="nav-link">
+                <a href="{{URL::to('/contact')}}" class="nav-link">
                   Contact Us
                 </a>
               </li>
               <li class="nav-item">
-                <a href="" class="nav-link">
+                <a href="{{URL::to('/about')}}" class="nav-link">
                   About Us
                 </a>
               </li>
               <li class="nav-item">
-                <a href="" class="nav-link">
+                <a href="{{URL::to('/sponsors')}}" class="nav-link">
                   Sponsors
                 </a>
               </li>
               <li class="nav-item">
-                <a href="" class="nav-link">
+                <a href="{{URL::to('/register')}}" class="nav-link">
                   Register/Login
                 </a>
               </li>
@@ -182,7 +182,7 @@
                 <i class="fab fa-facebook-square"></i>
               </a>
               <a target="_blank" href="" class="btn btn-icon btn-neutral  btn-round btn-simple" data-toggle="tooltip" data-original-title="Follow us">
-                <i class="fab fa-dribbble"></i>
+                <i class="fab fa-instagram"></i>
               </a>
             </div>
           </div>
@@ -220,12 +220,13 @@
 
     
   </script>
+  
+  @if($active_menu == 'dashboard')
   <script>
         var rellax = new Rellax('.rellax', {
     center: true
   }); 
   </script>
-  @if($active_menu == 'dashboard')
   <script>
     $(document).ready(function(){
   $(".owl-carousel").owlCarousel({
@@ -255,7 +256,8 @@
   });
   });
   </script>
-  @else
+  @endif
+  @if($active_menu == 'management')
   <script>
     $(document).ready(function(){
        
@@ -320,6 +322,26 @@ function doDotsCalculations(el) {
  
   </script>
   @endif
+  <script>
+
+        function copyRefToClipboard(url) {
+            if('clipboard' in navigator) {
+                navigator.clipboard.writeText(url)
+                    .then(() => {
+                        var copyIcon = document.getElementById('refid');
+                        $('#refid').tooltip('hide');
+                        copyIcon.setAttribute('data-original-title', 'Copied')
+                        $('#refid').tooltip('show');
+                    });
+            }
+        }
+      
+        $(document).ready(function() {
+            $('[data-toggle="tooltip"]').tooltip();
+
+            
+        });
+    </script>
 </body>
 
 </html>
