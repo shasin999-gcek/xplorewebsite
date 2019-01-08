@@ -20,6 +20,8 @@ class CategoriesTableSeeder extends Seeder
             ['short_name' => 'civil', 'name' => 'Civil Engineering'],
             ['short_name' => 'cultural', 'name' => 'Cultural'],
             ['short_name' => 'robotics', 'name' => 'Robotics'],
+            ['short_name' => 'cultural-shows', 'name' => 'Cultural Shows'],
+            ['short_name' => 'management', 'name' => 'Management Events'],
             
         ]);
     }

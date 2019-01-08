@@ -13,13 +13,13 @@
                 <div class="flex-fill">
                     <div class="flex-disp">
                         <img src="{{ asset('img/probro.png') }}" class="img-fluid"/>
-                        <a href="{{ route('display_event', ['category' => 'show', 'slug' => 'sunburn-progressive-brothers']) }}" class="btn btn-danger btn-lg cultural-btn">Show Details</a>
+                        <a href="{{ route('display_event', ['category' => 'cultural-shows', 'slug' => 'sunburn-progressive-brothers']) }}" class="btn btn-danger btn-lg cultural-btn">Show Details</a>
                     </div>
                 </div>
                 <div class="flex-fill">
                     <div class="flex-disp">
                         <img src="{{ asset('img/masaco.png') }}" class="img-fluid"/>
-                        <a href="{{ route('display_event', ['category' => 'show', 'slug' => 'masala-coffee']) }}" class="btn btn-danger btn-lg cultural-btn">Show Details</a>
+                        <a href="{{ route('display_event', ['category' => 'cultural-shows', 'slug' => 'masala-coffee']) }}" class="btn btn-danger btn-lg cultural-btn">Show Details</a>
                     </div>
                 </div>
             </div>

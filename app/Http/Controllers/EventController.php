@@ -58,6 +58,11 @@ class EventController extends Controller
             abort(404);
         }
 
+        if($category == 'cultural-shows') 
+        {
+            return view('cultural_shows', ['event' => $event]);
+        }
+
         return view('event_show', ['event' => $event]);
     }
 
