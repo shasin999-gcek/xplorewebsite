@@ -64,15 +64,21 @@
 					Third Price :  {{ $event->t_price_money }}</h4>
 
                     <br><br>
-					<h3> Registration Fee: {{ $event->reg_fee }}</h3>
-
+          <h3> Registration Fee: {{ $event->reg_fee }}</h3>
+          
+          @if(Route::has('login'))
+              @auth
               <button class="btn btn-info btn-lg " onclick="event.preventDefault(); document.getElementById('event_reg_form').submit();">Buy Ticket</button><br>
 
               <form id="event_reg_form" method="post" action="{{ route('event.register') }}" style="display: none;">
                 {{ csrf_field() }}
                 <input type="text" name="event_id" value="{{ $event->id }}">
               </form>
-
+              @else
+              <a href="{{ route('login') }}" class=" btn btn-lg btn-warning"  >
+                <i class="tim-icons icon-cloud-download-93"></i> Login </a><br>
+                @endauth
+                @endif
                 </div>
               </section>
   </div></div></div>

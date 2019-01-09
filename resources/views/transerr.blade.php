@@ -22,7 +22,7 @@
             <div class="card card-coin card-plain">
               <div class="card-header">
                 <img src="{{ asset('img/fail.png') }}" class="img-center img-fluid rounded-circle">
-                <h2 class="title">Transaction Failed</h2>
+                <h2>Transaction Failed</h2>
               </div>
               <div class="card-body">
                 <h5>Transaction Id: {{ $transId }}</h5>

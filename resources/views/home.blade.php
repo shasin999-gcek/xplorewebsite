@@ -23,11 +23,10 @@
             
             <button id="refid" class="btn btn-info" data-toggle="tooltip" data-placement="top" title="Copy" data-container="body" data-animation="true" data-original-title="Copy" onclick="event.preventDefault(); copyRefToClipboard('{{ url('?ref_code=').Auth::user()->referral_id }}');">Invite Friends</button> <br><br>
 
-            <a href="whatsapp://send" data-text="Join the biggest event:
+            <a href="whatsapp://send" data-text="Are you ready to breathe in the excitement to Xplore the Unexplored?
+Then tune into Xplore'19, The 5th National Techno Management Cultural Festival of Govt. College of Engineering Kannur from February 22nd - 24th 2019!
 
-Xplore 19
-
-Register using this link
+Dabble in the extraordinary!
 
 " data-href="{{ url('?ref_code=').Auth::user()->referral_id }}" class="wa_btn wa_btn_l" style="display:none">Share</a>
 

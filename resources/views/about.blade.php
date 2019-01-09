@@ -16,7 +16,7 @@
                         Xplore promises a host of conclaves, competitions and workshops centered around various interdisciplinary themes enriching  the experience of innovation, competition and learning.</p>                
               </div>
               <div class="col-lg-4 col-md-6 ml-auto mr-auto ">
-                <div class="content-center brand d-xs-none" style="width:100%">
+                <div class="content-center brand no-mob" style="width:100%">
                         <img src="{{ asset('img/Xplore.svg')}}" class="img-fluid img-responsive" width="300" height="300">
                         <img src="{{ asset('img/logo.svg') }}" class="img-fluid img-responsive" width="250" height="200">
                 </div>
@@ -29,7 +29,7 @@
                         <div class="row justify-content-between">
                           <div class="col-md-6">
                             <div class="row justify-content-between align-items-center">
-                                <div class="content-center brand" style="width:100%">
+                                <div class="content-center brand no-mob" style="width:100%">
                                     <img src="{{ asset('img/clg.png')}}" class="img-fluid img-responsive" width="300" height="300">
                                 </div>
                             </div>
@@ -39,9 +39,9 @@
                             <h5 class="text-on-back">02</h5>
                             <p class="profile-description text-left">An artist of considerable range, Ryan — the name taken by Melbourne-raised, Brooklyn-based Nick Murphy — writes, performs and records all of his own music, giving it a warm, intimate feel with a solid groove structure. An artist of considerable range.</p>
                             <div class="btn-wrapper pt-3">
-                              <button href="javascript:void(0)" class="btn btn-simple btn-primary">
+                              <a href="https://gcek.ac.in" class="btn btn-simple btn-primary">
                                 <i class="tim-icons icon-book-bookmark"></i> Visit Website
-                              </button>
+                              </a>
                             </div>
                           </div>
                         </div>
