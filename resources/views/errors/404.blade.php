@@ -8,10 +8,10 @@
                     
                     <div class="earth-moon">
                         
-                        <img class="object_moon" src="http://salehriaz.com/404Page/img/moon.svg" width="80px">
+                        <img class="object_moon" src="{{ asset('img/moon.svg') }}" width="80px">
                     </div>
                     <div class="box_astronaut">
-                        <img class="object_astronaut" src="http://salehriaz.com/404Page/img/astronaut.svg" width="70px">
+                        <img class="object_astronaut" src="{{ asset('img/astronaut.svg') }}" width="70px">
                     </div>
         </div>
         <div class="glowing_stars">
@@ -24,7 +24,7 @@
                 </div>
         <div class="container">
             <div class="content-center brand">
-                <img class="image-404" src="http://salehriaz.com/404Page/img/404.svg" width="300px">
+                <img class="image-404" src="{{ asset('img/404.svg') }}" width="300px">
                 <a href="{{ url('/') }}" class="btn-go-home">GO BACK HOME</a>
             </div>
         </div>

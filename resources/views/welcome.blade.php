@@ -54,7 +54,7 @@
                   </h3>
                   <p class="text-white mb-3">Management Conclave of Xplore’19 will offer a platform that brings together industry leaders, budding entrepreneurs, inspiring personalities, and motivated students to discuss, debate and re-think business and society through motley of competitions & events.</p>
                   <div class="btn-wrapper">
-                    <a href="#" class="btn btn-info">Show Details</a>
+                    <a href="{{URL::to('/management')}} " class="btn btn-info">Show Details</a>
                   </div>
                 </div>
                 <div class="col-lg-6 mb-lg-auto">
@@ -81,7 +81,7 @@
                           </h3>
                           <p class="text-white mb-3">The Cultural Conclave of Xplore'19 is a cathartic and therapeutic medium to let go of all the inhibitions and set the stage ablaze with immense talent. With a broad spectrum of events, ranging from varied genres like dramatics to literary, sizzling dance competitions to heated sports matches, the conclave offers a perfect blend of arts, sports, and culture. The interesting repertoire of pro-nights and shows, enriched with the presence of gifted artists, serves just right to tantalize everyone.</p>
                           <div class="btn-wrapper">
-                            <a href="" class="btn btn-warning">Show Details</a>
+                            <a href="{{URL::to('/cultural')}}" class="btn btn-warning">Show Details</a>
                           </div>
                     </div>
                     </div>

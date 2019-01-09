@@ -90,7 +90,7 @@
                 
                     <div class="dropdown">
                         <button class="btn btn-success btn-sm dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                          Hello User
+                          Hello {{ Auth::user()->name }}
                         </button>
                       <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                         <a class="dropdown-item" href="{{ url('/home') }}">View Profile</a>
@@ -187,8 +187,12 @@
             </div>
           </div>
         </div>
+        
       </div>
     </footer>
+    <div class="container @isset($nofooter) {{ $nofooter }} @endisset">
+          <h5 class="text-center">Designed and Developed with <i class="tim-icons icon-heart-2"></i> By Mohammed Shazin</h5>
+    </div>
   </div>
   
   <!--   Core JS Files   -->
@@ -212,6 +216,7 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
   <script type="text/javascript">if(typeof wabtn4fg==="undefined"){wabtn4fg=1;h=document.head||document.getElementsByTagName("head")[0],s=document.createElement("script");s.type="text/javascript";s.src="{{ asset('js/whatsapp-button.js') }}";h.appendChild(s);}</script>
 
+  
   <script>
     $(document).ready(function() {
       blackKit.initDatePicker();
