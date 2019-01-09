@@ -1,47 +1,65 @@
-@extends('layouts.app')
+@extends('layouts.master',['bodyclass' => 'register-page','active_menu' => 'login' ,'navbar' => ' fixed-top'])
 
 @section('content')
-<div class="container">
-    <div class="row">
-        <div class="col-md-8 col-md-offset-2">
-            <div class="panel panel-default">
-                <div class="panel-heading">Reset Password</div>
-
-                <div class="panel-body">
-                    @if (session('status'))
-                        <div class="alert alert-success">
-                            {{ session('status') }}
-                        </div>
-                    @endif
-
-                    <form class="form-horizontal" method="POST" action="{{ route('password.email') }}">
-                        {{ csrf_field() }}
-
-                        <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
-                            <label for="email" class="col-md-4 control-label">E-Mail Address</label>
-
-                            <div class="col-md-6">
-                                <input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}" required>
-
-                                @if ($errors->has('email'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('email') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <div class="col-md-6 col-md-offset-4">
-                                <button type="submit" class="btn btn-primary">
-                                    Send Password Reset Link
-                                </button>
-                            </div>
-                        </div>
-                    </form>
+<div class="wrapper">
+    <div class="page-header">
+      <div class="page-header-image"></div>
+      <div class="content">
+        <div class="container">
+          <div class="row">
+            
+            <div class="col-lg-4 col-md-4 offset-lg-4 offset-md-4" >
+              <div id="square7" class="square square-7"></div>
+              <div id="square8" class="square square-8"></div>
+              @if ($errors->has('email'))
+                    <div class="alert alert-danger alert-with-icon">
+                        
+                        <button type="button" aria-hidden="true" class="close" data-dismiss="alert" aria-label="Close">
+                            <i class="tim-icons icon-simple-remove"></i>
+                        </button>
+                        
+                        <span><b> Error! - </b> {{ $errors->first('email') }}</span>
+                    </div>
+                @endif
+               
+              
+              <div class="card card-register">
+                <div class="card-header">
+                  <img class="card-img" src="{{ asset('img/square1.png') }}" alt="Card image">
+                  <h4 class="card-title">Reset</h4>
                 </div>
+                <div class="card-body">
+                  <form class="form" method="POST" action="{{ route('password.email') }}">
+                  {{ csrf_field() }}
+                    <div class="input-group {{ $errors->has('email') ? ' has-error' : '' }}">
+                      <div class="input-group-prepend">
+                        <div class="input-group-text">
+                          <i class="tim-icons icon-email-85"></i>
+                        </div>
+                      </div>
+                      <input type="email" placeholder="Email" class="form-control" name="email">
+                    </div>
+                </div>
+                <div class="card-footer text-center">
+                  <button  type="submit" class="btn btn-info btn-round btn-lg">Send Password Link</button>
+                </div>
+                </form>
+              </div>
             </div>
+          </div>
+          <div id="square1" class="square square-1"></div>
+         
+          
         </div>
+      </div>
     </div>
-</div>
+     <section>
+                  <div class="flowers-container">
+                      <div class="flowers-left"></div>
+                      <div class="flowers-right"></div>
+                    </div>
+              </section> 
+
+
+
 @endsection

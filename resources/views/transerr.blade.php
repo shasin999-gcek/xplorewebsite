@@ -17,7 +17,7 @@
 <body class="profile-page">
     <div class="wrapper">
         <div class="page-header">
-        <div class="container">
+        <div class="container ">
             <div class="content-center brand">
             <div class="card card-coin card-plain">
               <div class="card-header">
