@@ -59,7 +59,8 @@
                           <i class="tim-icons icon-email-85"></i>
                         </div>
                       </div>
-                      <input type="email" placeholder="Email" class="form-control" name="email">
+                      <input type="email" placeholder="Email" class="form-control" name="email" value="{{ $email or old('email') }}"
+required autofocus>
                     </div>
                     <div class="input-group {{ $errors->has('password') ? ' has-error' : '' }}">
                       <div class="input-group-prepend">
