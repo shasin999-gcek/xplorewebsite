@@ -22,7 +22,7 @@ class CreatePaymentsTable extends Migration
             $table->string('CURRENCY');
             $table->string('STATUS');
             $table->string('RESPCODE');
-            $table->string('RESPMSG');
+            $table->text('RESPMSG');
             $table->string('TXNDATE');
             $table->string('GATEWAYNAME');
             $table->string('BANKNAME');

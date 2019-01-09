@@ -25,14 +25,16 @@
                 <h2>Transaction Failed</h2>
               </div>
               <div class="card-body">
+                <h5>Transaction Id: {{ $transId }}</h5>
+                <h5>Order Id: {{ $orderId }}</h5>
                 <p>
-                resolve. Impression to discretion understood to we interested he excellence. Him remarkably use projection collecting. Going about eat forty world has round miles.
+                {{ $respMsg }}
                 </p>
-                
+                <h4 class="text-danger">For further assisstance contact: 9645100464</h4>
               </div>
               <div class="card-footer">
-                  <a href="#" class="btn btn-danger">Cancel</a>
-                  <a href="#" class="btn btn-success">Try Again</a>
+                  <a href="/" class="btn btn-danger">Cancel</a>
+                  <a href="/" class="btn btn-success">Try Again</a>
               </div>
             </div>
             </div>
