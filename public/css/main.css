@@ -21844,14 +21844,14 @@ input.datetimepicker[data-color="yellow"]+.bootstrap-datetimepicker-widget.dropd
 }
 
 .multiple-stars{
-  background: url('http://salehriaz.com/404Page/img/overlay_stars.svg');
+  background: url('../img/overlay_stars.svg');
   background-repeat: repeat;
   background-size: contain;
   background-position: left top;
 }
 
 .bg-purple{
-  background: url(http://salehriaz.com/404Page/img/bg_purple.png);
+  background: url('../img/b_purple.png');
   background-repeat: repeat-x;
   background-size: cover;
   background-position: left top;
@@ -21898,5 +21898,16 @@ input.datetimepicker[data-color="yellow"]+.bootstrap-datetimepicker-widget.dropd
 .h3-contact {
   margin-bottom: 1px;
 }
+
+.no-mob {
+  display: block;
+}
+
+@media screen and (max-width:768px) {
+  .no-mob {
+    display: none;
+  }
+}
+
 
 /*# sourceMappingURL=kit-free.css.map */
