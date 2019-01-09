@@ -17,7 +17,7 @@ $factory->define(App\User::class, function (Faker $faker) {
     return [
         'name' => $faker->name,
         'email' => $faker->unique()->safeEmail,
-        'password' => '$2y$10$TKh8H1.PfQx37YgCzwiKb.KjNyWgaHb9cbcoQgdIVFlYg7B77UdFm', 
+        'password' => '$2y$10$VJqzxaM0umU7FZjXWcIem.ROp3.13mjZhLIj6i7TBQ/mCtLm4bnfW', // $@170vexplore19@$
         'firebase_uid' => '1234',// secret
         'remember_token' => str_random(10),
     ];
