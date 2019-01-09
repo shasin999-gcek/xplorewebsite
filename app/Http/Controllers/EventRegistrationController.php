@@ -97,6 +97,11 @@ class EventRegistrationController extends Controller
 
         $PAYTM_RESPONSE_PARAMS = $request->validated();
 
+        $view_data = [
+            'transId' => $PAYTM_RESPONSE_PARAMS['TXNID'],
+            'orderId' => $PAYTM_RESPONSE_PARAMS['ORDERID']
+        ];
+
         $paytm_checksum = $request['CHECKSUMHASH'];
         $is_valid_checksum = verifychecksum_e($PAYTM_RESPONSE_PARAMS, $key, $paytm_checksum);
 
@@ -112,8 +117,8 @@ class EventRegistrationController extends Controller
                     // Transaction Failure [Doesnt paid the actual amount]
                     // Todo : Redirect to the event page with Transaction Failure message
                     // Incase he lost money ask him to contact web admin
-                    
-                    return redirect()->view('transerr');
+                    $view_data['respMsg'] = "Doesn't Paid actual amount";
+                    return view('transerr', $view_data);
                 }
 
                 // Verify Transaction again by Paytm Transaction api
@@ -136,8 +141,8 @@ class EventRegistrationController extends Controller
                     {
                         // Transaction failure
                         // Todo: Redirect to the event page with Transaction Failure
-                        
-                        return redirect()->view('transerr');
+                        $view_data['respMsg'] = "Transaction failed due to tampering of data";
+                        return view('transerr', $view_data);
                     }
                 }
 
@@ -157,15 +162,16 @@ class EventRegistrationController extends Controller
                 Payment::create($PAYTM_RESPONSE_PARAMS);
                 // Todo : Redirect to the event page with Transaction Failure message
                
-               return redirect()->route('transerr');
+                $view_data['respMsg'] = $PAYTM_RESPONSE_PARAMS['RESPMSG'];
+                return view('transerr', $view_data);
 
             }
         }
         else
         {
             // Response is tampered abort with Forbidden repose
-            dump($PAYTM_RESPONSE_PARAMS);
-            dd($is_valid_checksum);
+            $view_data['respMsg'] = "Tampering detected";
+            return view('transerr', $view_data);
         }
     }
 
