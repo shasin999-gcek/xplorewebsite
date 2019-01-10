@@ -1,4 +1,4 @@
-@extends('layouts.master',['bodyclass' => 'register-page bkg-yellow','active_menu' => 'login','navbar' => 'bkg-yellow'])
+@extends('layouts.master',['bodyclass' => 'register-page ','active_menu' => 'login','navbar' => 'bkg-yellow'])
 
 @section('metatags')
   <meta property="og:tags">

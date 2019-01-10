@@ -1,4 +1,4 @@
-@extends('layouts.master',['bodyclass' => 'profile-page bkg-yellow','navbar' => 'navbar-transparent fixed-top'])
+@extends('layouts.master',['bodyclass' => 'profile-page','navbar' => 'navbar-transparent fixed-top'])
 
 @section('content')
 
