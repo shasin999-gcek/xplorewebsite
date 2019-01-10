@@ -55,10 +55,23 @@ Dabble in the extraordinary!
                     </div>
                     <div class="card-body">
                       <h3>{{ $e->name }}</h3>
-                      <h4>RegId: <kbd>{{ $e->pivot->order_id }}</kbd></h4>
+                        <a class="btn btn-primary" href="{{ route('event.ticket', $e->pivot->order_id) }}">Download Ticket</a>
                     </div>
                   </div>
                 </div>
+                @endforeach
+                @foreach($registered_workshops as $w)
+                    <div class="col-md-4">
+                        <div class="card card-plain">
+                            <div class="card-header">
+                                <img class="card-img" src="{{ asset('storage/' . $w->thumbnail_image) }}">
+                            </div>
+                            <div class="card-body">
+                                <h3>{{ $w->name }}</h3>
+                                <a class="btn btn-primary" href="{{ route('workshop.ticket', $w->pivot->order_id) }}">Download Ticket</a>
+                            </div>
+                        </div>
+                    </div>
                 @endforeach
                 @else
                   <h3 class="text-center">No events and workshops registered</h3>
@@ -74,7 +87,7 @@ Dabble in the extraordinary!
         <div class="row">
           <div class="col-md-6 mr-auto ml-auto">
               <hr class="line-info">
-              <h2>Workshops</span></h2>
+              <h2>Workshops</h2>
               <div class="table-responsive-sm">
                     <table class="table">
                     <thead>
@@ -110,7 +123,7 @@ Dabble in the extraordinary!
           </div>
           <div class="col-md-6 mr-auto ml-auto">
               <hr class="line-info">
-              <h2>Events</span></h2>
+              <h2>Events</h2>
               <div class="table-responsive-sm">
                     <table class="table">
                       <thead>
@@ -147,5 +160,5 @@ Dabble in the extraordinary!
         </div>
       </div>
     </div>
-    
+   </div>
 @endsection

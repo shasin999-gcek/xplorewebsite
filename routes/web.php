@@ -66,3 +66,7 @@ Route::group(['middleware' => 'no-cache', 'as' => 'workshop.'], function () {
     Route::post('/workshop/payment-callback', 'WorkshopRegistrationController@paytmCallback')->name('payment.callback');
 }); 
 
+
+
+Route::get('/event/get-ticket/{orderId}', 'GenerateInvoicePDF@generateEventTicket')->name('event.ticket');
+Route::get('/workshop/get-ticket/{orderId}', 'GenerateInvoicePDF@generateWorkshopTicket')->name('workshop.ticket');

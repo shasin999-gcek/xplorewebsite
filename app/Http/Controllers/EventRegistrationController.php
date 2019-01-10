@@ -2,12 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\EventTransactionSuccess;
 use Illuminate\Http\Request;
 use App\Http\Requests\PaytmCallback;
 use App\EventRegistration;
 use App\Payment;
 use App\Event;
 use Auth;
+use Illuminate\Support\Facades\Mail;
 
 
 class EventRegistrationController extends Controller
@@ -153,6 +155,8 @@ class EventRegistrationController extends Controller
                 // update the registration as successful
                 $user = Auth::user();
                 $user->events()->updateExistingPivot($event_reg->event->id, ['is_reg_success' => true]);
+
+                Mail::to($request->user())->send(new EventTransactionSuccess($order_id));
 
                 return redirect()->route('home');
             }
