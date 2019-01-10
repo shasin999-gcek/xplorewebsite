@@ -31,13 +31,13 @@
     </div> 
     <div class="main">
         <div class="container-fluid px-0">
-            <div class="d-flex flex-cultural flex-wrap">
+            <div class="d-flex flex-wrap">
             @if($cultural_event->count() > 0)
             @foreach($cultural_event->events as $event)
 
                 <div class="">
                     <div class="flex-disp">
-                        <img src="{{ asset('storage/' . $event->poster_image) }}" class="img-fluid" width="400" height="400"/>
+                        <img src="{{ asset('storage/' . $event->thumbnail_image) }}" class="img-fluid" width="449" height="400"/>
                         <a href="{{ route('display_event', ['category' => $event->category->short_name, 'slug' => $event->slug]) }}" class="btn btn-danger btn-lg cultural-btn">Show Details</a>
                     </div>
                 </div>
