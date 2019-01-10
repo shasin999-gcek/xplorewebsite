@@ -140,6 +140,7 @@
                                             <div class="card card-coin card-plain">
                                               <div class="card-header">
                                                 <img src="{{ asset('img/robotics.png') }}" class="img-center img-fluid" style="width: 75%;">
+
                                               </div>
                                               <div class="card-body">
                                                 <div class="row">

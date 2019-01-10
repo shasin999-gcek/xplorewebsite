@@ -2,12 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\WorkshopTransactionSuccess;
 use Illuminate\Http\Request;
 use App\Http\Requests\PaytmCallback;
 use App\WorkshopRegistration;
 use App\Payment;
 use App\Workshop;
 use Auth;
+use Illuminate\Support\Facades\Mail;
 
 class WorkshopRegistrationController extends Controller
 {
@@ -144,6 +146,8 @@ class WorkshopRegistrationController extends Controller
                 // update the registration as successful
                 $user = Auth::user();
                 $user->workshops()->updateExistingPivot($workshop_reg->workshop->id, ['is_reg_success' => true]);
+
+                Mail::to($request->user())->send(new WorkshopTransactionSuccess($order_id));
 
                 return redirect()->route('home');
             }

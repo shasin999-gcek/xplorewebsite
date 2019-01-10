@@ -31,9 +31,15 @@ class HomeController extends Controller
        $user = Auth::user();
 
        $registered_events = $user->s_events;
+       $registered_workshops = $user->s_workshops;
 
 
-       return view('home', ['registered_events' => $registered_events, 'currentUser' => $user, 'fail' => false]);
+       return view('home', [
+           'registered_events' => $registered_events,
+           'registered_workshops' => $registered_workshops,
+           'currentUser' => $user,
+           'fail' => false
+       ]);
 
     }
 }
