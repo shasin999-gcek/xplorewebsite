@@ -58,7 +58,7 @@
                 </div>
                 <div class="container">
                     <p style="white-space: pre-line;">{{ $event->description }}</p><br><br>
-                    <h4>Date: {{ $event->date->format('D d-M-Y h:i:s') }} </h4> <br>
+                    <h4>Date: {{ $event->date->format('D d-M-Y') }} </h4> <br>
 					<h4> First Price :  {{ $event->f_price_money }} <br>
 					Second Price :  {{ $event->s_price_money }} <br>
 					Third Price :  {{ $event->t_price_money }}</h4>

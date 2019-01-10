@@ -191,7 +191,7 @@
       </div>
     </footer>
     <div class="container @isset($nofooter) {{ $nofooter }} @endisset">
-          <h5 class="text-center">Designed and Developed with <i class="tim-icons icon-heart-2"></i> By Mohammed Shazin</h5>
+          <h5 class="text-center">Designed and Developed with <i class="tim-icons icon-heart-2"></i> By <span class="text-info">Akshay Damodhar</span> & <span class="text-info">Mohammed Shazin</span></h5>
     </div>
   </div>
   

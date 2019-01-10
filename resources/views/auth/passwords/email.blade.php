@@ -11,6 +11,17 @@
             <div class="col-lg-4 col-md-4 offset-lg-4 offset-md-4" >
               <div id="square7" class="square square-7"></div>
               <div id="square8" class="square square-8"></div>
+              @if (session('status'))
+              <div class="alert alert-success alert-with-icon">
+                        
+                        <button type="button" aria-hidden="true" class="close" data-dismiss="alert" aria-label="Close">
+                            <i class="tim-icons icon-simple-remove"></i>
+                        </button>
+                        
+                        <span><b> {{ session('status') }}</span>
+                    </div>
+                        
+              @endif
               @if ($errors->has('email'))
                     <div class="alert alert-danger alert-with-icon">
                         
@@ -37,7 +48,7 @@
                           <i class="tim-icons icon-email-85"></i>
                         </div>
                       </div>
-                      <input type="email" placeholder="Email" class="form-control" name="email">
+                      <input type="email" placeholder="Email" class="form-control" name="email" alue="{{ old('email') }}">
                     </div>
                 </div>
                 <div class="card-footer text-center">

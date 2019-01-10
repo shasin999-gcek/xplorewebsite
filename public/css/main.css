@@ -21447,11 +21447,11 @@ input.datetimepicker[data-color="yellow"]+.bootstrap-datetimepicker-widget.dropd
     z-index:1;
   }
   .cultural-btn {
-    right: 0;
+    
     position: absolute;
     bottom: 0;
     left: 25%;
-    width:fit-content;
+    
   }
 
   .flex-disp {
