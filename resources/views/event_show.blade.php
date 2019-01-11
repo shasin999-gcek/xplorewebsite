@@ -1,4 +1,4 @@
-@extends('layouts.master',['bodyclass' => 'register-page bkg-yellow','active_menu' => 'login','navbar' => 'bkg-yellow'])
+@extends('layouts.master',['bodyclass' => 'register-page ','active_menu' => 'login','navbar' => ''])
 
 @section('metatags')
   <meta property="og:tags">
@@ -34,15 +34,7 @@
               <img src="{{ asset('storage/' . $event->poster_image) }}" class="img-raised img-responsive">
               <hr>
               <a href="{{ asset('storage/' . $event->pdf_path) }}" class="btn btn-warning">Download PDF</a>
-              <div class="btn-wrapper profile">
-                        <a target="_blank" href="#" class="btn btn-icon btn-neutral btn-round btn-simple" data-toggle="tooltip" data-original-title="Follow us">
-                          <i class="fab fa-twitter"></i>
-                        </a>
-                        <a target="_blank" href="#" class="btn btn-icon btn-neutral btn-round btn-simple" data-toggle="tooltip" data-original-title="Like us">
-                          <i class="fab fa-facebook-square"></i>
-                        </a>
-                        
-                      </div>
+              
             </div>
             <div class="col-md-8 ml-auto mr-auto">
               <section class="section section-lg " style="padding: 0; margin-bottom: 5%">
@@ -61,7 +53,7 @@
                     <h4>Date: {{ $event->date->format('D d-M-Y') }} </h4> <br>
 					<h4> First Price :  {{ $event->f_price_money }} <br>
 					Second Price :  {{ $event->s_price_money }} <br>
-					Third Price :  {{ $event->t_price_money }}</h4>
+					@if($event->t_price_money != 0)Third Price :  {{ $event->t_price_money }}</h4>@endif
 
                     <br><br>
           <h3> Registration Fee: {{ $event->reg_fee }}</h3>

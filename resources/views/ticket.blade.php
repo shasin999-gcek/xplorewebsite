@@ -17,7 +17,7 @@
         line-height: 24px;
         font-family: 'Helvetica Neue', 'Helvetica', Helvetica, Arial, sans-serif;
         color: #555;
-        background: linear-gradient(rgba(3, 3, 3, 0.08), rgba(9, 9, 9, 0.13)), url('{{ public_path("img/clg.png") }}');
+        background: linear-gradient(rgba(3, 3, 3, 0.04), rgba(9, 9, 9, 0.04)), url('clg.png');
         background-repeat: no-repeat;
         background-position: center;
     }
@@ -37,18 +37,35 @@
         text-align: right;
     }
     
-    .invoice-box table tr.top table td {
+    .invoice-box >.top {
         padding-bottom: 20px;
     }
     
-    .invoice-box table tr.top table td.title {
+    .invoice-box .top .title {
         font-size: 45px;
-        line-height: 45px;
+        
         color: #333;
     }
-    
-    .invoice-box table tr.information table td {
+
+    .invoice-box .top .title .data {
+        font-size: 16px;
+        float:right;
+    }
+
+
+    .invoice-box .information .details {
         padding-bottom: 40px;
+    }
+
+    .invoice-box .information .details .to {
+       float:left;
+       padding:25px;
+       font-weight: 600;
+    }
+    .invoice-box .information .details .from {
+       float:right;
+       padding:25px;
+       font-weight:600;
     }
     
     .invoice-box table tr.heading td {
@@ -93,46 +110,31 @@
 
 <body>
     <div class="invoice-box">
-        <table cellpadding="0" cellspacing="0">
-            <tr class="top">
-                <td colspan="2">
-                    <table>
-                        <tr>
-                            <td class="title">
-                                <img src="{{ public_path('img/logo.png') }}" style="width:100%; max-width:150px;">
-                            </td>
-                            
-                            <td>
-                                Invoice #: {{ $orderId }} <br>
-                                Created: {{ now() }} <br>
-                            </td>
-                        </tr>
-                    </table>
-                </td>
-            </tr>
-            
-            <tr class="information">
-                <td colspan="2">
-                    <table>
-                        <tr>
-                            <td>
+        <div class="top">
+    		<div class="title">
+    			<img src="logo.png" style="width:100%; max-width:150px;">
+    			<div class="data">
+	    			Invoice #: 123<br>
+	                Created: January 1, 2019<br>
+	    		</div>    	
+    		</div>
+    		
+        </div>
+        <div class="information">
+    		<div class="details">
+    			<div class="to">
                                 {{ $name }} <br>
                                 {{ $email }}<br>
                                 {{ $mobileNumber }}
-                            </td>
-                            
-                            <td>
+    			</div>
+    			<div class="from">
                                 Xplore'19<br>
                                 Aswin Divakar<br>
                                 xplore19gcek@gmail.com
-                            </td>
-                        </tr>
-                    </table>
-                </td>
-            </tr>
-            
-            
-            
+    			</div>
+    		</div>
+    	</div>
+        <table cellpadding="0" cellspacing="0">    
             <tr class="heading">
                 <td>
                     Event/Workshop

@@ -54,6 +54,9 @@ Route::get('/contact', 'Home@contact');
 Route::get('/technical', 'Home@technical');
 Route::get('/cultural', 'Home@cultural');
 Route::get('/management', 'Home@management');
+Route::get('/ticket',function() {
+        return view('ticket');
+    });
 
 // Registrations
 Route::group(['middleware' => 'no-cache', 'as' => 'event.'], function () {
