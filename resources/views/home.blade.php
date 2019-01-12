@@ -1,4 +1,4 @@
-@extends('layouts.master',['bodyclass' => 'index-page','active_menu' => 'login','navbar' => ' bkg-yellow'])
+@extends('layouts.master',['bodyclass' => 'index-page','active_menu' => 'login','navbar' => ' '])
 
 
 @section('content')
