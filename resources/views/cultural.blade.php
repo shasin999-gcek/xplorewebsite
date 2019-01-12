@@ -35,9 +35,9 @@
             @if($cultural_event->count() > 0)
             @foreach($cultural_event->events as $event)
 
-                <div class="">
+                <div class="flex-fill" style="width:33.33333%">
                     <div class="flex-disp">
-                        <img src="{{ asset('storage/' . $event->thumbnail_image) }}" class="img-fluid" width="449" height="400"/>
+                        <img src="{{ asset('storage/' . $event->thumbnail_image) }}" class="img-fluid"  height="400"/>
                         <a href="{{ route('display_event', ['category' => $event->category->short_name, 'slug' => $event->slug]) }}" class="btn btn-danger btn-lg cultural-btn">Show Details</a>
                     </div>
                 </div>
