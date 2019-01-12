@@ -67,6 +67,12 @@
        padding:25px;
        font-weight:600;
     }
+
+    .invoice-box .bank {
+    	padding: 28px;
+    	font-size: 10px;
+    	text-align: center;
+    }
     
     .invoice-box table tr.heading td {
         background: #eee;
@@ -163,6 +169,10 @@
                 </td>
             </tr>
         </table>
+        <div class="bank">
+        	<b>PROCESSED PAYMENT</b>: Transaction id: 342342, Bank : Federal bank, 
+        	Transaction Date: 01/01/2019
+        </div>
     </div>
 </body>
 </html>
