@@ -101,20 +101,21 @@ Dabble in the extraordinary!
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            @foreach($events as $event)
 
-                                <td>{{ $event->name }}</td>
-                                <td>{{ $event->type }}</td>
-                                <td>{{ $event->category->name }}</td>
-                                <td class="text-right">{{ $event->reg_fee }}</td>
-                                <td class="td-actions text-right">
-                                  <a href="{{ route('display_event', ['category' => $event->category->short_name, 'slug' => $event->slug]) }}" rel="tooltip" class="btn btn-info btn-sm btn-round btn-icon">
-                                      <i class="tim-icons icon-settings-gear-63"></i>
-                                  </a>
-                                </td>
+                            @foreach($events as $event)
+                                <tr>
+                                    <td>{{ $event->name }}</td>
+                                    <td>{{ $event->type }}</td>
+                                    <td>{{ $event->category->name }}</td>
+                                    <td class="text-right">{{ $event->reg_fee }}</td>
+                                    <td class="td-actions text-right">
+                                      <a href="{{ route('display_event', ['category' => $event->category->short_name, 'slug' => $event->slug]) }}" rel="tooltip" class="btn btn-info btn-sm btn-round btn-icon">
+                                          <i class="tim-icons icon-settings-gear-63"></i>
+                                      </a>
+                                    </td>
+                                </tr>
                             @endforeach
-                        </tr>
+
                         
                     </tbody>
                 </table>
@@ -123,7 +124,7 @@ Dabble in the extraordinary!
           </div>
           <div class="col-md-6 mr-auto ml-auto">
               <hr class="line-info">
-              <h2>Events</h2>
+              <h2>Workshops</h2>
               <div class="table-responsive-sm">
                     <table class="table">
                       <thead>
@@ -137,9 +138,9 @@ Dabble in the extraordinary!
                       </thead>
                       <tbody>
                           
-                          <tr>
-                              @foreach($workshops as $w)
-
+                         
+                          @foreach($workshops as $w)
+                              <tr>
                                   <td>{{ $w->name }}</td>
                                   <td>{{ $w->type }}</td>
                                   <td>{{ $w->category->name }}</td>
@@ -149,8 +150,9 @@ Dabble in the extraordinary!
                                           <i class="tim-icons icon-settings-gear-63"></i>
                                       </a>
                                   </td>
-                              @endforeach
-                          </tr>
+                              </tr>
+                          @endforeach
+
                           
                       </tbody>
                   </table>
