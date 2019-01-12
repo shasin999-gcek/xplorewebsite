@@ -65,12 +65,19 @@
                 Ends On: {{ $workshop->ends_on->format('D d-M-Y h:i') }}</h4> 
 					<h3> Registration Fee: {{ $workshop->reg_fee }}</h3>
 
+          @if(Route::has('login'))
+              @auth
               <button class="btn btn-info btn-lg " onclick="event.preventDefault(); document.getElementById('workshop_reg_form').submit();">Buy Ticket</button><br>
 
               <form id="workshop_reg_form" method="post" action="{{ route('workshop.register') }}" style="display: none;">
                 {{ csrf_field() }}
                 <input type="text" name="workshop_id" value="{{ $workshop->id }}">
               </form>
+              @else
+              <a href="{{ route('login') }}" class=" btn btn-lg btn-warning"  >
+                <i class="tim-icons icon-cloud-download-93"></i> Login to Buy Ticket </a><br>
+                @endauth
+                @endif
 
                 </div>
               </section>
