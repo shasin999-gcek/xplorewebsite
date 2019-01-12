@@ -10,7 +10,7 @@ use App\Payment;
 use App\Event;
 use Auth;
 use Illuminate\Support\Facades\Mail;
-
+use DB;
 
 class EventRegistrationController extends Controller
 {
@@ -57,7 +57,7 @@ class EventRegistrationController extends Controller
         $user = Auth::user();
         $event_id = $event->id;
         $user_id = $user->id;
-        $order_id = 'ORDS' . uniqid();
+        $order_id = 'XPLR' . uniqid();
 
         EventRegistration::create([
             'user_id' => $user_id,
@@ -153,8 +153,12 @@ class EventRegistrationController extends Controller
                 Payment::create($PAYTM_RESPONSE_PARAMS);
 
                 // update the registration as successful
-                $user = Auth::user();
-                $user->events()->updateExistingPivot($event_reg->event->id, ['is_reg_success' => true]);
+                // $user = Auth::user();
+                // $user->events()->updateExistingPivot($event_reg->event->id, ['is_reg_success' => true]);
+
+                DB::table('event_registrations')
+                    ->where('order_id', $order_id)
+                    ->update(['is_reg_success' => true]);
 
                 Mail::to($request->user())->send(new EventTransactionSuccess($order_id));
 

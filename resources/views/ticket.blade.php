@@ -17,7 +17,7 @@
         line-height: 24px;
         font-family: 'Helvetica Neue', 'Helvetica', Helvetica, Arial, sans-serif;
         color: #555;
-        background: linear-gradient(rgba(3, 3, 3, 0.04), rgba(9, 9, 9, 0.04)), url('clg.png');
+        background: linear-gradient(rgba(3, 3, 3, 0.04), rgba(9, 9, 9, 0.04));
         background-repeat: no-repeat;
         background-position: center;
     }
@@ -118,10 +118,10 @@
     <div class="invoice-box">
         <div class="top">
     		<div class="title">
-    			<img src="logo.png" style="width:100%; max-width:150px;">
+    			<img src="{{ public_path('img/logo.png') }}" style="width:100%; max-width:150px;">
     			<div class="data">
-	    			Invoice #: 123<br>
-	                Created: January 1, 2019<br>
+	    			Invoice #: {{ $orderId }}<br>
+	                Created: {{ now()->toDayDateTimeString() }}<br>
 	    		</div>    	
     		</div>
     		
@@ -170,8 +170,8 @@
             </tr>
         </table>
         <div class="bank">
-        	<b>PROCESSED PAYMENT</b>: Transaction id: 342342, Bank : Federal bank, 
-        	Transaction Date: 01/01/2019
+        	<b>PROCESSED PAYMENT</b>: Transaction id: {{ $transId  }}, Bank : {{ $bankName  }},
+        	Transaction Date: {{ $transDate->toDayDateTimeString() }}
         </div>
     </div>
 </body>

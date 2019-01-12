@@ -34,6 +34,9 @@ class GenerateInvoicePDF extends Controller
             'mobileNumber' => $event_reg->user->mobile_number,
             'event' => $event_reg->event->name,
             'paid' => $payment_data->TXNAMOUNT,
+            'transId' => $payment_data->TXNID,
+            'transDate' => $payment_data->TXNDATE,
+            'bankName' => $payment_data->BANKNAME
         ];
 
         $pdf = PDF::loadView('ticket', $data);
@@ -58,6 +61,9 @@ class GenerateInvoicePDF extends Controller
             'mobileNumber' => $workshop_reg->user->mobile_number,
             'event' => $workshop_reg->workshop->name,
             'paid' => $payment_data->TXNAMOUNT,
+            'transId' => $payment_data->TXNID,
+            'transDate' => $payment_data->TXNDATE,
+            'bankName' => $payment_data->BANKNAME
         ];
 
         $pdf = PDF::loadView('ticket', $data);

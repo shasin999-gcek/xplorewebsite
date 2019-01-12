@@ -10,6 +10,7 @@ use App\Payment;
 use App\Workshop;
 use Auth;
 use Illuminate\Support\Facades\Mail;
+use DB;
 
 class WorkshopRegistrationController extends Controller
 {
@@ -48,7 +49,7 @@ class WorkshopRegistrationController extends Controller
         $user = Auth::user();
         $workshop_id = $workshop->id;
         $user_id = $user->id;
-        $order_id = 'ORDS' . uniqid();
+        $order_id = 'XPLR' . uniqid();
 
         WorkshopRegistration::create([
             'user_id' => $user_id,
@@ -144,8 +145,12 @@ class WorkshopRegistrationController extends Controller
                 Payment::create($PAYTM_RESPONSE_PARAMS);
 
                 // update the registration as successful
-                $user = Auth::user();
-                $user->workshops()->updateExistingPivot($workshop_reg->workshop->id, ['is_reg_success' => true]);
+//                $user = Auth::user();
+//                $user->workshops()->updateExistingPivot($workshop_reg->workshop->id, ['is_reg_success' => true]);
+
+                DB::table('workshop_registrations')
+                    ->where('order_id', $order_id)
+                    ->update(['is_reg_success' => true]);
 
                 Mail::to($request->user())->send(new WorkshopTransactionSuccess($order_id));
 
