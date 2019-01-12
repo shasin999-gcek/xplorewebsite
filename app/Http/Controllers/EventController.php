@@ -5,8 +5,9 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Event;
 use App\Category;
-
+use App\EventRegistration;
 use DB;
+use Auth;
 
 
 class EventController extends Controller
@@ -58,12 +59,29 @@ class EventController extends Controller
             abort(404);
         }
 
-        if($category == 'cultural-shows') 
+        $alreadyRegistered = null;
+        if(Auth::user())
         {
-            return view('cultural_shows', ['event' => $event]);
+            $user_id = Auth::user()->id;
+            $event_id = $event->id;
+            $alreadyRegistered = EventRegistration::where([
+                ['user_id', $user_id],
+                ['event_id', $event_id], 
+                ['is_reg_success', true]
+            ])->first();    
         }
 
-        return view('event_show', ['event' => $event]);
+        $data = [
+            'event' => $event,
+            'alreadyRegistered' => $alreadyRegistered
+        ];
+
+        if($category == 'cultural-shows') 
+        {
+            return view('cultural_shows', $data);
+        }
+
+        return view('event_show', $data);
     }
 
     /**

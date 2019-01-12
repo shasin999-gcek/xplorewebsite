@@ -104,11 +104,9 @@
                 <div class="container-fluid">
                     <div class="row">
                         <div class="owl-carousel">
-                          <div ><div ><img src="{{ asset('img/cultural.jpg') }}" class="img-fluid" ></div></div>
-                          <div ><div ><img src="{{ asset('img/cultural.jpg') }}" class="img-fluid" ></div></div>
-                          <div ><div ><img src="{{ asset('img/cultural.jpg') }}" class="img-fluid" ></div></div>
-                          <div ><div ><img src="{{ asset('img/cultural.jpg') }}" class="img-fluid" ></div></div>
-                          <div ><div ><img src="{{ asset('img/cultural.jpg') }}" class="img-fluid" ></div></div>
+                           @foreach($slides as $s)
+                                <div ><div ><img src="{{ asset('storage/' . $s ) }}" class="img-fluid" ></div></div>
+                            @endforeach
                         </div>
                     </div>
                 </div>

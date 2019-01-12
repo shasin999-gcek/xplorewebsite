@@ -57,7 +57,7 @@ class EventRegistrationController extends Controller
         $user = Auth::user();
         $event_id = $event->id;
         $user_id = $user->id;
-        $order_id = 'ORDS' . uniqid();
+        $order_id = 'XPLR' . uniqid();
 
         EventRegistration::create([
             'user_id' => $user_id,

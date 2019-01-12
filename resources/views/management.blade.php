@@ -5,7 +5,7 @@
 <div class="owl-carousel owl-theme">
   @if($management_event->count() > 0)
     @foreach($management_event->events as $event)
-      <div class="owl-slide d-flex align-items-center cover" style="background-image: linear-gradient(rgba(3, 3, 3, 0.72), rgba(9, 9, 9, 0.82)), url('{{ asset('img/back.png') }}');">
+      <div class="owl-slide d-flex align-items-center cover" style="background-image: linear-gradient(rgba(3, 3, 3, 0.72), rgba(9, 9, 9, 0.82)), url('{{ asset('storage/' . $event->thumbnail_image) }}');">
         <div class="container">
           <div class="row justify-content-center justify-content-md-start">
             <div class="col-10 col-md-6 static">

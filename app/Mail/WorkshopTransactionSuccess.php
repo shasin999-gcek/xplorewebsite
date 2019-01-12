@@ -35,7 +35,7 @@ class WorkshopTransactionSuccess extends Mailable
      */
     public function build()
     {
-        $workshop_reg = WorkshopRegistration::with('user', 'event')->where([
+        $workshop_reg = WorkshopRegistration::with('user', 'workshop')->where([
             ['order_id', '=', $this->orderId],
             ['is_reg_success', '=', true]
         ])->firstOrFail();

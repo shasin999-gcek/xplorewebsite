@@ -93,7 +93,7 @@
                           Hello {{ Auth::user()->name }}
                         </button>
                       <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                        <a class="dropdown-item" href="{{ url('/home') }}">View Profile</a>
+                        <a class="dropdown-item" href="{{ route('home') }}">View Profile</a>
                         <a class="dropdown-item" href="{{ url('/logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Logout</a>
                         
                       </div>
@@ -189,7 +189,8 @@
       </div>
     </footer>
     <div class="container @isset($nofooter) {{ $nofooter }} @endisset">
-          <h5 class="text-center">Designed and Developed with <i class="tim-icons icon-heart-2"></i> By <span class="text-info">Akshay Damodhar</span> & <span class="text-info">Mohammed Shazin</span></h5>
+          <h5 class="text-center">Designed and Developed with <i class="tim-icons icon-heart-2"></i> By <span class="text-info">Akshay Damodhar</span> & <span class="text-info"><a
+                      href="http://muhammedshasin.me" style="color: #1d8cf8;">Muhammed Shasin</a></span></h5>
     </div>
   </div>
   

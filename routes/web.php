@@ -34,7 +34,7 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => 'is_admin',
 });
 
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/user/profile', 'HomeController@index')->name('home');
 
 // Route::get('/transerr', function () {
 //     return view('transerr');

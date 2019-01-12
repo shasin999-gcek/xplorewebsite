@@ -24,7 +24,7 @@
     <div class="row">
         <div class="col-lg-12">
             <div class="well">
-                <a href="{{ url('/workshop/' . $workshop->slug) }}">{{ url('/workshops/' . $workshop->slug) }}</a>
+                <a href="{{ route('display_workshop', ['category' => $workshop->category->short_name, 'slug' => $workshop->slug]) }}">{{ route('display_workshop', ['category' => $workshop->category->short_name, 'slug' => $workshop->slug]) }}</a>
                 <div class="pull-right">
                     <a href="{{ route('admin.workshops.edit', ['id' => $workshop->id]) }}" class="btn btn-sm btn-primary">
                         <i class="fa fa-pencil" aria-hidden="true"></i> Edit</a>
