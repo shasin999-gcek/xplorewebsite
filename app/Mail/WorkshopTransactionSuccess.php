@@ -35,7 +35,7 @@ class WorkshopTransactionSuccess extends Mailable
      */
     public function build()
     {
-        $workshop_reg = WorkshopRegistration::with('user', 'event')->where([
+        $workshop_reg = WorkshopRegistration::with('user', 'workshop')->where([
             ['order_id', '=', $this->orderId],
             ['is_reg_success', '=', true]
         ])->firstOrFail();
@@ -51,6 +51,6 @@ class WorkshopTransactionSuccess extends Mailable
             'paid' => $payment_data->TXNAMOUNT,
         ];
 
-        return $this->view('mail.trans_success')->with($data);
+        return $this->subject('Transaction Successfull')->view('mail.trans_success')->with($data);
     }
 }

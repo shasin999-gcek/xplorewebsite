@@ -60,12 +60,16 @@
           
           @if(Route::has('login'))
               @auth
-              <button class="btn btn-info btn-lg " onclick="event.preventDefault(); document.getElementById('event_reg_form').submit();">Buy Ticket</button><br>
+                  @isset($alreadyRegistered)
+                    <a class="btn btn-primary" href="{{ route('event.ticket', $alreadyRegistered->order_id) }}">Download Ticket</a>
+                  @else
+                    <button class="btn btn-info btn-lg " onclick="event.preventDefault(); document.getElementById('event_reg_form').submit();">Buy Ticket</button><br>
 
-              <form id="event_reg_form" method="post" action="{{ route('event.register') }}" style="display: none;">
-                {{ csrf_field() }}
-                <input type="text" name="event_id" value="{{ $event->id }}">
-              </form>
+                    <form id="event_reg_form" method="post" action="{{ route('event.register') }}" style="display: none;">
+                      {{ csrf_field() }}
+                      <input type="text" name="event_id" value="{{ $event->id }}">
+                    </form>
+                  @endisset
               @else
               <a href="{{ route('login') }}" class=" btn btn-lg btn-warning"  >
                 <i class="tim-icons icon-cloud-download-93"></i> Login to Buy Ticket </a><br>
