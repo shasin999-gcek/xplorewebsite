@@ -32,7 +32,7 @@
             </div>
       <div class="container">
         <div class="content-center brand">
-          <div class="rocket"></div>
+          
           <img src="{{ asset('img/Xplore.svg') }}" class="img-fluid img-responsive" width="300" height="300">
           <img src="{{ URL::asset('img/logo.svg') }}" class="img-fluid img-responsive" width="250" height="200">
           <h5>Dabble in the Extraordinary</h5>

@@ -1,4 +1,4 @@
-@extends('layouts.master',['bodyclass' => 'index-page','active_menu' => 'login','navbar' => ' bkg-yellow'])
+@extends('layouts.master',['bodyclass' => 'index-page','active_menu' => 'login','navbar' => ' '])
 
 
 @section('content')
@@ -21,8 +21,8 @@
             </div>
             <div class="card-footer text-center">
             
-            <button id="refid" class="btn btn-info" data-toggle="tooltip" data-placement="top" title="Copy" data-container="body" data-animation="true" data-original-title="Copy" onclick="event.preventDefault(); copyRefToClipboard('{{ url('?ref_code=').Auth::user()->referral_id }}');">Invite Friends</button> <br><br>
-
+            <button id="refid" class="btn btn-info" data-toggle="tooltip" data-placement="top" title="Copy" data-container="body" data-animation="true" data-original-title="Copy" onclick="event.preventDefault(); copyRefToClipboard('{{ url('?ref_code=').Auth::user()->referral_id }}');">Invite Friends</button><br>
+            <small>Copy referral link and share to friends</small>
             <a href="whatsapp://send" data-text="Are you ready to breathe in the excitement to Xplore the Unexplored?
 Then tune into Xplore'19, The 5th National Techno Management Cultural Festival of Govt. College of Engineering Kannur from February 22nd - 24th 2019!
 
@@ -55,7 +55,7 @@ Dabble in the extraordinary!
                     </div>
                     <div class="card-body">
                       <h3>{{ $e->name }}</h3>
-                        <a class="btn btn-primary" href="{{ route('event.ticket', $e->pivot->order_id) }}">Download Ticket</a>
+                        <a class="btn btn-info" href="{{ route('event.ticket', $e->pivot->order_id) }}">Download Ticket</a>
                     </div>
                   </div>
                 </div>
@@ -68,7 +68,7 @@ Dabble in the extraordinary!
                             </div>
                             <div class="card-body">
                                 <h3>{{ $w->name }}</h3>
-                                <a class="btn btn-primary" href="{{ route('workshop.ticket', $w->pivot->order_id) }}">Download Ticket</a>
+                                <a class="btn btn-info" href="{{ route('workshop.ticket', $w->pivot->order_id) }}">Download Ticket</a>
                             </div>
                         </div>
                     </div>
@@ -102,19 +102,21 @@ Dabble in the extraordinary!
                     </thead>
                     <tbody>
 
-                            @foreach($events as $event)
-                                <tr>
-                                    <td>{{ $event->name }}</td>
-                                    <td>{{ $event->type }}</td>
-                                    <td>{{ $event->category->name }}</td>
-                                    <td class="text-right">{{ $event->reg_fee }}</td>
-                                    <td class="td-actions text-right">
-                                      <a href="{{ route('display_event', ['category' => $event->category->short_name, 'slug' => $event->slug]) }}" rel="tooltip" class="btn btn-info btn-sm btn-round btn-icon">
-                                          <i class="tim-icons icon-settings-gear-63"></i>
-                                      </a>
-                                    </td>
-                                </tr>
-                            @endforeach
+
+                        @foreach($events as $event)
+                            <tr>
+                                <td>{{ $event->name }}</td>
+                                <td>{{ $event->type }}</td>
+                                <td>{{ $event->category->name }}</td>
+                                <td class="text-right">{{ $event->reg_fee }}</td>
+                                <td class="td-actions text-right">
+                                  <a href="{{ route('display_event', ['category' => $event->category->short_name, 'slug' => $event->slug]) }}" rel="tooltip" class="btn btn-info btn-sm btn-round btn-icon">
+                                      <i class="tim-icons icon-settings-gear-63"></i>
+                                  </a>
+                                </td>
+                            </tr>
+                        @endforeach
+
 
                         
                     </tbody>
@@ -137,8 +139,7 @@ Dabble in the extraordinary!
                           </tr>
                       </thead>
                       <tbody>
-                          
-
+                         
                           @foreach($workshops as $w)
                               <tr>
                                   <td>{{ $w->name }}</td>
@@ -152,7 +153,6 @@ Dabble in the extraordinary!
                                   </td>
                               </tr>
                           @endforeach
-
                           
                       </tbody>
                   </table>
