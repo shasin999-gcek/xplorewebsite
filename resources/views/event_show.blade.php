@@ -34,7 +34,7 @@
               <img src="{{ asset('storage/' . $event->poster_image) }}" class="img-raised img-responsive">
               <hr>
               <a href="{{ asset('storage/' . $event->pdf_path) }}" class="btn btn-warning">Download PDF</a>
-              
+              <small>*Instructions and Regulations</small>
             </div>
             <div class="col-md-8 ml-auto mr-auto">
               <section class="section section-lg " style="padding: 0; margin-bottom: 5%">
@@ -68,7 +68,7 @@
               </form>
               @else
               <a href="{{ route('login') }}" class=" btn btn-lg btn-warning"  >
-                <i class="tim-icons icon-cloud-download-93"></i> Login </a><br>
+                <i class="tim-icons icon-cloud-download-93"></i> Login to Buy Ticket </a><br>
                 @endauth
                 @endif
                 </div>
