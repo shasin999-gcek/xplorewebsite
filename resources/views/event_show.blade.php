@@ -33,7 +33,7 @@
           <div class="col-md-4 ml-auto mr-auto text-center">
               <img src="{{ asset('storage/' . $event->poster_image) }}" class="img-raised img-responsive">
               <hr>
-              <a href="{{ asset('storage/' . $event->pdf_path) }}" class="btn btn-warning">Download PDF</a>
+              <a href="{{ asset('storage/' . $event->pdf_path) }}" class="btn btn-warning">Download PDF</a><br>
               <small>*Instructions and Regulations</small>
             </div>
             <div class="col-md-8 ml-auto mr-auto">
