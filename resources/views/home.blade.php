@@ -138,7 +138,7 @@ Dabble in the extraordinary!
                       </thead>
                       <tbody>
                           
-                         
+
                           @foreach($workshops as $w)
                               <tr>
                                   <td>{{ $w->name }}</td>
