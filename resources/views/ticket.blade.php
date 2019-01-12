@@ -112,7 +112,7 @@
     <div class="invoice-box">
         <div class="top">
     		<div class="title">
-    			<img src="logo.png" style="width:100%; max-width:150px;">
+    			<img src="{{ public_path('img/logo.png') }}" style="width:100%; max-width:150px;">
     			<div class="data">
 	    			Invoice #: 123<br>
 	                Created: January 1, 2019<br>

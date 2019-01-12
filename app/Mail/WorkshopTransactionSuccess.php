@@ -51,6 +51,6 @@ class WorkshopTransactionSuccess extends Mailable
             'paid' => $payment_data->TXNAMOUNT,
         ];
 
-        return $this->view('mail.trans_success')->with($data);
+        return $this->subject('Transaction Successfull')->view('mail.trans_success')->with($data);
     }
 }
