@@ -93,8 +93,15 @@ class WorkshopRegistrationController extends Controller
 
         $view_data = [
             'transId' => $PAYTM_RESPONSE_PARAMS['TXNID'],
-            'orderId' => $PAYTM_RESPONSE_PARAMS['ORDERID']
+            'orderId' => $PAYTM_RESPONSE_PARAMS['ORDERID'],
+            'route' => 'workshop.register',
+            'name' => 'workshop_id',
+            'value' => 0
         ];
+
+        $order_id = $PAYTM_RESPONSE_PARAMS["ORDERID"];
+        $workshop_reg = WorkshopRegistration::where('order_id', $order_id)->firstOrFail();
+        $view_data['value'] = $workshop_reg->workshop_id;
 
         $paytm_checksum = $request['CHECKSUMHASH'];
         $is_valid_checksum = verifychecksum_e($PAYTM_RESPONSE_PARAMS, $key, $paytm_checksum);
@@ -103,9 +110,7 @@ class WorkshopRegistrationController extends Controller
         {
             if($request['STATUS'] == 'TXN_SUCCESS')
             {
-                $order_id = $PAYTM_RESPONSE_PARAMS["ORDERID"];
 
-                $workshop_reg = WorkshopRegistration::where('order_id', $order_id)->firstOrFail();
                 if(!($workshop_reg->workshop->reg_fee == $PAYTM_RESPONSE_PARAMS['TXNAMOUNT']))
                 {
                     // Transaction Failure [Doesnt paid the actual amount]

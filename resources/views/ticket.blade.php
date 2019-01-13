@@ -134,9 +134,9 @@
                                 {{ $mobileNumber }}
     			</div>
     			<div class="from">
-                                Xplore'19<br>
-                                Aswin Divakar<br>
-                                xplore19gcek@gmail.com
+                                Chairman & Convenor, Finance<br>
+                                Committee<br>
+                                Xplore 19
     			</div>
     		</div>
     	</div>
@@ -147,7 +147,7 @@
                 </td>
                 
                 <td>
-                    Price
+                    Reg fee
                 </td>
             </tr>
             

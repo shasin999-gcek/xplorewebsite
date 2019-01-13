@@ -34,7 +34,11 @@
               </div>
               <div class="card-footer">
                   <a href="/" class="btn btn-danger">Cancel</a>
-                  <a href="/" class="btn btn-success">Try Again</a>
+                  <a href="/" class="btn btn-success" onclick="event.preventDefault(); document.getElementById('reg_form').submit();">Try Again</a>
+                  <form id="reg_form" method="post" action="{{ route($route) }}" style="display: none;">
+                      {{ csrf_field() }}
+                      <input type="text" name="{{ $name }}" value="{{ $value }}">
+                  </form>
               </div>
             </div>
             </div>

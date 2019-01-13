@@ -101,8 +101,15 @@ class EventRegistrationController extends Controller
 
         $view_data = [
             'transId' => $PAYTM_RESPONSE_PARAMS['TXNID'],
-            'orderId' => $PAYTM_RESPONSE_PARAMS['ORDERID']
+            'orderId' => $PAYTM_RESPONSE_PARAMS['ORDERID'],
+            'route' => 'event.register',
+            'name' => 'event_id',
+            'value' => 0
         ];
+
+        $order_id = $PAYTM_RESPONSE_PARAMS["ORDERID"];
+        $event_reg = EventRegistration::where('order_id', $order_id)->firstOrFail();
+        $view_data['value'] = $event_reg->event_id;
 
         $paytm_checksum = $request['CHECKSUMHASH'];
         $is_valid_checksum = verifychecksum_e($PAYTM_RESPONSE_PARAMS, $key, $paytm_checksum);
@@ -111,13 +118,10 @@ class EventRegistrationController extends Controller
         {
             if($request['STATUS'] == 'TXN_SUCCESS')
             {
-                $order_id = $PAYTM_RESPONSE_PARAMS["ORDERID"];
 
-                $event_reg = EventRegistration::where('order_id', $order_id)->firstOrFail();
                 if(!($event_reg->event->reg_fee == $PAYTM_RESPONSE_PARAMS['TXNAMOUNT']))
                 {
-                    // Transaction Failure [Doesnt paid the actual amount]
-                    // Todo : Redirect to the event page with Transaction Failure message
+                    // Transaction Failure [Doesnt paid the actual amount
                     // Incase he lost money ask him to contact web admin
                     $view_data['respMsg'] = "Doesn't Paid actual amount";
                     return view('transerr', $view_data);
@@ -142,7 +146,6 @@ class EventRegistrationController extends Controller
                     if(isset($PAYTM_RESPONSE_PARAMS[$name]) && $PAYTM_RESPONSE_PARAMS[$name] != $value)
                     {
                         // Transaction failure
-                        // Todo: Redirect to the event page with Transaction Failure
                         $view_data['respMsg'] = "Transaction failed due to tampering of data";
                         return view('transerr', $view_data);
                     }
