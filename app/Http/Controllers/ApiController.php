@@ -107,6 +107,7 @@ class ApiController extends Controller
                 $temp['e_img'] = asset('storage/' . $e->poster_image);
                 $temp['user'] = $user->name;
                 $temp['order_id'] = $e->pivot->order_id;
+                $temp['ticket-link'] = route('event.ticket', $e->pivot->order_id);
                 array_push($regs, $temp);
             }
 
@@ -121,6 +122,7 @@ class ApiController extends Controller
                 $temp['e_img'] = asset('storage/' . $e->poster_image);
                 $temp['user'] = $user->name;
                 $temp['order_id'] = $e->pivot->order_id;
+                $temp['ticket-link'] = route('workshop.ticket', $e->pivot->order_id);
                 array_push($regs, $temp);
             }
 
