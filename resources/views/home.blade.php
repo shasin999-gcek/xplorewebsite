@@ -22,7 +22,7 @@
             <div class="card-footer text-center">
             
             <button id="refid" class="btn btn-info" data-toggle="tooltip" data-placement="top" title="Copy" data-container="body" data-animation="true" data-original-title="Copy" onclick="event.preventDefault(); copyRefToClipboard('{{ url('?ref_code=').Auth::user()->referral_id }}');">Invite Friends</button><br>
-            <small>Copy referral link and share to friends</small>
+            <small>Copy referral link and share to friends</small><br>
             <a href="whatsapp://send" data-text="Are you ready to breathe in the excitement to Xplore the Unexplored?
 Then tune into Xplore'19, The 5th National Techno Management Cultural Festival of Govt. College of Engineering Kannur from February 22nd - 24th 2019!
 
@@ -111,7 +111,7 @@ Dabble in the extraordinary!
                                 <td class="text-right">{{ $event->reg_fee }}</td>
                                 <td class="td-actions text-right">
                                   <a href="{{ route('display_event', ['category' => $event->category->short_name, 'slug' => $event->slug]) }}" rel="tooltip" class="btn btn-info btn-sm btn-round btn-icon">
-                                      <i class="tim-icons icon-settings-gear-63"></i>
+                                      <i class="tim-icons icon-simple-add"></i>
                                   </a>
                                 </td>
                             </tr>
@@ -148,7 +148,7 @@ Dabble in the extraordinary!
                                   <td class="text-right">{{ $w->reg_fee }}</td>
                                   <td class="td-actions text-right">
                                       <a href="{{ route('display_event', ['category' => $w->category->short_name, 'slug' => $w->slug]) }}" rel="tooltip" class="btn btn-info btn-sm btn-round btn-icon">
-                                          <i class="tim-icons icon-settings-gear-63"></i>
+                                          <i class="tim-icons icon-simple-add"></i>
                                       </a>
                                   </td>
                               </tr>
