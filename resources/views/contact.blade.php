@@ -142,6 +142,20 @@
               </div>
             </div>
           </div>
+          <div class="row">
+            <div class="col-md-10 ml-auto col-xl-4 mr-auto">
+              <div class="card">
+                <div class="card-header">
+                <h3 class="h3-contact">Prathuish Prem</h3>
+                <small class="text-uppercase font-weight-bold">Convenor : Cutural Events Committee</small>
+                </div>
+                <div class="card-body">  
+                    <h5>Phone : .+917560877004</h5>
+                    <h5>Email : prathuishprem97@gmail.com</h5>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
       <section class="section">
