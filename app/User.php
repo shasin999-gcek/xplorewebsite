@@ -40,7 +40,7 @@ class User extends Authenticatable
     {
         parent::boot();
         self::creating(function ($user) {
-            $user->referral_id = (string) Uuid::generate(4);
+            $user->referral_id = uniqid('CA-');
         });
     }
 

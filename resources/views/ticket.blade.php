@@ -129,13 +129,14 @@
         <div class="information">
     		<div class="details">
     			<div class="to">
+                                Bill to <br>
                                 {{ $name }} <br>
                                 {{ $email }}<br>
                                 {{ $mobileNumber }}
     			</div>
     			<div class="from">
-                                Chairman & Convenor, Finance<br>
-                                Committee<br>
+                                Chairman & Convenor<br>
+                                Finance Committee<br>
                                 Xplore 19
     			</div>
     		</div>
