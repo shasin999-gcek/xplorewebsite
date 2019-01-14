@@ -54,6 +54,7 @@ Route::get('/contact', 'Home@contact');
 Route::get('/technical', 'Home@technical');
 Route::get('/cultural', 'Home@cultural');
 Route::get('/management', 'Home@management');
+Route::get('/sponsors', 'Home@sponsors');
 Route::get('/ticket',function() {
         return view('ticket');
     });

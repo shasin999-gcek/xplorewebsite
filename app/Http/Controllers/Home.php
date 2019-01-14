@@ -69,4 +69,13 @@ class Home extends Controller
         return view('management',$data);
     }
 
+    public function sponsors() {
+
+        $data = [
+            'active_menu' => 'sponsors'
+        ];
+
+        return view('sponsors', $data);
+    }
+
 }
