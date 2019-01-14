@@ -160,6 +160,34 @@
                                     
                               </div>
                     </div>
+                    <div style="margin-top:10%">
+                            <div class="row">
+                                    
+
+                                     <div class="col-md-6">
+                                            <div class="card card-coin card-plain">
+                                              <div class="card-header">
+                                                <img src="{{ asset('img/general.png') }}" class="img-center img-fluid" style="width: 75%;">
+
+                                              </div>
+                                              <div class="card-body">
+                                                <div class="row">
+                                                  <div class="col-md-12 text-center">
+                                                    <h4 class="text-uppercase">General Events</h4>
+                                                    
+                                                    <hr class="line-info">
+                                                  </div>
+                                                </div>
+                                              </div>
+                                              <div class="card-footer text-center">
+                                                    
+                                                    <a href="{{ route('events','general') }}" class="skew-button"><span>EVENT</span></a>
+                                              </div>
+                                            </div>
+                                    </div>
+                                    
+                              </div>
+                    </div>
                     </div>
                     
                     </div>
