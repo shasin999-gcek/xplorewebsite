@@ -49,6 +49,11 @@ class User extends Authenticatable
         return $this->is_admin;
     }
 
+    public  function getInvitedFriends()
+    {
+        return self::where('referred_by', $this->referral_id)->count();
+    }
+
     public static function isReferralIdValid($referral_id)
     {
         return self::where('referral_id', $referral_id)->count() ? true : false;

@@ -18,10 +18,17 @@ class PaymentController extends Controller
     public function index()
     {
         $payments = Payment::all();
+
+        $success_count = Payment::where('STATUS', 'TXN_SUCCESS')->count();
+        $failure_count = Payment::where('STATUS', 'TXN_FAILURE')->count();
+
         $data = [
             'active_menu' => 'payments',
-            'payments' => $payments
+            'payments' => $payments,
+            'success_count' => $success_count,
+            'failure_count' => $failure_count
         ];
+
         return view('admin.payments_index', $data);
     }
 

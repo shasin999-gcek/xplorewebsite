@@ -31,7 +31,7 @@
                 </div>
                 <a href="#">
                     <div class="panel-footer">
-                        <span class="pull-left">View Details</span>
+                        <span class="pull-left"><a href="{{ route('admin.events.index') }}">View Details</a></span>
                         <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
                         <div class="clearfix"></div>
                     </div>
@@ -53,7 +53,7 @@
                 </div>
                 <a href="#">
                     <div class="panel-footer">
-                        <span class="pull-left">View Details</span>
+                        <span class="pull-left"><a href="{{ route('admin.workshops.index') }}">View Details</a></span>
                         <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
                         <div class="clearfix"></div>
                     </div>
@@ -68,14 +68,14 @@
                             <i class="fa fa-users fa-5x"></i>
                         </div>
                         <div class="col-xs-9 text-right">
-                            <div class="huge">0</div>
+                            <div class="huge">{{ $event_reg_count }}</div>
                             <div>Event Regs</div>
                         </div>
                     </div>
                 </div>
                 <a href="#">
                     <div class="panel-footer">
-                        <span class="pull-left">View Details</span>
+                        <span class="pull-left"><a href="{{ route('admin.event_regs.index') }}">View Details</a></span>
                         <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
                         <div class="clearfix"></div>
                     </div>
@@ -90,14 +90,14 @@
                             <i class="fa fa-users fa-5x"></i>
                         </div>
                         <div class="col-xs-9 text-right">
-                            <div class="huge">0</div>
+                            <div class="huge">{{ $workshop_reg_count }}</div>
                             <div>Workshop Regs</div>
                         </div>
                     </div>
                 </div>
                 <a href="#">
                     <div class="panel-footer">
-                        <span class="pull-left">View Details</span>
+                        <span class="pull-left"><a href="{{ route('admin.workshop_regs.index') }}">View Details</a></span>
                         <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
                         <div class="clearfix"></div>
                     </div>
@@ -122,6 +122,7 @@
                                 <th>Mobile Number</th>
                                 <th>Referral ID</th>
                                 <th>Referred By</th>
+                                <th>Invited Friends</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -132,6 +133,7 @@
                                     <td>{{ $user->mobile_number }}</td>
                                     <td><kbd>{{ $user->referral_id }}</kbd></td>
                                     <td><kbd>{{ ($user->referred_by) ? $user->referred_by : 'No one' }}</kbd></td>
+                                    <td><code>{{ $user->getInvitedFriends() }}</code></td>
                                 </tr>
                             @endforeach
                         </tbody>
@@ -142,6 +144,7 @@
                                 <th>Mobile Number</th>
                                 <th>Referral ID</th>
                                 <th>Referred By</th>
+                                <th>Invited Friends</th>
                             </tr>
                         </tfoot>
                     </table>
