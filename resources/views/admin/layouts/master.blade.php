@@ -108,6 +108,9 @@ fjs.parentNode.insertBefore(js, fjs);
                 <li class="@if($active_menu == 'payments') active @endif">
                     <a href="{{ route('admin.payments.index') }}"><i class="fa fa-fw fa-credit-card-alt" aria-hidden="true"></i> Payments</a>
                 </li>
+                <li class="@if($active_menu == 'logs') active @endif">
+                    <a href="{{ route('admin.logs') }}"><i class="fa fa-fw fa-bug" aria-hidden="true"></i>Server Logs</a>
+                </li>
             </ul>
         </div>
         <!-- /.navbar-collapse -->

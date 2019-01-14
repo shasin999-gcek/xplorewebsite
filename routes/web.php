@@ -29,6 +29,8 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => 'is_admin',
     Route::get('workshop-registrations', 'WorkshopRegistrationController@index')->name('workshop_regs.index');
     Route::get('payments', 'PaymentController@index')->name('payments.index');
 
+    Route::get('logs', '\Rap2hpoutre\LaravelLogViewer\LogViewerController@index')->middleware('auth')->name('logs');
+
     // facebook sharing
     // Route::post('events/share/{event}', 'EventController@share_on_facebook')->name('share_on_fb');
 });
