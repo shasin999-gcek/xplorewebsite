@@ -147,7 +147,7 @@ Dabble in the extraordinary!
                                   <td>{{ $w->category->name }}</td>
                                   <td class="text-right">{{ $w->reg_fee }}</td>
                                   <td class="td-actions text-right">
-                                      <a href="{{ route('display_event', ['category' => $w->category->short_name, 'slug' => $w->slug]) }}" rel="tooltip" class="btn btn-info btn-sm btn-round btn-icon">
+                                      <a href="{{ route('display_workshop', ['category' => $w->category->short_name, 'slug' => $w->slug]) }}" rel="tooltip" class="btn btn-info btn-sm btn-round btn-icon">
                                           <i class="tim-icons icon-simple-add"></i>
                                       </a>
                                   </td>
