@@ -61,8 +61,8 @@
 				
 
                     <br><br>
-                <h4>Starts On: {{ $workshop->starts_on->format('D d-M-Y h:i') }} <br>
-                Ends On: {{ $workshop->ends_on->format('D d-M-Y h:i') }}</h4> 
+                <h4>Starts On: {{ $workshop->starts_on->format('D d-M-Y h:i A') }} <br>
+                Ends On: {{ $workshop->ends_on->format('D d-M-Y h:i A') }}</h4> 
 					<h3> Registration Fee: {{ $workshop->reg_fee }}</h3>
 
           @if(Route::has('login'))

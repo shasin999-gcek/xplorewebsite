@@ -1,4 +1,4 @@
-@extends('layouts.master',['bodyclass' => 'register-page','active_menu' => 'login','navbar' => 'bkg-yellow'])
+@extends('layouts.master',['bodyclass' => 'register-page','active_menu' => 'login','navbar' => ''])
 
 @section('metatags')
   <meta property="og:tags">
@@ -58,7 +58,7 @@
                 </div>
                 <div class="container">
                     <p style="white-space: pre-line;">{{ $event->description }}</p><br><br>
-                    <h4>Date: {{ $event->date->format('D d-M-Y h:i:s') }} </h4> <br>
+                    <h4>Date: {{ $event->date->format('D d-M-Y h:i A') }} </h4> <br>
 
                     <br><br>
 					<h3> Registration Fee: {{ $event->reg_fee }}</h3>
