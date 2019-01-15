@@ -29,9 +29,9 @@
             <div class="col-md-10 ml-auto col-xl-4 mr-auto text-center">
               <img class="img-fluid floating" src="{{ asset('img/eventoz.png') }}"/>
             </div>
-           {{-- <div class="col-md-10 ml-auto col-xl-4 mr-auto text-center">
-              <img class="img-fluid floating" src="{{ asset('img/budha.jpg') }}"/>
-            </div> --}}
+            <div class="col-md-10 ml-auto col-xl-4 mr-auto text-center">
+              <img class="img-fluid floating" src="{{ asset('img/buddha.png') }}"/>
+            </div>
           </div>
         </div>
       </div>
