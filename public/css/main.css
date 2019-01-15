@@ -21955,4 +21955,10 @@ input.datetimepicker[data-color="yellow"]+.bootstrap-datetimepicker-widget.dropd
   
 }
 
+@media screen and (max-width:768px){
+  .page-header .content-center.on-mobile {
+    top:46%;
+  }
+}
+
 /*# sourceMappingURL=kit-free.css.map */

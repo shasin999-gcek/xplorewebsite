@@ -14,9 +14,8 @@
                     <div class="flex-disp">
                         <img src="{{ asset('img/probro.png') }}" class="img-fluid image-over"/>
                         <div class="overlay">
-                            <a href="{{ route('display_event', ['category' => 'cultural-shows', 'slug' => 'sunburn-progressive-brothers']) }}" class="btn btn-info btn-lg">Show Details</a>
-                        </div>
-                        
+                            {{-- <a href="{{ route('display_event', ['category' => 'cultural-shows', 'slug' => 'sunburn-progressive-brothers']) }}" class="btn btn-info btn-lg">Show Details</a> --}}
+                        </div>            
                     </div>
                 </div>
         </div>
