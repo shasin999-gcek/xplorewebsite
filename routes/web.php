@@ -53,6 +53,8 @@ Route::get('/contact', 'Home@contact');
 Route::get('/technical', 'Home@technical');
 Route::get('/cultural', 'Home@cultural');
 Route::get('/management', 'Home@management');
+Route::get('/sponsors', 'Home@sponsors');
+
 
 // Registrations
 Route::group(['middleware' => 'no-cache', 'as' => 'event.'], function () {
