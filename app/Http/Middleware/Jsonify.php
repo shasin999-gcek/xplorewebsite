@@ -4,7 +4,7 @@ namespace App\Http\Middleware;
 
 use Closure;
 
-class IsAdmin
+class Jsonify
 {
     /**
      * Handle an incoming request.
@@ -15,10 +15,9 @@ class IsAdmin
      */
     public function handle($request, Closure $next)
     {
-        if($request->user()->isAdmin()) {
-            return $next($request);
+        if ( $request->is('api/*') ) {
+            $request->headers->set('Accept', 'application/json');
         }
-
-        return redirect()->route('home');
+        return $next($request);
     }
 }

@@ -28,7 +28,7 @@ Then tune into Xplore'19, The 5th National Techno Management Cultural Festival o
 
 Dabble in the extraordinary!
 
-" data-href="{{ url('?ref_code=').Auth::user()->referral_id }}" class="wa_btn wa_btn_l" style="display:none">Share</a>
+" data-href="{{ url('/?ref_code=').Auth::user()->referral_id }}" class="wa_btn wa_btn_l" style="display:none">Share</a>
 
             </div>
           </div>

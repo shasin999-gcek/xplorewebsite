@@ -122,9 +122,9 @@
                             </td>
                             
                             <td>
-                                Xplore'19<br>
-                                Aswin Divakar<br>
-                                xplore19gcek@gmail.com
+                                Chairman & Convenor, Finance<br>
+                                Committee<br>
+                                Xplore 19
                             </td>
                         </tr>
                     </table>
@@ -139,7 +139,7 @@
                 </td>
                 
                 <td>
-                    Price
+                    Reg fee
                 </td>
             </tr>
             

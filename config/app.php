@@ -170,6 +170,7 @@ return [
 
         Barryvdh\Debugbar\ServiceProvider::class,
         Barryvdh\Snappy\ServiceProvider::class,
+        Rap2hpoutre\LaravelLogViewer\LaravelLogViewerServiceProvider::class,
 
         /*
          * Application Service Providers...

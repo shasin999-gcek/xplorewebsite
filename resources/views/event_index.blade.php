@@ -28,7 +28,11 @@
                                             <span class="blog-slider__code">{{$event->type}}</span>
                                             <div class="blog-slider__title">{{$event->name}}</div>
                                             <!-- <div class="blog-slider__text">{!! $event->description !!} </div> -->
-                                            <a href="{{ route('display_event', ['category' => $event->category->short_name, 'slug' => $event->slug]) }}" class="blog-slider__button">READ MORE</a>
+                                            @if($event->slug == 'hack-the-night')
+                                                  <a href="https://goo.gl/forms/4yGFzrvUMYiMpVwZ2" class="blog-slider__button">Register</a>
+                                            @else
+                                                <a href="{{ route('display_event', ['category' => $event->category->short_name, 'slug' => $event->slug]) }}" class="blog-slider__button">READ MORE</a>
+                                            @endif
                                           </div>
                                         </div>
                                     </div>
