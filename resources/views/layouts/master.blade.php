@@ -212,6 +212,7 @@
   <!-- Control Center for Black UI Kit: parallax effects, scripts for the example pages etc -->
   <script src="{{ URL::asset('js/main.min.js?v=1.0.0')}}" type="text/javascript"></script>
   <script src="{{ URL::asset('js/plugins/rellax.min.js')}}" type="text/javascript"></script>
+
   <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
   <script type="text/javascript">if(typeof wabtn4fg==="undefined"){wabtn4fg=1;h=document.head||document.getElementsByTagName("head")[0],s=document.createElement("script");s.type="text/javascript";s.src="{{ asset('js/whatsapp-button.js') }}";h.appendChild(s);}</script>
 
