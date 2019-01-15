@@ -14,7 +14,7 @@
                   {{ $event->name }}
                 </h2>
                 <div class="owl-slide-animated owl-slide-subtitle mb-3">
-                   {{ $event->description }}
+                   <p style="color:whie">{{ $event->description }}</p>
                 </div>
                 <a class="btn btn-info btn-lg owl-slide-animated owl-slide-cta" href="{{ route('display_event', ['category' => $event->category->short_name, 'slug' => $event->slug]) }}" role="button">
                   Read More
