@@ -22,7 +22,6 @@
   <link href="{{ URL::asset('css/nucleo-icons.css')}}" rel="stylesheet" />
   <!-- CSS Files -->
   <link href="{{ URL::asset('css/main.css?v=1.0.0') }}" rel="stylesheet" />
-  <!-- CSS Just for demo purpose, don't include it in your project -->
   <link href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css" />
 </head>
@@ -199,17 +198,16 @@
   <script src="{{ URL::asset('js/core/popper.min.js')}}" type="text/javascript"></script>
   <script src="{{ URL::asset('js/core/bootstrap.min.js')}}" type="text/javascript"></script>
   <script src="{{ URL::asset('js/plugins/perfect-scrollbar.jquery.min.js')}}"></script>
-  <!--  Plugin for Switches, full documentation here: http://www.jque.re/plugins/version3/bootstrap.switch/ -->
+  
   <script src="{{ URL::asset('js/plugins/bootstrap-switch.js')}}"></script>
-  <!--  Plugin for the Sliders, full documentation here: http://refreshless.com/nouislider/ -->
+
   <script src="{{ URL::asset('js/plugins/nouislider.min.js')}}" type="text/javascript"></script>
   <!-- Chart JS -->
   <script src="{{ URL::asset('js/plugins/chartjs.min.js')}}"></script>
-  <!--  Plugin for the DatePicker, full documentation here: https://github.com/uxsolutions/bootstrap-datepicker -->
+ 
   <script src="{{ URL::asset('js/plugins/moment.min.js')}}"></script>
   <script src="{{ URL::asset('js/plugins/bootstrap-datetimepicker.js')}}" type="text/javascript"></script>
-  <!-- Black Dashboard DEMO methods, don't include it in your project! -->
-  <!-- Control Center for Black UI Kit: parallax effects, scripts for the example pages etc -->
+ 
   <script src="{{ URL::asset('js/main.min.js?v=1.0.0')}}" type="text/javascript"></script>
   <script src="{{ URL::asset('js/plugins/rellax.min.js')}}" type="text/javascript"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
