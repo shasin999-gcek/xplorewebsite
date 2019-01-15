@@ -51,9 +51,9 @@
                 <div class="container">
                     <p style="white-space: pre-line;">{{ $event->description }}</p><br><br>
                     <h4>Date: {{ $event->date->format('D d-M-Y') }} </h4> <br>
-					<h4> First Price :  {{ $event->f_price_money }} <br>
-					Second Price :  {{ $event->s_price_money }} <br>
-					@if($event->t_price_money != 0)Third Price :  {{ $event->t_price_money }}</h4>@endif
+					<h4> First Prize :  {{ $event->f_price_money }} <br>
+					Second Prize :  {{ $event->s_price_money }} <br>
+					@if($event->t_price_money != 0)Third Prize :  {{ $event->t_price_money }}</h4>@endif
 
                     <br><br>
           <h3> Registration Fee: {{ $event->reg_fee }}</h3>

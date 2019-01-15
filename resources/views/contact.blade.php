@@ -167,40 +167,71 @@
                 <h1 class="profile-title text-left">Contact</h1>
               </div>
               <div class="card-body">
-                <form>
+                @if (session('status'))
+                  <div class="alert alert-success">
+                    {{ session('status') }}
+                  </div>
+                @endif
+                <form method="post" action="{{ route('contact-admin') }}">
+                  {{ csrf_field() }}
                   <div class="row">
                     <div class="col-md-6">
-                      <div class="form-group">
-                        <label>Your Name</label>
-                        <input type="text" class="form-control" value=" ">
+                      <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
+                          <label for="name">Your Name</label>
+                          <input id="name" name="name" type="text" class="form-control" value="{{ old('name') }}" required>
+                          @if ($errors->has('name'))
+                            <span class="help-block">
+                                <strong>{{ $errors->first('name') }}</strong>
+                            </span>
+                          @endif
                       </div>
                     </div>
                     <div class="col-md-6">
-                      <div class="form-group">
-                        <label>Email address</label>
-                        <input type="email" class="form-control" placeholder=" ">
+                      <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
+                        <label for="email">Email address</label>
+                        <input type="email" class="form-control" id="email" name="email" value="{{ old('email') }}" required>
+                        @if ($errors->has('email'))
+                          <span class="help-block">
+                                <strong>{{ $errors->first('email') }}</strong>
+                            </span>
+                        @endif
                       </div>
                     </div>
                   </div>
                   <div class="row">
                     <div class="col-md-6">
-                      <div class="form-group">
-                        <label>Phone</label>
-                        <input type="text" class="form-control" value=" ">
+                      <div class="form-group{{ $errors->has('phone') ? ' has-error' : '' }}">
+                        <label for="phone">Phone</label>
+                        <input type="number" class="form-control" id="phone" name="phone" value="{{ old('phone') }}" required>
+                        @if ($errors->has('phone'))
+                          <span class="help-block">
+                                <strong>{{ $errors->first('phone') }}</strong>
+                            </span>
+                        @endif
                       </div>
                     </div>
                     <div class="col-md-6">
-                      <div class="form-group">
-                        <label>Subject</label>
-                        <input type="text" class="form-control" value=" ">
+                      <div class="form-group{{ $errors->has('subject') ? ' has-error' : '' }}">
+                        <label for="subject">Subject</label>
+                        <input type="text" class="form-control" id="subject" name="subject" value="{{ old('subject') }}" required>
+                        @if ($errors->has('subject'))
+                          <span class="help-block">
+                                <strong>{{ $errors->first('subject') }}</strong>
+                            </span>
+                        @endif
                       </div>
                     </div>
                   </div>
                   <div class="row">
                     <div class="col-md-12">
-                      <div class="form-group">
-                        <label>Message</label>
-                        <input type="text" class="form-control" placeholder="Hello there!">
+                      <div class="form-group{{ $errors->has('message') ? ' has-error' : '' }}">
+                        <label for="message">Message</label>
+                        <input type="text" class="form-control" placeholder="Hello there!" id="message" name="message" value="{{ old('message') }}" required>
+                        @if ($errors->has('message'))
+                          <span class="help-block">
+                                <strong>{{ $errors->first('message') }}</strong>
+                            </span>
+                        @endif
                       </div>
                     </div>
                   </div>

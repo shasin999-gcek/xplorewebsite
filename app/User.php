@@ -40,13 +40,18 @@ class User extends Authenticatable
     {
         parent::boot();
         self::creating(function ($user) {
-            $user->referral_id = (string) Uuid::generate(4);
+            $user->referral_id = uniqid('CA-');
         });
     }
 
     public function isAdmin() 
     {
         return $this->is_admin;
+    }
+
+    public  function getInvitedFriends()
+    {
+        return self::where('referred_by', $this->referral_id)->count();
     }
 
     public static function isReferralIdValid($referral_id)
@@ -68,6 +73,14 @@ class User extends Authenticatable
     }
 
 
+    public function s_events_api()
+    {
+        return $this->belongsToMany('App\Event', 'event_registrations', 'user_id', 'event_id')
+            ->with('category')
+            ->withPivot('user_id', 'event_id', 'order_id', 'is_reg_success')
+            ->wherePivot('is_reg_success', true);
+    }
+
     public function workshops()
     {
         return $this->belongsToMany('App\Workshop', 'workshop_registrations', 'user_id', 'workshop_id')
@@ -77,6 +90,14 @@ class User extends Authenticatable
     public function s_workshops()
     {
         return $this->belongsToMany('App\Workshop', 'workshop_registrations', 'user_id', 'workshop_id')
+            ->withPivot('user_id', 'workshop_id', 'order_id', 'is_reg_success')
+            ->wherePivot('is_reg_success', true);
+    }
+
+    public function s_workshops_api()
+    {
+        return $this->belongsToMany('App\Workshop', 'workshop_registrations', 'user_id', 'workshop_id')
+            ->with('category')
             ->withPivot('user_id', 'workshop_id', 'order_id', 'is_reg_success')
             ->wherePivot('is_reg_success', true);
     }

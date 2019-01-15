@@ -29,6 +29,8 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => 'is_admin',
     Route::get('workshop-registrations', 'WorkshopRegistrationController@index')->name('workshop_regs.index');
     Route::get('payments', 'PaymentController@index')->name('payments.index');
 
+    Route::get('logs', '\Rap2hpoutre\LaravelLogViewer\LogViewerController@index')->middleware('auth')->name('logs');
+
     // facebook sharing
     // Route::post('events/share/{event}', 'EventController@share_on_facebook')->name('share_on_fb');
 });
@@ -36,9 +38,6 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => 'is_admin',
 
 Route::get('/user/profile', 'HomeController@index')->name('home');
 
-// Route::get('/transerr', function () {
-//     return view('transerr');
-// })->name('transerr');
 
 Route::get('/events/{category}/', 'EventController@getEventsByCategory')->name('events');
 Route::get('/workshops/{category}/', 'WorkshopController@getWorkshopsByCategory')->name('workshops');
@@ -55,9 +54,7 @@ Route::get('/technical', 'Home@technical');
 Route::get('/cultural', 'Home@cultural');
 Route::get('/management', 'Home@management');
 Route::get('/sponsors', 'Home@sponsors');
-Route::get('/ticket',function() {
-        return view('ticket');
-    });
+
 
 // Registrations
 Route::group(['middleware' => 'no-cache', 'as' => 'event.'], function () {
@@ -74,3 +71,5 @@ Route::group(['middleware' => 'no-cache', 'as' => 'workshop.'], function () {
 
 Route::get('/event/get-ticket/{orderId}', 'GenerateInvoicePDF@generateEventTicket')->name('event.ticket');
 Route::get('/workshop/get-ticket/{orderId}', 'GenerateInvoicePDF@generateWorkshopTicket')->name('workshop.ticket');
+
+Route::post('/feedback', 'ContactAdminController@sendMail')->name('contact-admin');

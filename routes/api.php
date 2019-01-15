@@ -13,4 +13,6 @@ use Illuminate\Http\Request;
 |
 */
 
-Route::middleware('api')->get('/events', 'ApiController@getEventLists');
+Route::middleware('api')->get('/events', 'ApiController@getEvents');
+Route::middleware('api')->get('/workshops', 'ApiController@getWorkshops');
+Route::middleware('api')->get('/user/regs', 'ApiController@getRegistrations');

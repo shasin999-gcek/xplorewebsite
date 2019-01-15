@@ -129,14 +129,15 @@
         <div class="information">
     		<div class="details">
     			<div class="to">
+                                Bill to <br>
                                 {{ $name }} <br>
                                 {{ $email }}<br>
                                 {{ $mobileNumber }}
     			</div>
     			<div class="from">
-                                Xplore'19<br>
-                                Aswin Divakar<br>
-                                xplore19gcek@gmail.com
+                                Chairman & Convenor<br>
+                                Finance Committee<br>
+                                Xplore 19
     			</div>
     		</div>
     	</div>
@@ -147,7 +148,7 @@
                 </td>
                 
                 <td>
-                    Price
+                    Reg fee
                 </td>
             </tr>
             
