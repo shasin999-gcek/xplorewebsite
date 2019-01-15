@@ -36,7 +36,7 @@
           <h6>Presents</h6>
           <img src="{{ asset('img/Xplore.svg') }}" class="img-fluid img-responsive" width="300" height="300">
           <img src="{{ URL::asset('img/logo.svg') }}" class="img-fluid img-responsive" width="250" height="200">
-          <h5>Dabble in the Extraordinary <br><span class="text-danger">Febuary 22nd-24th, 2019</span> </h5>
+          <h5>Dabble in the Extraordinary <br><span class="text-danger">February 22nd-24th, 2019</span> </h5>
         </div>
       </div>
     </div>
