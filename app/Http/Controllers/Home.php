@@ -11,9 +11,9 @@ class Home extends Controller
 {
     public function index() {
 
-        $event_posters = Event::pluck('poster_image')->take(5);
+       // $event_posters = Event::pluck('poster_image')->take(5);
         $workshop_posters = Workshop::pluck('poster_image');
-        $slides = $event_posters->concat($workshop_posters);
+        $slides = $workshop_posters;
 
         $data = [
             'active_menu' => 'dashboard',
