@@ -107,6 +107,7 @@ class HomeController extends Controller
 
       unset($responseParamList['REFUNDAMT']);
 
+      dd($responseParamList);
       Payment::create($responseParamList);
 
       if($responseParamList['STATUS'] == 'TXN_SUCCESS')
