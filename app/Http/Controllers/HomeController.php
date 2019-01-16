@@ -104,6 +104,7 @@ class HomeController extends Controller
       $responseParamList = getTxnStatusNew($requestParamList);
       
       $responseParamList['CURRENCY'] = 'INR';
+      $responseParamList['GATEWAYNAME'] = 'UPI';
 
       unset($responseParamList['REFUNDAMT']);
 
