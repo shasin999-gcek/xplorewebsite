@@ -1,9 +1,9 @@
 <?php
 
 define('PAYTM_ENVIRONMENT', 'PROD'); // PROD
-define('PAYTM_MERCHANT_KEY', config('services.paytm.key'));
-define('PAYTM_MERCHANT_MID', config('services.paytm.mid'));
-define('PAYTM_MERCHANT_WEBSITE', config('services.paytm.website')); //Change this constant's value with Website name received from Paytm.
+define('PAYTM_MERCHANT_KEY', '19_6bX3LNELV7yzx');
+define('PAYTM_MERCHANT_MID', 'XEJsdP45088123695350');
+define('PAYTM_MERCHANT_WEBSITE', 'DEFAULT'); //Change this constant's value with Website name received from Paytm.
 
 $PAYTM_STATUS_QUERY_NEW_URL='https://securegw-stage.paytm.in/merchant-status/getTxnStatus';
 $PAYTM_TXN_URL='https://securegw-stage.paytm.in/theia/processTransaction';
