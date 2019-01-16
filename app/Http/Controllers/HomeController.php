@@ -105,6 +105,7 @@ class HomeController extends Controller
       
       $responseParamList['CURRENCY'] = 'INR';
       $responseParamList['GATEWAYNAME'] = 'UPI';
+      $responseParamList['PAYMENTMODE'] = 'UPI';
 
       unset($responseParamList['REFUNDAMT']);
 
