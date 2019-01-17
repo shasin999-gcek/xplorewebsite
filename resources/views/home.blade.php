@@ -46,7 +46,7 @@ Dabble in the extraordinary!
             </div>
             <div class="container">
               <div class="row">
-                @if($registered_events->count() > 0)
+                @if($registered_events->count() > 0 || $registered_workshops->count() > 0)
                 @foreach($registered_events as $e)
                 <div class="col-md-4">
                   <div class="card card-plain">
