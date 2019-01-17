@@ -44,4 +44,11 @@ return [
         'txn_url' => env('PAYTM_TXN_URL', 'https://securegw-stage.paytm.in/theia/processTransaction'),
     ],
 
+    'instamojo' => [
+        'api_key' => env('INSTAMOJO_API_KEY'),
+        'api_token' => env('INSTAMOJO_API_TOKEN'),
+        'api_salt' => env('INSTAMOJO_API_SALT'),
+        'api_env' =>env('INSTAMOJO_API_ENV','TEST'),
+    ],
+
 ];

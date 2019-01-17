@@ -266,3 +266,18 @@ function callRefundAPI($refundApiURL, $requestParamList) {
     $responseParamList = json_decode($jsonResponse,true);
     return $responseParamList;
 }
+
+function checkMAC($salt) {
+    $ver = explode('.', phpversion());
+    $major = (int) $ver[0];
+    $minor = (int) $ver[1];
+    if($major >= 5 and $minor >= 4){
+        ksort($data, SORT_STRING | SORT_FLAG_CASE);
+    }
+    else{
+        uksort($data, 'strcasecmp');
+    }
+    
+    $mac_calculated = hash_hmac("sha1", implode("|", $data), $salt);
+    return $mac_calculated;
+}
