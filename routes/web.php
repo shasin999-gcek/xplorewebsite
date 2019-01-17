@@ -69,6 +69,8 @@ Route::group(['middleware' => 'no-cache', 'as' => 'event.'], function () {
 Route::group(['middleware' => 'no-cache', 'as' => 'workshop.'], function () {
     Route::post('/workshop/register', 'WorkshopRegistrationController@store')->name('register');
     Route::post('/workshop/payment-callback', 'WorkshopRegistrationController@paytmCallback')->name('payment.callback');
+    Route::post('/workshop/register-insta', 'WorkshopRegistrationController@storeInsta')->name('register-insta');
+    Route::get('/workshop/insta-callback', 'WorkshopRegistrationController@instaCallback')->name('insta.callback');
 }); 
 
 

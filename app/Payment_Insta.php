@@ -32,7 +32,7 @@ class Payment_Insta extends Model
 
     public $timestamps = false;
 
-    protected $dates = ['created-at'];
+    protected $dates = ['created_at'];
 
     protected function getDateFormat()
     {

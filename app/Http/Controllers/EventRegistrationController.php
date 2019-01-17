@@ -14,6 +14,7 @@ use Auth;
 use Illuminate\Support\Facades\Mail;
 use DB;
 use Tzsk\Payu\Facade\PaymentPayu;
+use DateTime;
 
 class EventRegistrationController extends Controller
 {
@@ -244,7 +245,7 @@ class EventRegistrationController extends Controller
         foreach($required as $r) {
             $INSTA_RESPONSE_PARAMS[$r] = $paymentresponse[$r];
         }
-        
+        $INSTA_RESPONSE_PARAMS['created_at'] = DateTime::createFromFormat('Y-m-d\TH:i:s.uO', $paymentresponse['created_at']);        
         
         $view_data = [
             'transId' => $INSTA_RESPONSE_PARAMS['payment_id'],
