@@ -301,11 +301,18 @@ class EventRegistrationController extends Controller
             }
             else
             {
+                if(!$INSTA_RESPONSE_PARAMS['fees'])
+                {
+                    $INSTA_RESPONSE_PARAMS['fees'] = 0;
+                }
+
+                $INSTA_RESPONSE_PARAMS['failure'] = $INSTA_RESPONSE_PARAMS['failure']['message'];
+
                 // Transaction Failure but need to save to db for further assistence
                 Payment_Insta::create($INSTA_RESPONSE_PARAMS);
                 // Todo : Redirect to the event page with Transaction Failure message
                
-                $view_data['respMsg'] = 'Payment Declined';
+                $view_data['respMsg'] = $INSTA_RESPONSE_PARAMS['failure'];
                 return view('transerr', $view_data);
 
             }
