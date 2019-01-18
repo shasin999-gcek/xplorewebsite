@@ -58,10 +58,10 @@ Route::get('/sponsors', 'Home@sponsors');
 
 // Registrations
 Route::group(['middleware' => 'no-cache', 'as' => 'event.'], function () {
-    Route::post('/event/register', 'EventRegistrationController@store')->name('register');
+  //  Route::post('/event/register', 'EventRegistrationController@store')->name('register');
     Route::post('/event/register-payu', 'EventRegistrationController@storePayu')->name('register-payu');
     Route::post('/event/register-insta', 'EventRegistrationController@storeInsta')->name('register-insta');
-    Route::post('/event/payment-callback', 'EventRegistrationController@paytmCallback')->name('payment.callback');
+ //   Route::post('/event/payment-callback', 'EventRegistrationController@paytmCallback')->name('payment.callback');
     Route::post('/event/payu-callback', 'EventRegistrationController@payuCallback')->name('payu.callback');
     Route::get('/event/insta-callback', 'EventRegistrationController@instaCallback')->name('insta.callback');
 }); 

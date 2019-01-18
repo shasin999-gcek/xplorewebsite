@@ -62,13 +62,13 @@
               @isset($alreadyRegistered)
                     <a class="btn btn-primary" href="{{ route('workshop.ticket', $alreadyRegistered->order_id) }}">Download Ticket</a>
                   @else
-                    <button class="btn btn-info " onclick="event.preventDefault(); document.getElementById('workshop_reg_form').submit();">Buy Ticket using Paytm</button>
-                    <form id="workshop_reg_form" method="post" action="{{ route('workshop.register') }}" style="display: none;">
-                      {{ csrf_field() }}
-                      <input type="text" name="workshop_id" value="{{ $workshop->id }}">
-                    </form>
-                    <button class="btn btn-default" onclick="event.preventDefault(); document.getElementById('workshop_reg_form-insta').submit();">Buy Ticket using Instamojo</button><br>
-                    <small> *Please login to paytm for uninterrupted transaction </small><br>
+                    {{--<button class="btn btn-info " onclick="event.preventDefault(); document.getElementById('workshop_reg_form').submit();">Buy Ticket using Paytm</button>--}}
+                    {{--<form id="workshop_reg_form" method="post" action="{{ route('workshop.register') }}" style="display: none;">--}}
+                      {{--{{ csrf_field() }}--}}
+                      {{--<input type="text" name="workshop_id" value="{{ $workshop->id }}">--}}
+                    {{--</form>--}}
+                    <button class="btn btn-default" onclick="event.preventDefault(); document.getElementById('workshop_reg_form-insta').submit();">Buy Ticket</button><br>
+                    {{--<small> *Please login to paytm for uninterrupted transaction </small><br>--}}
                     <form id="workshop_reg_form-insta" method="post" action="{{ route('workshop.register-insta') }}" style="display: none;">
                       {{ csrf_field() }}
                       <input type="text" name="workshop_id" value="{{ $workshop->id }}">

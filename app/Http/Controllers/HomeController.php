@@ -41,7 +41,7 @@ class HomeController extends Controller
        $user = Auth::user();
 
        // check all payments status
-//
+
 //       $fail_event_regs =  EventRegistration::where([
 //         ['user_id', $user->id],
 //         ['is_reg_success', false]
