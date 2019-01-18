@@ -5,7 +5,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <link rel="apple-touch-icon" sizes="76x76" href="./assets/img/apple-icon.png">
-  <link rel="icon" type="image/png" href="./assets/img/favicon.png">
+  <link rel="icon" type="image/png" href="{{ asset('img/logo.png') }}">
 
   <meta name="robots" content="index,archive,follow">
 
@@ -24,6 +24,17 @@
   <link href="{{ URL::asset('css/main.css?v=1.0.0') }}" rel="stylesheet" />
   <link href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css" />
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-132483432-1"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'UA-132483432-1');
+  </script>
+
 </head>
 
 <body class="{{ $bodyclass }}">
@@ -31,7 +42,7 @@
   <nav class="navbar navbar-expand-lg {{ $navbar }}  bg-default" color-on-scroll="600">
     <div class="container">
       <div class="navbar-translate">
-        <a class="navbar-brand" href="{{ url('/') }}"  target="_blank">
+        <a class="navbar-brand" href="{{ url('/') }}">
           <span>Xplore'19</span> 
         </a>
         <button class="navbar-toggler navbar-toggler" type="button" data-toggle="collapse" data-target="#navigation" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
@@ -210,6 +221,7 @@
  
   <script src="{{ URL::asset('js/main.min.js?v=1.0.0')}}" type="text/javascript"></script>
   <script src="{{ URL::asset('js/plugins/rellax.min.js')}}" type="text/javascript"></script>
+
   <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
   <script type="text/javascript">if(typeof wabtn4fg==="undefined"){wabtn4fg=1;h=document.head||document.getElementsByTagName("head")[0],s=document.createElement("script");s.type="text/javascript";s.src="{{ asset('js/whatsapp-button.js') }}";h.appendChild(s);}</script>
 
