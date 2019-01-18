@@ -28,8 +28,9 @@ Then tune into Xplore'19, The 5th National Techno Management Cultural Festival o
 
 Dabble in the extraordinary!
 
-" data-href="{{ url('/?ref_code=').Auth::user()->referral_id }}" class="wa_btn wa_btn_l" style="display:none">Share</a>
-            <small>For any queries related to Payment , Please Contact Web admin - +918129151079</small>
+" data-href="{{ secure_url('/').'/?ref_code='.Auth::user()->referral_id }}" class="wa_btn wa_btn_l" style="display:none">Share</a>
+            <br><small>For any queries related to Payment , Please Contact Web admin - +918129151079</small>
+
             </div>
           </div>
         </div>
@@ -46,7 +47,7 @@ Dabble in the extraordinary!
             </div>
             <div class="container">
               <div class="row">
-                
+                @if($registered_events->count() > 0 || $registered_workshops->count() > 0)
                 @foreach($registered_events as $e)
                 <div class="col-md-4">
                   <div class="card card-plain">

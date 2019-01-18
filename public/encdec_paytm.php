@@ -1,9 +1,9 @@
 <?php
 
-define('PAYTM_ENVIRONMENT', 'TEST'); // PROD
-define('PAYTM_MERCHANT_KEY', env('PAYTM_MERCHANT_KEY'));
-define('PAYTM_MERCHANT_MID', env('PAYTM_MERCHANT_MID'));
-define('PAYTM_MERCHANT_WEBSITE', 'WEBSTAGING'); //Change this constant's value with Website name received from Paytm.
+define('PAYTM_ENVIRONMENT', 'PROD'); // PROD
+define('PAYTM_MERCHANT_KEY', 'ZqwbODeM@!31ijQp');
+define('PAYTM_MERCHANT_MID', 'LIeyUh21549335672797');
+define('PAYTM_MERCHANT_WEBSITE', 'DEFAULT'); //Change this constant's value with Website name received from Paytm.
 
 $PAYTM_STATUS_QUERY_NEW_URL='https://securegw-stage.paytm.in/merchant-status/getTxnStatus';
 $PAYTM_TXN_URL='https://securegw-stage.paytm.in/theia/processTransaction';

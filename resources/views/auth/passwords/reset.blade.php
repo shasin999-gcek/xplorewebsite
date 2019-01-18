@@ -21,14 +21,14 @@
                         <span><b> Error! - </b> {{ $errors->first('email') }}</span>
                     </div>
                 @endif
-                @if ($errors->has('password'))
+                @if($errors->has('password'))
                     <div class="alert alert-danger alert-with-icon">
                         
                         <button type="button" aria-hidden="true" class="close" data-dismiss="alert" aria-label="Close">
                             <i class="tim-icons icon-simple-remove"></i>
                         </button>
                         
-                        <span><b> Error! - </b> {{ $errors->first(password') }}</span>
+                        <span><b> Error! - </b> {{ $errors->first('password') }} </span>
                     </div>
                 @endif
                 @if ($errors->has('password_confirmation'))
