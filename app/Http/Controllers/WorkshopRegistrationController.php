@@ -179,6 +179,187 @@ class WorkshopRegistrationController extends Controller
         }
     }
 
+    public function storeInsta(Request $request)
+    {
+        $workshop_id = $request['workshop_id'];
+        $workshop = Workshop::findOrFail($workshop_id);
+
+        // get authenticated user
+        $user = Auth::user();
+        $workshop_id = $workshop->id;
+        $user_id = $user->id;
+        $order_id = 'XPLR' . uniqid();
+
+        WorkshopRegistration::create([
+            'user_id' => $user_id,
+            'workshop_id' => $workshop_id,
+            'order_id' => $order_id,
+        ]);
+        
+        
+        $key = 'X-Api-Key:'.config('services.instamojo.api_key');
+        $token = 'X-Auth-Token:'.config('services.instamojo.api_token');
+
+        $INSTA_POST_PARAMS = [
+            'purpose' => $order_id,
+            'amount' => $workshop->reg_fee, # Amount to be charged.
+            'buyer_name' => $user->name, # Payee Name.
+            'email' => $user->email, # Payee Email Address.
+            'phone' => $user->mobile_number,
+            'redirect_url' => route('workshop.insta.callback','order_id='.$order_id),
+            'send_email' => false,
+            
+            'send_sms' => false,
+            'allow_repeated_payments' => false
+        ];
+
+        $ch = curl_init();
+
+        // For Live Payment
+        // curl_setopt($ch, CURLOPT_URL, 'https://www.instamojo.com/api/1.1/payment-requests/');
+        // For Test payment
+        curl_setopt($ch, CURLOPT_URL, 'https://test.instamojo.com/api/1.1/payment-requests/');
+        curl_setopt($ch, CURLOPT_HEADER, FALSE);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, TRUE);
+        curl_setopt($ch, CURLOPT_FOLLOWLOCATION, TRUE);
+        curl_setopt($ch, CURLOPT_HTTPHEADER,
+            array($key,$token));
+        
+        curl_setopt($ch, CURLOPT_POST, true);
+        curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query($INSTA_POST_PARAMS));
+        $response = curl_exec($ch);
+        $err = curl_error($ch);
+        curl_close($ch); 
+        
+        if ($err) {
+            return redirect()->back();
+        } else {
+            $data = json_decode($response);
+        }
+
+
+        if($data->success == true) {
+            return redirect($data->payment_request->longurl);
+        } else {
+            return redirect()->back();
+        }
+    }
+
+    public function instaCallback(Request $request)
+    {
+        $key = 'X-Api-Key:'.config('services.instamojo.api_key');
+        $token = 'X-Auth-Token:'.config('services.instamojo.api_token');
+        
+        $required = [
+            "payment_id",
+            "quantity",
+            "status",
+            "buyer_name",
+            "buyer_phone",
+            "buyer_email",
+            "currency",
+            "unit_price",
+            "amount",
+            "fees",
+            "instrument_type",
+            "billing_instrument",
+            "failure", 
+            "created_at",
+        ];
+        $ch = curl_init();
+        curl_setopt($ch, CURLOPT_URL, 'https://test.instamojo.com/api/1.1/payments/'.$request->get('payment_id'));
+        if(config('services.instamojo.api_env') == "PROD"){
+            curl_setopt($ch, CURLOPT_URL, 'https://www.instamojo.com/api/1.1/payments/'.$request->get('payment_id'));
+        }
+        curl_setopt($ch, CURLOPT_HEADER, FALSE);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, TRUE);
+        curl_setopt($ch, CURLOPT_FOLLOWLOCATION, TRUE);
+        curl_setopt($ch, CURLOPT_HTTPHEADER,
+            array($key,$token));
+
+        $response = curl_exec($ch);
+        $err = curl_error($ch);
+        curl_close($ch); 
+
+
+        $salt = config('services.instamojo.api_salt');
+        $response = json_decode($response,true);
+        $paymentresponse = $response['payment'];
+        $INSTA_RESPONSE_PARAMS['order_id'] = $request->get('order_id');
+        
+        foreach($required as $r) {
+            $INSTA_RESPONSE_PARAMS[$r] = $paymentresponse[$r];
+        }
+        $INSTA_RESPONSE_PARAMS['created_at'] = DateTime::createFromFormat('Y-m-d\TH:i:s.uO', $paymentresponse['created_at']);        
+        
+        $view_data = [
+            'transId' => $INSTA_RESPONSE_PARAMS['payment_id'],
+            'orderId' => $INSTA_RESPONSE_PARAMS['order_id'],
+            'route' => 'workshop.register-insta',
+            'name' => 'workshop_id',
+            'value' => 0
+        ];
+
+        $order_id = $request->get('order_id');
+        $workshop_reg = WorkshopRegistration::where('order_id', $order_id)->firstOrFail();
+        $view_data['value'] = $workshop_reg->workshop_id;
+
+       // $MAC_PROVIDED = $INSTA_RESPONSE_PARAMS['mac'];
+       // unset($INSTA_RESPONSE_PARAMS['mac']);
+       // $MAC_CALCULATED = checkMAC($INSTA_RESPONSE_PARAMS,$salt);
+
+        if($response['success'] == true)
+        {
+            if($INSTA_RESPONSE_PARAMS['status'] == 'Credit')
+            {
+
+                if(!($workshop_reg->workshop->reg_fee == $INSTA_RESPONSE_PARAMS['amount']))
+                {
+                    // Transaction Failure [Doesnt paid the actual amount
+                    // Incase he lost money ask him to contact web admin
+                    $view_data['respMsg'] = "Didn't Pay the actual amount";
+                    return view('transerr', $view_data);
+                }
+
+                
+                
+
+                // when control reaches here Transaction is verifeid
+                // update the payment info
+                Payment_Insta::create($INSTA_RESPONSE_PARAMS);
+
+                // update the registration as successful
+                // $user = Auth::user();
+                // $user->workshops()->updateExistingPivot($workshop_reg->workshop->id, ['is_reg_success' => true]);
+
+                DB::table('workshop_registrations')
+                    ->where('order_id', $order_id)
+                    ->update(['is_reg_success' => true]);
+
+                Mail::to($INSTA_RESPONSE_PARAMS['buyer_email'])->send(new WorkshopTransactionInstaSuccess($order_id));
+
+                return redirect()->route('home');
+            }
+            else
+            {
+                // Transaction Failure but need to save to db for further assistence
+                Payment_Insta::create($INSTA_RESPONSE_PARAMS);
+                // Todo : Redirect to the workshop page with Transaction Failure message
+               
+                $view_data['respMsg'] = 'Payment Declined';
+                return view('transerr', $view_data);
+
+            }
+        }
+        else
+        {
+            // Response is tampered abort with Forbidden repose
+            $view_data['respMsg'] = "Tampering detected";
+            return view('transerr', $view_data);
+        }
+    }
+
+
 
     /**
      * Display the specified resource.

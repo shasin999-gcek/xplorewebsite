@@ -59,17 +59,28 @@ Route::get('/sponsors', 'Home@sponsors');
 // Registrations
 Route::group(['middleware' => 'no-cache', 'as' => 'event.'], function () {
     Route::post('/event/register', 'EventRegistrationController@store')->name('register');
+    Route::post('/event/register-payu', 'EventRegistrationController@storePayu')->name('register-payu');
+    Route::post('/event/register-insta', 'EventRegistrationController@storeInsta')->name('register-insta');
     Route::post('/event/payment-callback', 'EventRegistrationController@paytmCallback')->name('payment.callback');
+    Route::post('/event/payu-callback', 'EventRegistrationController@payuCallback')->name('payu.callback');
+    Route::get('/event/insta-callback', 'EventRegistrationController@instaCallback')->name('insta.callback');
 }); 
 
 Route::group(['middleware' => 'no-cache', 'as' => 'workshop.'], function () {
     Route::post('/workshop/register', 'WorkshopRegistrationController@store')->name('register');
     Route::post('/workshop/payment-callback', 'WorkshopRegistrationController@paytmCallback')->name('payment.callback');
+    Route::post('/workshop/register-insta', 'WorkshopRegistrationController@storeInsta')->name('register-insta');
+    Route::get('/workshop/insta-callback', 'WorkshopRegistrationController@instaCallback')->name('insta.callback');
 }); 
 
+
+
+# Status Route
+Route::get('payment/status', ['as' => 'payment.status', 'uses' => 'PaymentController@status']);
 
 
 Route::get('/event/get-ticket/{orderId}', 'GenerateInvoicePDF@generateEventTicket')->name('event.ticket');
 Route::get('/workshop/get-ticket/{orderId}', 'GenerateInvoicePDF@generateWorkshopTicket')->name('workshop.ticket');
 
 Route::post('/feedback', 'ContactAdminController@sendMail')->name('contact-admin');
+

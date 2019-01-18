@@ -63,9 +63,14 @@
                   @isset($alreadyRegistered)
                     <a class="btn btn-primary" href="{{ route('event.ticket', $alreadyRegistered->order_id) }}">Download Ticket</a>
                   @else
-                    <button class="btn btn-info btn-lg " onclick="event.preventDefault(); document.getElementById('event_reg_form').submit();">Buy Ticket</button><br>
-
+                    <button class="btn btn-info " onclick="event.preventDefault(); document.getElementById('event_reg_form').submit();">Buy Ticket using Paytm</button>
                     <form id="event_reg_form" method="post" action="{{ route('event.register') }}" style="display: none;">
+                      {{ csrf_field() }}
+                      <input type="text" name="event_id" value="{{ $event->id }}">
+                    </form>
+                    <button class="btn btn-default" onclick="event.preventDefault(); document.getElementById('event_reg_form-insta').submit();">Buy Ticket using Instamojo</button><br>
+                    <small> *Please login to paytm for uninterrupted transaction </small><br>
+                    <form id="event_reg_form-insta" method="post" action="{{ route('event.register-insta') }}" style="display: none;">
                       {{ csrf_field() }}
                       <input type="text" name="event_id" value="{{ $event->id }}">
                     </form>

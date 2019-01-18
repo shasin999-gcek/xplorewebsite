@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\EventRegistration;
 use App\WorkshopRegistration;
 use App\Payment;
+use App\Payment_Insta;
 use PDF;
 
 class GenerateInvoicePDF extends Controller
@@ -19,26 +20,31 @@ class GenerateInvoicePDF extends Controller
 
     public function generateEventTicket($orderId)
     {
+        $payment_paytm = NULL;
+        $paytm_insta = NULL; 
 
         $event_reg = EventRegistration::with('user', 'event')->where([
             ['order_id', '=', $orderId],
             ['is_reg_success', '=', true]
         ])->firstOrFail();
 
-        $payment_data = Payment::findOrFail($orderId);
-
+        $payment_paytm = Payment::find($orderId);
+        if(!$payment_paytm){
+            $payment_insta = Payment_Insta::find($orderId);
+        }
+        
         $data = [
             'orderId' => $orderId,
             'name' => $event_reg->user->name,
             'email' => $event_reg->user->email,
             'mobileNumber' => $event_reg->user->mobile_number,
             'event' => $event_reg->event->name,
-            'paid' => $payment_data->TXNAMOUNT,
-            'transId' => $payment_data->TXNID,
-            'transDate' => $payment_data->TXNDATE,
-            'bankName' => $payment_data->BANKNAME
+            'paid' => ($payment_paytm) ? $payment_paytm->TXNAMOUNT : $payment_insta->amount,
+            'transId' => ($payment_paytm) ? $payment_paytm->TXNID : $payment_insta->payment_id,
+            'transDate' => ($payment_paytm) ? $payment_paytm->TXNDATE : $payment_insta->created_at,
+            'bankName' => ($payment_paytm) ? $payment_paytm->BANKNAME : $payment_insta->billing_instrument
         ];
-
+        
         $pdf = PDF::loadView('ticket', $data);
         return $pdf->stream($event_reg->event->slug . '-ticket.pdf');
 
@@ -46,13 +52,18 @@ class GenerateInvoicePDF extends Controller
 
     public function generateWorkshopTicket($orderId)
     {
+        $payment_paytm = NULL;
+        $paytm_insta = NULL; 
 
         $workshop_reg = WorkshopRegistration::with('user', 'workshop')->where([
             ['order_id', '=', $orderId],
             ['is_reg_success', '=', true]
         ])->firstOrFail();
 
-        $payment_data = Payment::findOrFail($orderId);
+        $payment_paytm = Payment::find($orderId);
+        if(!$payment_paytm){
+            $payment_insta = Payment_Insta::find($orderId);
+        }
 
         $data = [
             'orderId' => $orderId,
@@ -60,10 +71,10 @@ class GenerateInvoicePDF extends Controller
             'email' => $workshop_reg->user->email,
             'mobileNumber' => $workshop_reg->user->mobile_number,
             'event' => $workshop_reg->workshop->name,
-            'paid' => $payment_data->TXNAMOUNT,
-            'transId' => $payment_data->TXNID,
-            'transDate' => $payment_data->TXNDATE,
-            'bankName' => $payment_data->BANKNAME
+           'paid' => ($payment_paytm) ? $payment_paytm->TXNAMOUNT : $payment_insta->amount,
+            'transId' => ($payment_paytm) ? $payment_paytm->TXNID : $payment_insta->payment_id,
+            'transDate' => ($payment_paytm) ? $payment_paytm->TXNDATE : $payment_insta->created_at,
+            'bankName' => ($payment_paytm) ? $payment_paytm->TXNDATE : $payment_insta->billing_instrument
         ];
 
         $pdf = PDF::loadView('ticket', $data);

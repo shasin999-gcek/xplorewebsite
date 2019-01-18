@@ -18,6 +18,7 @@
         "rap2hpoutre/laravel-log-viewer": "^1.0",
         "symfony/psr-http-message-bridge": "^1.1",
         "toolkito/larasap": "^1.2",
+        "tzsk/payu": "^2.0",
         "webpatser/laravel-uuid": "^3.0"
     },
     "require-dev": {

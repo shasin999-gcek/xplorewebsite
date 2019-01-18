@@ -30,6 +30,7 @@ Dabble in the extraordinary!
 
 " data-href="{{ secure_url('/').'/?ref_code='.Auth::user()->referral_id }}" class="wa_btn wa_btn_l" style="display:none">Share</a>
             <br><small>For any queries related to Payment , Please Contact Web admin - +918129151079</small>
+
             </div>
           </div>
         </div>
