@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Workshop;
+use App\WorkshopRegistration;
 use Illuminate\Http\Request;
 use App\Category;
+use Auth;
 
 class WorkshopController extends Controller
 {
@@ -55,7 +57,24 @@ class WorkshopController extends Controller
             abort(404);
         }
 
-        return view('workshop_show', ['workshop' => $workshop]);
+        $alreadyRegistered = null;
+        if(Auth::user())
+        {
+            $user_id = Auth::user()->id;
+            $workshop_id = $workshop->id;
+            $alreadyRegistered = WorkshopRegistration::where([
+                ['user_id', $user_id],
+                ['workshop_id', $workshop_id],
+                ['is_reg_success', true]
+            ])->first();
+        }
+
+        $data = [
+            'workshop' => $workshop,
+            'alreadyRegistered' => $alreadyRegistered
+        ];
+
+        return view('workshop_show', $data);
     }
 
     /**

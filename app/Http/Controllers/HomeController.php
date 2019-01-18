@@ -41,34 +41,34 @@ class HomeController extends Controller
        $user = Auth::user();
 
        // check all payments status
-
-       $fail_event_regs =  EventRegistration::where([
-         ['user_id', $user->id],
-         ['is_reg_success', false]
-       ])->pluck('order_id');
-
-       $fail_workshop_regs =  WorkshopRegistration::where([
-         ['user_id', $user->id],
-         ['is_reg_success', false]
-        ])->pluck('order_id');
-
-       $orderIds = $fail_event_regs->concat($fail_workshop_regs);
-
-       foreach ($orderIds as $orderId) {
-          if(!Payment::find($orderId))
-          {
-            $status = $this->savePaymentDetails($orderId);
-            if($status == 'E')
-            {
-               Mail::to($user)->send(new EventTransactionSuccess($orderId));
-            }
-            else if($status == 'W')
-            {
-               Mail::to($user)->send(new WorkshopTransactionSuccess($orderId));
-            }
-
-          }
-       }
+//
+//       $fail_event_regs =  EventRegistration::where([
+//         ['user_id', $user->id],
+//         ['is_reg_success', false]
+//       ])->pluck('order_id');
+//
+//       $fail_workshop_regs =  WorkshopRegistration::where([
+//         ['user_id', $user->id],
+//         ['is_reg_success', false]
+//        ])->pluck('order_id');
+//
+//       $orderIds = $fail_event_regs->concat($fail_workshop_regs);
+//
+//       foreach ($orderIds as $orderId) {
+//          if(!Payment::find($orderId))
+//          {
+//            $status = $this->savePaymentDetails($orderId);
+//            if($status == 'E')
+//            {
+//               Mail::to($user)->send(new EventTransactionSuccess($orderId));
+//            }
+//            else if($status == 'W')
+//            {
+//               Mail::to($user)->send(new WorkshopTransactionSuccess($orderId));
+//            }
+//
+//          }
+//       }
 
        $registered_events = $user->s_events;
        $registered_workshops = $user->s_workshops;

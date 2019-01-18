@@ -276,8 +276,6 @@ class EventRegistrationController extends Controller
                     return view('transerr', $view_data);
                 }
 
-                
-                
 
                 // when control reaches here Transaction is verifeid
                 // update the payment info

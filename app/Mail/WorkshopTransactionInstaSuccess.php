@@ -10,7 +10,7 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use App\WorkshopRegistration;
 use App\Payment_Insta;
 
-class WorkshopTransactionSuccess extends Mailable
+class WorkshopTransactionInstaSuccess extends Mailable
 {
     use Queueable, SerializesModels;
 

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Mail\WorkshopTransactionSuccess;
+use App\Mail\WorkshopTransactionInstaSuccess;
 use Illuminate\Http\Request;
 use App\Http\Requests\PaytmCallback;
 use App\WorkshopRegistration;
@@ -11,6 +12,8 @@ use App\Workshop;
 use Auth;
 use Illuminate\Support\Facades\Mail;
 use DB;
+use DateTime;
+use App\Payment_Insta;
 
 class WorkshopRegistrationController extends Controller
 {
