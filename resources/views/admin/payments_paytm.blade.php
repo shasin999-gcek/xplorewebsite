@@ -5,14 +5,14 @@
     <div class="row">
         <div class="col-lg-12">
             <h1 class="page-header">
-                Payments
+                Paytm Payments
             </h1>
             <ol class="breadcrumb">
                 <li>
                     <i class="fa fa-dashboard"></i> <a href="{{ route('admin.dashboard') }}">Dashboard</a>
                 </li>
                 <li class="active">
-                    <i class="fa fa-calender"></i> Payments
+                    <i class="fa fa-calender"></i> Paytm Payments
                 </li>
             </ol>
         </div>
@@ -51,15 +51,15 @@
             </div>
         </div>
         <div class="col-lg-3 col-md-6">
-            <div class="panel panel-yellow">
+            <div class="panel panel-green">
                 <div class="panel-heading">
                     <div class="row">
                         <div class="col-xs-3">
-                            <i class="fa fa-clock-o fa-5x"></i>
+                           RS
                         </div>
                         <div class="col-xs-9 text-right">
-                            <div class="huge">0</div>
-                            <div>Transaction Pending</div>
+                            <div class="huge">{{ $success_amount }}</div>
+                            <div>Amount Credited</div>
                         </div>
                     </div>
                 </div>

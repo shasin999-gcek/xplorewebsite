@@ -27,8 +27,8 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => 'is_admin',
 
     Route::get('event-registrations', 'EventRegistrationController@index')->name('event_regs.index');
     Route::get('workshop-registrations', 'WorkshopRegistrationController@index')->name('workshop_regs.index');
-    Route::get('payments', 'PaymentController@index')->name('payments.index');
-
+    Route::get('paytm-payments', 'PaymentController@paytm')->name('payments.paytm');
+    Route::get('instamojo-payments', 'PaymentController@instamojo')->name('payments.instamojo');
     Route::get('logs', '\Rap2hpoutre\LaravelLogViewer\LogViewerController@index')->middleware('auth')->name('logs');
 
     // facebook sharing
