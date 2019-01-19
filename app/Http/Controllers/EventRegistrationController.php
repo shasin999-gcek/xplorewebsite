@@ -274,13 +274,13 @@ class EventRegistrationController extends Controller
             if($INSTA_RESPONSE_PARAMS['status'] == 'Credit')
             {
 
-                if(!($event_reg->event->reg_fee == $INSTA_RESPONSE_PARAMS['amount']))
-                {
-                    // Transaction Failure [Doesnt paid the actual amount
-                    // Incase he lost money ask him to contact web admin
-                    $view_data['respMsg'] = "Didn't Pay the actual amount";
-                    return view('transerr', $view_data);
-                }
+//                if(!($event_reg->event->reg_fee == $INSTA_RESPONSE_PARAMS['amount']))
+//                {
+//                    // Transaction Failure [Doesnt paid the actual amount
+//                    // Incase he lost money ask him to contact web admin
+//                    $view_data['respMsg'] = "Didn't Pay the actual amount";
+//                    return view('transerr', $view_data);
+//                }
 
 
                 // when control reaches here Transaction is verifeid

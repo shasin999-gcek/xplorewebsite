@@ -322,13 +322,13 @@ class WorkshopRegistrationController extends Controller
             if($INSTA_RESPONSE_PARAMS['status'] == 'Credit')
             {
 
-                if(!($workshop_reg->workshop->reg_fee == $INSTA_RESPONSE_PARAMS['amount']))
-                {
-                    // Transaction Failure [Doesnt paid the actual amount
-                    // Incase he lost money ask him to contact web admin
-                    $view_data['respMsg'] = "Didn't Pay the actual amount";
-                    return view('transerr', $view_data);
-                }
+//                if(!($workshop_reg->workshop->reg_fee == $INSTA_RESPONSE_PARAMS['amount']))
+//                {
+//                    // Transaction Failure [Doesnt paid the actual amount
+//                    // Incase he lost money ask him to contact web admin
+//                    $view_data['respMsg'] = "Didn't Pay the actual amount";
+//                    return view('transerr', $view_data);
+//                }
 
                 
                 
