@@ -38,7 +38,7 @@
                         @foreach($workshop_stats as $stat)
                             <tr>
                                 <td>{{ $stat->name }}</td>
-                                <td>{{ $stat->count }}</td>
+                                <td><kbd>{{ $stat->count }}</kbd></td>
                             </tr>
                         @endforeach
                         </tbody>
