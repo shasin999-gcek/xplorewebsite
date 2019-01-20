@@ -121,8 +121,9 @@
                         <tfoot>
                         <tr>
                             <th>ORDER ID</th>
-                            <th>Transaction Id</th>
-                            <th>Bank Transaction Id</th>
+                            <th>Payment Id</th>
+                            <th>Name</th>
+                            <th>Mobile Number</th>
                             <th>Amount Paid</th>
                             <th>Transaction Date</th>
                             <th>Status</th>

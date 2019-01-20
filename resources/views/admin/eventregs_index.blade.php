@@ -20,6 +20,45 @@
 
     <div class="row">
         <div class="col-lg-12">
+            <div class="panel panel-success">
+                <!-- Default panel contents -->
+                <div class="panel-heading">
+                    Event Registrations Trends
+                </div>
+
+                <div class="panel-body">
+                    <table id="example" class="table table-striped table-bordered" style="width:100%;">
+                        <thead>
+                        <tr>
+                            <th>Event Name</th>
+                            <th>Reg Count</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        @foreach($event_stats as $stat)
+                            <tr>
+                                <td>{{ $stat->name }}</td>
+                                <td>{{ $stat->count }}</td>
+                            </tr>
+                        @endforeach
+                        </tbody>
+                        <tfoot>
+                        <tr>
+                            <th>Event Name</th>
+                            <th>Reg Count</th>
+                        </tr>
+                        </tfoot>
+                    </table>
+                </div>
+
+            </div>
+
+
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-lg-12">
             <div class="panel panel-info">
                 <!-- Default panel contents -->
                 <div class="panel-heading">
