@@ -27,7 +27,7 @@
                 </div>
 
                 <div class="panel-body">
-                    <table id="example" class="table table-striped table-bordered" style="width:100%;">
+                    <table id="workshop-stats" class="table table-striped table-bordered" style="width:100%;">
                         <thead>
                         <tr>
                             <th>Workshop Name</th>
@@ -67,7 +67,7 @@
                 </div>
 
                 <div class="panel-body">
-                    <table id="example" class="table table-striped table-bordered" style="width:100%;">
+                    <table id="workshop-regs" class="table table-striped table-bordered" style="width:100%;">
                         <thead>
                         <tr>
                             <th>User Name</th>
@@ -137,8 +137,10 @@
         }
 
         $(document).ready(function() {
-            $('[data-toggle="tooltip"]').tooltip()
-            $('#example').DataTable();
+            $('[data-toggle="tooltip"]').tooltip();
+
+            $('#workshop-regs').DataTable();
+            $('#workshop-stats').DataTable();
         });
     </script>
 @endsection
