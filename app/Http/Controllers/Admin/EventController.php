@@ -10,6 +10,7 @@ use App\Http\Controllers\Controller;
 use Toolkito\Larasap\Facebook\Api AS FacebookApi;
 use Illuminate\Support\Facades\Storage;
 use DateTime;
+use Illuminate\Http\Request;
 
 class EventController extends Controller
 {
@@ -200,6 +201,27 @@ class EventController extends Controller
         return redirect()->route('admin.events.index');
     }
 
+    public function toggleRegistration(Request $request, Event $event)
+    {
+        if($request->has('action'))
+        {
+            $action = $request->action;
+            if($action == 'CLOSE')
+            {
+                $event->is_reg_closed = true;
+            }
+            else if($action == 'OPEN')
+            {
+                $event->is_reg_closed = false;
+            }
+
+            $event->saveOrFail();
+
+            return ['status' => 'Success', 'msg' => 'Success'];
+        }
+
+        return ['status' => 'Error', 'msg' => 'Invalid Request Params'];
+    }
 
     /**
      * @param Event $event

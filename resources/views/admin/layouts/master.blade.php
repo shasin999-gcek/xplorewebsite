@@ -24,6 +24,7 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/css/select2.min.css" rel="stylesheet" />
     <link href="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.11/summernote.css" rel="stylesheet">
 
+    <link href="https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css" rel="stylesheet">
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -111,6 +112,9 @@ fjs.parentNode.insertBefore(js, fjs);
                 <li class="@if($active_menu == 'payments-instamojo') active @endif">
                     <a href="{{ route('admin.payments.instamojo') }}"><i class="fa fa-fw fa-credit-card-alt" aria-hidden="true"></i> Instamojo Payments</a>
                 </li>
+                <li class="@if($active_menu == 'banners') active @endif">
+                    <a href="{{ route('admin.banners.index') }}"><i class="fa fa-fw fa-android" aria-hidden="true"></i>App Banners</a>
+                </li>
                 <li class="@if($active_menu == 'logs') active @endif">
                     <a href="{{ route('admin.logs') }}"><i class="fa fa-fw fa-bug" aria-hidden="true"></i>Server Logs</a>
                 </li>
@@ -136,7 +140,7 @@ fjs.parentNode.insertBefore(js, fjs);
 
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
 <script src="{{ asset('js/app.js') }}"></script>
-
+<script src="https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>
 @yield('scripts')
 

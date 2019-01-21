@@ -7,6 +7,7 @@ use function foo\func;
 use Illuminate\Http\Request;
 use App\Event;
 use App\Workshop;
+use App\Banner;
 
 class ApiController extends Controller
 {
@@ -130,6 +131,44 @@ class ApiController extends Controller
         }
 
         return ['errorMsg' => 'Please specify a firebase user id'];
+    }
+
+
+    public function getEventById(Request $request)
+    {
+        if($request->has('event_id')) {
+            $event_id = $request->get('event_id');
+            $event = Event::findOrFail($event_id);
+            return $event;
+        } 
+
+        return ['errorMsg' => 'Please specify a event id'];        
+    }
+
+    public function getWorkshopById(Request $request)
+    {
+        if($request->has('workshop_id')) {
+            $workshop_id = $request->get('workshop_id');
+            $workshop = Workshop::findOrFail($workshop_id);
+            return $workshop;
+        } 
+
+        return ['errorMsg' => 'Please specify a workshop id'];        
+    }
+
+    public function getAllEvents()
+    {
+        return Event::get(['id', 'name']);
+    }
+
+    public function getAllWorkshops()
+    {
+        return Workshop::get(['id', 'name']);
+    }
+
+    public function getBanners()
+    {
+        return Banner::all();
     }
 
 }

@@ -11,6 +11,7 @@ use Toolkito\Larasap\Facebook\Api AS FacebookApi;
 use Illuminate\Support\Facades\Storage;
 
 use DateTime;
+use Illuminate\Http\Request;
 
 class WorkshopController extends Controller
 {
@@ -197,6 +198,27 @@ class WorkshopController extends Controller
         return redirect()->route('admin.workshops.index');
     }
 
+    public function toggleRegistration(Request $request, Workshop $workshop)
+    {
+        if($request->has('action'))
+        {
+            $action = $request->action;
+            if($action == 'CLOSE')
+            {
+                $workshop->is_reg_closed = true;
+            }
+            else if($action == 'OPEN')
+            {
+                $workshop->is_reg_closed = false;
+            }
+
+            $workshop->saveOrFail();
+
+            return ['status' => 'Success', 'msg' => 'Success'];
+        }
+
+        return ['status' => 'Error', 'msg' => 'Invalid Request Params'];
+    }
 
     /**
      * @param Workshop $workshop

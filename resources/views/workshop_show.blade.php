@@ -59,28 +59,37 @@
 
           @if(Route::has('login'))
               @auth
-              @isset($alreadyRegistered)
-                    <a class="btn btn-primary" href="{{ route('workshop.ticket', $alreadyRegistered->order_id) }}">Download Ticket</a>
-                  @else
-                    {{--<button class="btn btn-info " onclick="event.preventDefault(); document.getElementById('workshop_reg_form').submit();">Buy Ticket using Paytm</button>--}}
-                    {{--<form id="workshop_reg_form" method="post" action="{{ route('workshop.register') }}" style="display: none;">--}}
-                      {{--{{ csrf_field() }}--}}
-                      {{--<input type="text" name="workshop_id" value="{{ $workshop->id }}">--}}
-                    {{--</form>--}}
-                    <button class="btn btn-default" onclick="event.preventDefault(); document.getElementById('workshop_reg_form-insta').submit();">Buy Ticket</button><br>
-                    {{--<small> *Please login to paytm for uninterrupted transaction </small><br>--}}
-                    <form id="workshop_reg_form-insta" method="post" action="{{ route('workshop.register-insta') }}" style="display: none;">
-                      {{ csrf_field() }}
-                      <input type="text" name="workshop_id" value="{{ $workshop->id }}">
-                    </form>
+                @isset($alreadyRegistered)
+                      <a class="btn btn-primary" href="{{ route('workshop.ticket', $alreadyRegistered->order_id) }}">Download Ticket</a>
+                    @else
+
+                      @if(!$workshop->is_reg_closed)
+                        {{--<button class="btn btn-info " onclick="event.preventDefault(); document.getElementById('workshop_reg_form').submit();">Buy Ticket using Paytm</button>--}}
+                        {{--<form id="workshop_reg_form" method="post" action="{{ route('workshop.register') }}" style="display: none;">--}}
+                          {{--{{ csrf_field() }}--}}
+                          {{--<input type="text" name="workshop_id" value="{{ $workshop->id }}">--}}
+                        {{--</form>--}}
+                        <button class="btn btn-default" onclick="event.preventDefault(); document.getElementById('workshop_reg_form-insta').submit();">Buy Ticket</button><br>
+                        {{--<small> *Please login to paytm for uninterrupted transaction </small><br>--}}
+                        <form id="workshop_reg_form-insta" method="post" action="{{ route('workshop.register-insta') }}" style="display: none;">
+                          {{ csrf_field() }}
+                          <input type="text" name="workshop_id" value="{{ $workshop->id }}">
+                        </form>
+                      @else
+                        <button class="btn btn-default" disabled>Registration Closed</button><br>
+                      @endif  
                   @endisset
               @else
-              <a href="{{ route('login') }}" class=" btn btn-lg btn-warning"  >
-                <i class="tim-icons icon-cloud-download-93"></i> Login to Buy Ticket </a><br>
-                @endauth
-                @endif
+                  @if(!$workshop->is_reg_closed)
+                    <a href="{{ route('login') }}" class=" btn btn-lg btn-warning"  >
+                      <i class="tim-icons icon-cloud-download-93"></i> Login to Buy Ticket </a><br>
+                  @else
+                    <button class="btn btn-default" disabled>Registration Closed</button><br>
+                  @endif 
+              @endauth
+            @endif
 
-                </div>
-              </section>
+          </div>
+        </section>
   </div></div></div>
   @endsection

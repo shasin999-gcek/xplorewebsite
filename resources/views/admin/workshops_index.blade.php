@@ -37,6 +37,7 @@
                             <th>Workshop Name</th>
                             <th>Workshop Category</th>
                             <th>Share On FB</th>
+                            <th>Reg Status</th>
                             <th>Action</th>
                         </tr>
                         </thead>
@@ -51,9 +52,22 @@
                                         data-layout="button_count">
                                       </div>
                                     </td>
+                                    <td>
+                                        <input id="reg_status_{{ $workshop->id }}"
+                                         type="checkbox"
+                                         @if($workshop->is_reg_closed)
+                                         checked
+                                         @endif
+                                         data-toggle="toggle" 
+                                         data-on="Closed" 
+                                         data-off="Open" 
+                                         data-onstyle="danger" 
+                                         data-offstyle="success"
+                                         onchange="updateRegStatus(event, '{{ $workshop->id }}')">
+                                    </td>
                                     <td class="text-center">
                                         <a href="{{ route('admin.workshops.show', ['workshop' => $workshop->id ]) }}" class="btn btn-xs btn-primary"><i class="fa fa-eye" aria-hidden="true"></i> View</a>
-                                        <a href="{{ route('display_workshop', ['category' => $workshop->category->short_name, 'slug' => $workshop->slug]) }}" class="btn btn-xs btn-primary"><i class="fa fa-external-link" aria-hidden="true"></i> View on website</a>
+                                        <a target="__blank" href="{{ route('display_workshop', ['category' => $workshop->category->short_name, 'slug' => $workshop->slug]) }}" class="btn btn-xs btn-primary"><i class="fa fa-external-link" aria-hidden="true"></i> View on website</a>
                                     </td>
                                 </tr>
                             @endforeach
@@ -63,6 +77,7 @@
                             <th>Workshop Name</th>
                             <th>Workshop Category</th>
                             <th>Share On FB</th>
+                            <th>Reg Status</th>
                             <th>Action</th>
                         </tr>
                         </tfoot>
@@ -115,6 +130,14 @@
         //             }
         //         }).catch((e) => console.error(e));
         // }
+
+        function updateRegStatus(e, workshopId) {
+            const url = `${window.location.origin}/admin/workshops/change-regstat/${workshopId}`;
+            var status = e.target.checked ? 'CLOSE' : 'OPEN';
+            axios.post(url, {action: status})
+                .then(res => console.log(res.data))
+                .catch(e => console.error(e));
+        } 
 
         $(document).ready(function() {
             $('#example').DataTable();

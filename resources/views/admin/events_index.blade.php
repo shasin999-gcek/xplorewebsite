@@ -37,6 +37,7 @@
                             <th>Event Name</th>
                             <th>Event Category</th>
                             <th>Share On FB</th>
+                            <th>Reg Status</th>
                             <th>Action</th>
                         </tr>
                         </thead>
@@ -51,9 +52,22 @@
                                         data-layout="button_count">
                                       </div>
                                     </td>
+                                    <td>
+                                        <input id="reg_status_{{ $event->id }}"
+                                         type="checkbox"
+                                         @if($event->is_reg_closed)
+                                         checked
+                                         @endif
+                                         data-toggle="toggle" 
+                                         data-on="Closed" 
+                                         data-off="Open" 
+                                         data-onstyle="danger" 
+                                         data-offstyle="success"
+                                         onchange="updateRegStatus(event, '{{ $event->id }}')">
+                                    </td>
                                     <td class="text-center">
                                         <a href="{{ route('admin.events.show', ['event' => $event->id ]) }}" class="btn btn-xs btn-primary"><i class="fa fa-eye" aria-hidden="true"></i> View</a>
-                                        <a href="{{ route('display_event', ['category' => $event->category->short_name, 'slug' => $event->slug]) }}" class="btn btn-xs btn-primary"><i class="fa fa-external-link" aria-hidden="true"></i> View on website</a>
+                                        <a target="__blank" href="{{ route('display_event', ['category' => $event->category->short_name, 'slug' => $event->slug]) }}" class="btn btn-xs btn-primary"><i class="fa fa-external-link" aria-hidden="true"></i> View on website</a>
                                     </td>
                                 </tr>
                             @endforeach
@@ -63,6 +77,7 @@
                             <th>Event Name</th>
                             <th>Event Category</th>
                             <th>Share On FB</th>
+                            <th>Reg Status</th>
                             <th>Action</th>
                         </tr>
                         </tfoot>
@@ -92,29 +107,38 @@
 
 @section('scripts')
     <script>
-        function shareOnFB(eventId) {
-            var base_uri = '{{ url('') }}';
-            var share_btn = document.getElementById(`share_btn_id_${eventId}`);
-            share_btn.disabled = true;
-            share_btn.lastElementChild.textContent = 'Sharing...';
-            axios.post(`${base_uri}/admin/events/share/${eventId}`)
-                .then(res => {
-                    if(res.data.shared_post_url) {
-                        share_btn.style.display = 'none';
-                        var link = document.createElement('a');
-                        link.href = res.data.shared_post_url;
-                        link.target = '_blank';
-                        link.textContent = 'View Post';
-                        share_btn.parentElement.appendChild(link);
-                    } else {
-                        var error_display_div = document.getElementById('error_from_faceboook');
-                        error_display_div.textContent = res.data.error_msg;
-                        $('#alert_modal').modal('show');
-                        share_btn.disabled = false;
-                        share_btn.lastElementChild.textContent = 'Share';
-                    }
-                }).catch((e) => console.error(e));
-        }
+        // function shareOnFB(eventId) {
+        //     var base_uri = '{{ url('') }}';
+        //     var share_btn = document.getElementById(`share_btn_id_${eventId}`);
+        //     share_btn.disabled = true;
+        //     share_btn.lastElementChild.textContent = 'Sharing...';
+        //     axios.post(`${base_uri}/admin/events/share/${eventId}`)
+        //         .then(res => {
+        //             if(res.data.shared_post_url) {
+        //                 share_btn.style.display = 'none';
+        //                 var link = document.createElement('a');
+        //                 link.href = res.data.shared_post_url;
+        //                 link.target = '_blank';
+        //                 link.textContent = 'View Post';
+        //                 share_btn.parentElement.appendChild(link);
+        //             } else {
+        //                 var error_display_div = document.getElementById('error_from_faceboook');
+        //                 error_display_div.textContent = res.data.error_msg;
+        //                 $('#alert_modal').modal('show');
+        //                 share_btn.disabled = false;
+        //                 share_btn.lastElementChild.textContent = 'Share';
+        //             }
+        //         }).catch((e) => console.error(e));
+        // }
+
+
+        function updateRegStatus(e, eventId) {
+            const url = `${window.location.origin}/admin/events/change-regstat/${eventId}`;
+            var status = e.target.checked ? 'CLOSE' : 'OPEN';
+            axios.post(url, {action: status})
+                .then(res => console.log(res))
+                .catch(e => console.error(e));
+        }   
 
         $(document).ready(function() {
             $('#example').DataTable();

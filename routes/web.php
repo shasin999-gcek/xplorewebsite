@@ -24,12 +24,16 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => 'is_admin',
     Route::get('dashboard', 'DashboardController@index')->name('dashboard');
     Route::resource('events', 'EventController');
     Route::resource('workshops', 'WorkshopController');
+    Route::resource('banners', 'BannerController');
 
     Route::get('event-registrations', 'EventRegistrationController@index')->name('event_regs.index');
     Route::get('workshop-registrations', 'WorkshopRegistrationController@index')->name('workshop_regs.index');
     Route::get('paytm-payments', 'PaymentController@paytm')->name('payments.paytm');
     Route::get('instamojo-payments', 'PaymentController@instamojo')->name('payments.instamojo');
     Route::get('logs', '\Rap2hpoutre\LaravelLogViewer\LogViewerController@index')->middleware('auth')->name('logs');
+
+    Route::post('events/change-regstat/{event}', 'EventController@toggleRegistration');
+    Route::post('workshops/change-regstat/{workshop}', 'WorkshopController@toggleRegistration');
 
     // facebook sharing
     // Route::post('events/share/{event}', 'EventController@share_on_facebook')->name('share_on_fb');
