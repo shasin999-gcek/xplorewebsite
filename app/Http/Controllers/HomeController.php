@@ -42,33 +42,7 @@ class HomeController extends Controller
 
        // check all payments status
 
-       $fail_event_regs =  EventRegistration::where([
-         ['user_id', $user->id],
-         ['is_reg_success', false]
-       ])->pluck('order_id');
-
-       $fail_workshop_regs =  WorkshopRegistration::where([
-         ['user_id', $user->id],
-         ['is_reg_success', false]
-        ])->pluck('order_id');
-
-       $orderIds = $fail_event_regs->concat($fail_workshop_regs);
-
-       foreach ($orderIds as $orderId) {
-          if(!Payment::find($orderId))
-          {
-            $status = $this->savePaymentDetails($orderId);
-            if($status == 'E')
-            {
-               Mail::to($user)->send(new EventTransactionSuccess($orderId));
-            }
-            else if($status == 'W')
-            {
-               Mail::to($user)->send(new WorkshopTransactionSuccess($orderId));
-            }
-
-          }
-       }
+     /** */  
 
        $registered_events = $user->s_events;
        $registered_workshops = $user->s_workshops;
@@ -87,43 +61,5 @@ class HomeController extends Controller
 
     }
 
-    public function savePaymentDetails($orderId)
-    {
-      $key = config('services.paytm.key');
-      $mid = config('services.paytm.mid');
-
-       // Verify Transaction again by Paytm Transaction api
-      // Create an array having all required parameters for status query.
-      $requestParamList = array("MID" => $mid, "ORDERID" => $orderId);
-
-      $StatusCheckSum = getChecksumFromArray($requestParamList, $key);
-
-      $requestParamList['CHECKSUMHASH'] = $StatusCheckSum;
-
-      // Call the PG's getTxnStatusNew() function for verifying the transaction status.
-      $responseParamList = getTxnStatusNew($requestParamList);
-      
-      $responseParamList['CURRENCY'] = 'INR';
-      $responseParamList['GATEWAYNAME'] = 'UPI';
-      $responseParamList['PAYMENTMODE'] = 'UPI';
-
-      unset($responseParamList['REFUNDAMT']);
-
-      Payment::create($responseParamList);
-
-      if($responseParamList['STATUS'] == 'TXN_SUCCESS')
-      {
-        $e_reg_updated = DB::table('event_registrations')
-          ->where('order_id', $orderId)
-          ->update(['is_reg_success' => true]);
-
-        $w_reg_updated = DB::table('workshop_registrations')
-          ->where('order_id', $orderId)
-          ->update(['is_reg_success' => true]);
-
-        return ($e_reg_updated) ? 'E' : 'W';  
-      }
-
-      return 'F';
-    }
+   
 }

@@ -74,6 +74,7 @@ Dabble in the extraordinary!
                         </div>
                     </div>
                 @endforeach
+                @endif
                 @if($registered_events->count() <=0 && $registered_workshops->count() <=0)
                   <h3 class="text-center">No events and workshops registered</h3>
                 @endif

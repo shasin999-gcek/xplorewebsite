@@ -170,9 +170,9 @@ class EventRegistrationController extends Controller
 
         $ch = curl_init();
 
-        curl_setopt($ch, CURLOPT_URL, 'https://test.instamojo.com/api/1.1/payments/'.$request->get('payment_id'));
+        curl_setopt($ch, CURLOPT_URL, 'https://test.instamojo.com/api/1.1/payment-requests/'.$request->get('payment_id'));
         if(config('services.instamojo.api_env') == "PROD"){
-            curl_setopt($ch, CURLOPT_URL, 'https://www.instamojo.com/api/1.1/payments/'.$request->get('payment_id'));
+            curl_setopt($ch, CURLOPT_URL, 'https://www.instamojo.com/api/1.1/payment-requests/'.$request->get('payment_id'));
         }
         curl_setopt($ch, CURLOPT_HEADER, FALSE);
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, TRUE);
@@ -187,7 +187,9 @@ class EventRegistrationController extends Controller
         curl_close($ch); 
         
         if ($err) {
+           
             return redirect()->back();
+            
         } else {
             $data = json_decode($response);
         }
@@ -196,6 +198,7 @@ class EventRegistrationController extends Controller
         if($data->success == true) {
             return redirect($data->payment_request->longurl);
         } else {
+            dd($data);
             return redirect()->back();
         }
     }
