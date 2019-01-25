@@ -54,40 +54,36 @@ class ApiController extends Controller
 
     public function getWorkshops(Request $request)
     {
-        if ($request->has('category')) {
-            $workshop = Workshop::join('categories', 'categories.id', '=', 'workshops.category_id')
-                ->where('short_name', $request['category'])
-                ->get([
-                    'workshops.id as ws_id',
-                    'workshops.name as ws_name',
-                    'slug as ws_slug',
-                    'categories.name as c_name',
-                    'categories.short_name as c_short_name',
-                    'description as ws_desc',
-                    'poster_image as ws_img',
-                    'pdf_path as ws_file',
-                    'thumbnail_image',
-                    'reg_fee as ws_reg_fee',
-                    'starts_on',
-                    'ends_on'
-                ]);
+       
+        $workshops = Workshop::join('categories', 'categories.id', '=', 'workshops.category_id')
+            ->get([
+                'workshops.id as ws_id',
+                'workshops.name as ws_name',
+                'slug as ws_slug',
+                'categories.name as c_name',
+                'categories.short_name as c_short_name',
+                'description as ws_desc',
+                'poster_image as ws_img',
+                'pdf_path as ws_file',
+                'thumbnail_image',
+                'reg_fee as ws_reg_fee',
+                'starts_on',
+                'ends_on'
+            ]);
 
-            $workshop->each(function ($w) {
-                $w->ws_date = $w->starts_on->format('d-').$w->ends_on->format('d M');
-                $w->ws_time = $w->starts_on->format('h:i A');
-                unset($w->starts_on);
-                unset($w->ends_on);
-                $w->ws_img = asset('storage/' . $w->ws_img);
-                $w->thumbnail_image = asset('storage/' . $w->thumbnail_image);
-                $w->ws_file = asset('storage/' . $w->ws_file);
-                $w->ws_page_link = route('display_workshop', ['category' => $w->c_short_name, 'slug' => $w->ws_slug]);
-            });
+        $workshops->each(function ($w) {
+            $w->ws_date = $w->starts_on->format('d-').$w->ends_on->format('d M');
+            $w->ws_time = $w->starts_on->format('h:i A');
+            unset($w->starts_on);
+            unset($w->ends_on);
+            $w->ws_img = asset('storage/' . $w->ws_img);
+            $w->thumbnail_image = asset('storage/' . $w->thumbnail_image);
+            $w->ws_file = asset('storage/' . $w->ws_file);
+            $w->ws_page_link = route('display_workshop', ['category' => $w->c_short_name, 'slug' => $w->ws_slug]);
+        });
 
-            return $workshop;
-
-        }
-
-        return ['errorMsg' => 'Please specify a category'];
+        return $workshops;
+        
     }
 
 
@@ -168,7 +164,29 @@ class ApiController extends Controller
 
     public function getBanners()
     {
-        return Banner::all();
+        $banners = Banner::all();
+        $banners->each(function($b) {
+            $b->banner_image = asset('storage/' . $b->banner_image);
+        });
+
+        return $banners;
+    }
+
+    public function getAllWorkshopInfo()
+    {
+        return Workshop::all();
+    }
+
+    public function getUserProfile(Request $request)
+    {
+        if(!$request->has('uid'))
+        {
+            return ['errorMsg' => 'Please specify a uid'];   
+        }
+
+        $user = User::where('firebase_uid', $request['uid'])->firstOrFail();
+        
+        return $user;
     }
 
 }
