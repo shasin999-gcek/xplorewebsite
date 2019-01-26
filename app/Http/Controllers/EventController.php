@@ -127,4 +127,31 @@ class EventController extends Controller
         ];
         return view('event_index',$data);
     }
+
+    public function showProgBrothers()
+    {
+        $event = Event::with('category')->where('slug', 'sunburn-progressive-brothers')->firstOrFail();
+
+
+        $alreadyRegistered = null;
+        if(Auth::user())
+        {
+            $user_id = Auth::user()->id;
+            $event_id = $event->id;
+            $alreadyRegistered = EventRegistration::where([
+                ['user_id', $user_id],
+                ['event_id', $event_id], 
+                ['is_reg_success', true]
+            ])->first();    
+        }
+
+        $data = [
+            'event' => $event,
+            'alreadyRegistered' => $alreadyRegistered
+        ];
+
+        
+        return view('cultural_shows', $data);
+    
+    }
 }

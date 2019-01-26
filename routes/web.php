@@ -17,6 +17,10 @@ use Illuminate\Support\Facades\Cookie;
 //     return view('welcome');
 // });
 
+Route::domain('proshow.xplore19.in')->group(function () {
+    Route::get('/', 'EventController@showProgBrothers');
+});
+
 Auth::routes(['verify' => true]);
 
 // admin routes
@@ -35,6 +39,7 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => 'is_admin',
     Route::post('events/change-regstat/{event}', 'EventController@toggleRegistration');
     Route::post('workshops/change-regstat/{workshop}', 'WorkshopController@toggleRegistration');
 
+   // Route::get('reports', 'ReportController@generateReport');
     // facebook sharing
     // Route::post('events/share/{event}', 'EventController@share_on_facebook')->name('share_on_fb');
 });
