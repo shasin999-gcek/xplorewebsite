@@ -130,7 +130,7 @@ class EventController extends Controller
 
     public function showProgBrothers()
     {
-        $event = Event::with('category')->where('slug', 'sunburn-progressive-brothers')->firstOrFail();
+        $event = Event::with('category')->where('slug', 'progressive-brothers-sunburn-campus')->firstOrFail();
 
 
         $alreadyRegistered = null;
