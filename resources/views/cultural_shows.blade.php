@@ -78,7 +78,7 @@
                             @endisset
                         @else
                             @if(!$event->is_reg_closed)
-                                <a href="{{ route('login') }}" class=" btn btn-lg btn-warning"  >
+                                <a href="https://www.xplore19.in/login" class=" btn btn-lg btn-warning"  >
                                 <i class="tim-icons icon-cloud-download-93"></i> Login to Buy Ticket </a><br>
                             @else
                                 <button class="btn btn-default" disabled>Registration Closed</button><br>
