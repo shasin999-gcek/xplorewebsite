@@ -26,7 +26,7 @@ host('68.183.80.233')
     ->user('deployer')
     ->identityFile('~/.ssh/id_rsa')
     ->set('deploy_path', '/var/www/html/xplorewebsite-live');
-//    ->set('deploy_path', '/var/www/html/xplorewebsite');
+  //  ->set('deploy_path', '/var/www/html/xplorewebsite');
 
 // Tasks
 
@@ -39,6 +39,6 @@ after('deploy:failed', 'deploy:unlock');
 
 // Migrate database before symlink new release.
 
-before('deploy:symlink', 'artisan:migrate');
+//before('deploy:symlink', 'artisan:migrate');
 // before('deploy:symlink', 'artisan:db:seed');
 

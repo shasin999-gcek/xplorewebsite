@@ -39,7 +39,9 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => 'is_admin',
     Route::post('events/change-regstat/{event}', 'EventController@toggleRegistration');
     Route::post('workshops/change-regstat/{workshop}', 'WorkshopController@toggleRegistration');
 
-   // Route::get('reports', 'ReportController@generateReport');
+    Route::get('reports', 'ReportController@showForm')->name('report.show');
+    Route::get('reports/download', 'ReportController@generateReport')->name('report.download');
+    
     // facebook sharing
     // Route::post('events/share/{event}', 'EventController@share_on_facebook')->name('share_on_fb');
 });

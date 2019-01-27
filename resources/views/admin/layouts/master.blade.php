@@ -115,6 +115,9 @@ fjs.parentNode.insertBefore(js, fjs);
                 <li class="@if($active_menu == 'banners') active @endif">
                     <a href="{{ route('admin.banners.index') }}"><i class="fa fa-fw fa-android" aria-hidden="true"></i>App Banners</a>
                 </li>
+                <li class="@if($active_menu == 'report') active @endif">
+                    <a href="{{ route('admin.report.show') }}"><i class="fa fa-fw fa-file-archive-o" aria-hidden="true"></i>Reports</a>
+                </li>
                 <li class="@if($active_menu == 'logs') active @endif">
                     <a href="{{ route('admin.logs') }}"><i class="fa fa-fw fa-bug" aria-hidden="true"></i>Server Logs</a>
                 </li>

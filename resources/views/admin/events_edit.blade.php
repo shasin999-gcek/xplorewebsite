@@ -198,7 +198,7 @@
                         </div>
 
                         <div class="form-group{{ $errors->has('thumbnail_image') ? ' has-error' : '' }}">
-                            <label for="thumbnail_image" class="col-md-2 control-label">Upload Poster</label>
+                            <label for="thumbnail_image" class="col-md-2 control-label">Upload Thumbnail</label>
 
                             <div class="col-md-6">
                                 <input type="file" class="form-control" id="thumbnail_image" name="thumbnail_image" value="{{ old('thumbnail_image') }}" required autofocus>
