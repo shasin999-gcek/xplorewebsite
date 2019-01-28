@@ -93,6 +93,11 @@
               <a class="nav-link" href="{{URL::to('/contact')}}">
                 <p>Contact</p>
               </a>
+          </li> 
+          <li class="nav-item @if($active_menu == 'contact') active @endif">
+              <a class="nav-link" href="{{ URL::to( '/brochure') }}">
+                <p>Brochure</p>
+              </a>
           </li>  
           <li class="nav-item">
             @if (Route::has('login'))

@@ -95,3 +95,7 @@ Route::get('/workshop/get-ticket/{orderId}', 'GenerateInvoicePDF@generateWorksho
 
 Route::post('/feedback', 'ContactAdminController@sendMail')->name('contact-admin');
 
+
+Route::get('/brochure', function() {
+    return response()->file(public_path('brochure.pdf'));
+});
