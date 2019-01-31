@@ -134,7 +134,33 @@ class ApiController extends Controller
     {
         if($request->has('event_id')) {
             $event_id = $request->get('event_id');
-            $event = Event::findOrFail($event_id);
+            $event = Event::join('categories', 'categories.id', '=', 'events.category_id')
+                ->findOrFail($event_id, [
+                    'events.id as event_id',
+                    'events.name as event_name', 
+                    'slug as event_slug',
+                    'type as event_type',
+                    'categories.name as c_name', 
+                    'categories.short_name as c_short_name', 
+                    'description as event_desc',
+                    'poster_image as event_img',
+                    'pdf_path as event_file',
+                    'thumbnail_image', 
+                    'reg_fee as event_reg_fee',
+                    'date',
+                    'f_price_money',
+                    's_price_money',
+                    't_price_money',
+                ]);
+            
+            $event->event_date = $event->date->format('d M');
+            $event->event_time = $event->date->format('h:i A');
+            unset($event->date);
+            $event->event_img = asset('storage/' . $event->event_img);
+            $event->thumbnail_image = asset('storage/' . $event->thumbnail_image);
+            $event->event_file = asset('storage/' . $event->event_file);
+            $event->event_page_link = route('display_event', ['category' => $event->c_short_name, 'slug' => $event->event_slug]);
+
             return $event;
         } 
 
@@ -145,7 +171,31 @@ class ApiController extends Controller
     {
         if($request->has('workshop_id')) {
             $workshop_id = $request->get('workshop_id');
-            $workshop = Workshop::findOrFail($workshop_id);
+            $workshop = Workshop::join('categories', 'categories.id', '=', 'workshops.category_id')
+                ->findOrFail($workshop_id, [
+                    'workshops.id as ws_id',
+                    'workshops.name as ws_name',
+                    'slug as ws_slug',
+                    'categories.name as c_name',
+                    'categories.short_name as c_short_name',
+                    'description as ws_desc',
+                    'poster_image as ws_img',
+                    'pdf_path as ws_file',
+                    'thumbnail_image',
+                    'reg_fee as ws_reg_fee',
+                    'starts_on',
+                    'ends_on'
+                ]);
+
+            $workshop->ws_date = $workshop->starts_on->format('d-').$workshop->ends_on->format('d M');
+            $workshop->ws_time = $workshop->starts_on->format('h:i A');
+            unset($workshop->starts_on);
+            unset($workshop->ends_on);
+            $workshop->ws_img = asset('storage/' . $workshop->ws_img);
+            $workshop->thumbnail_image = asset('storage/' . $workshop->thumbnail_image);
+            $workshop->ws_file = asset('storage/' . $workshop->ws_file);
+            $workshop->ws_page_link = route('display_workshop', ['category' => $workshop->c_short_name, 'slug' => $workshop->ws_slug]);
+
             return $workshop;
         } 
 
@@ -162,13 +212,20 @@ class ApiController extends Controller
         return Workshop::get(['id', 'name']);
     }
 
-    public function getBanners()
+    public function getBanners(Request $request)
     {
         $banners = Banner::all();
         $banners->each(function($b) {
             $b->banner_image = asset('storage/' . $b->banner_image);
         });
 
+        if($request->has('uid'))
+        {
+            $banners->each(function($b) use($request) {
+                $b->user_name = User::where('firebase_uid', $request->uid)->first()->name;
+            });
+        }
+        
         return $banners;
     }
 
