@@ -7,7 +7,10 @@
         <div class="d-flex flex-cultural flex-nowrap">
                 <div class="grid-width">
                     <div class="flex-disp">
-                        <img src="{{ asset('img/sunburn.png') }}" class="img-fluid"/>
+                        <img src="{{ asset('img/mix.png') }}" class="img-fluid image-over"/>
+                        <div class="overlay">
+                            <a href="{{ route('display_event', ['category' => 'cultural-shows', 'slug' => 'progressive-brothers-masala-coffee-combo']) }}" class="btn btn-info btn-lg">Show Details</a>
+                        </div> 
                     </div>
                 </div>
                 <div class="grid-width">
@@ -15,6 +18,14 @@
                         <img src="{{ asset('img/probro.png') }}" class="img-fluid image-over"/>
                         <div class="overlay">
                             <a href="{{ route('display_event', ['category' => 'cultural-shows', 'slug' => 'progressive-brothers-sunburn-campus']) }}" class="btn btn-info btn-lg">Show Details</a>
+                        </div>            
+                    </div>
+                </div>
+                <div class="grid-width">
+                    <div class="flex-disp">
+                        <img src="{{ asset('img/masaco.png') }}" class="img-fluid image-over"/>
+                        <div class="overlay">
+                            <a href="{{ route('display_event', ['category' => 'cultural-shows', 'slug' => 'masala-coffee']) }}" class="btn btn-info btn-lg">Show Details</a>
                         </div>            
                     </div>
                 </div>

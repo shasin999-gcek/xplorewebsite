@@ -155,6 +155,18 @@
                 </div>
               </div>
             </div>
+            <div class="col-md-10 ml-auto col-xl-4 mr-auto">
+              <div class="card">
+                <div class="card-header">
+                <h3 class="h3-contact">Aswanth S R</h3>
+                <small class="text-uppercase font-weight-bold">Convenor : Accomodation</small>
+                </div>
+                <div class="card-body">  
+                    <h5>Phone : .+919447255217</h5>
+                    <h5>Email : aswanthsr1997@gmail.com</h5>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
