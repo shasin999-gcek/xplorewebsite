@@ -9,7 +9,7 @@
                     <div class="flex-disp">
                         <img src="{{ asset('img/mix.png') }}" class="img-fluid image-over"/>
                         <div class="overlay">
-                            <a href="{{ route('display_event', ['category' => 'cultural-shows', 'slug' => 'progressive-brothers-masala-coffee-combo']) }}" class="btn btn-info btn-lg">Show Details</a>
+                            <a href="{{ route('display_event', ['category' => 'cultural-shows', 'slug' => 'sunburn-campus-masala-coffee-combo']) }}" class="btn btn-info btn-lg">Show Details</a>
                         </div> 
                     </div>
                 </div>

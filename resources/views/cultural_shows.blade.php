@@ -33,7 +33,9 @@
           <div class="col-md-4 ml-auto mr-auto text-center">
               <img src="{{ asset('storage/' . $event->poster_image) }}" class="img-raised img-responsive">
               <hr>
-              <a href="{{ asset('storage/' . $event->pdf_path) }}" class="btn btn-warning">Download PDF</a>
+              @if($event->slug != 'sunburn-campus-masala-coffee-combo')
+                <a href="{{ asset('storage/' . $event->pdf_path) }}" class="btn btn-warning">Download PDF</a>
+              @endif
               
             </div>
             <div class="col-md-8 ml-auto mr-auto">
@@ -50,7 +52,10 @@
                 </div>
                 <div class="container">
                     <p style="white-space: pre-line;">{{ $event->description }}</p><br><br>
-                    <h4>Date: {{ $event->date->format('D d-M-Y h:i A') }} </h4> <br>
+
+                    @if($event->slug != 'sunburn-campus-masala-coffee-combo')
+                        <h4>Date: {{ $event->date->format('D d-M-Y h:i A') }} </h4> <br>
+                    @endif   
 
                     <br><br>
 					<h3> Registration Fee: {{ $event->reg_fee }}</h3>
