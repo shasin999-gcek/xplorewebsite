@@ -106,6 +106,9 @@ fjs.parentNode.insertBefore(js, fjs);
                 <li class="@if($active_menu == 'workshop_regs') active @endif">
                     <a href="{{ route('admin.workshop_regs.index') }}"><i class="fa fa-fw fa-list"></i> Workshop Registrations</a>
                 </li>
+                <li class="@if($active_menu == 'offline-regs') active @endif">
+                    <a href="{{ route('admin.offline-regs.index') }}"><i class="fa fa-fw fa-list"></i> Offline Registrations</a>
+                </li>
                 <li class="@if($active_menu == 'payments-paytm') active @endif">
                     <a href="{{ route('admin.payments.paytm') }}"><i class="fa fa-fw fa-credit-card-alt" aria-hidden="true"></i> Paytm Payments</a>
                 </li>

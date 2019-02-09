@@ -8,7 +8,7 @@ class EventRegistration extends Model
 {
     //
 
-    protected $fillable = ['user_id', 'event_id', 'order_id'];
+    protected $fillable = ['user_id', 'event_id', 'order_id', 'is_reg_success', 'type'];
 
     public function user()
     {

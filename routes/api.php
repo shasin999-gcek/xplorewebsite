@@ -26,3 +26,4 @@ Route::middleware('api')->get('/getEvent', 'ApiController@getEventById');
 Route::middleware('api')->get('/getWorkshop', 'ApiController@getWorkshopById');
 
 Route::middleware('api')->get('/user/profile', 'ApiController@getUserProfile');
+Route::middleware('api')->get('/getUserById', 'ApiController@getUserById');

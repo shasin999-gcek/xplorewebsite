@@ -29,6 +29,7 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => 'is_admin',
     Route::resource('events', 'EventController');
     Route::resource('workshops', 'WorkshopController');
     Route::resource('banners', 'BannerController');
+    Route::resource('offline-regs', 'OfflineRegistrationController');
 
     Route::get('event-registrations', 'EventRegistrationController@index')->name('event_regs.index');
     Route::get('workshop-registrations', 'WorkshopRegistrationController@index')->name('workshop_regs.index');

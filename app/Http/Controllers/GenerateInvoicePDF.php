@@ -28,6 +28,25 @@ class GenerateInvoicePDF extends Controller
             ['is_reg_success', '=', true]
         ])->firstOrFail();
 
+
+        if($event_reg->type != 'ONLINE')
+        {
+            $data = [
+                'orderId' => $orderId,
+                'name' => $event_reg->user->name,
+                'email' => $event_reg->user->email,
+                'mobileNumber' => $event_reg->user->mobile_number,
+                'event' => $event_reg->event->name,
+                'paid' => ($event_reg->type != 'OFFLINE') ? 0 : $event_reg->event->reg_fee,
+                'transId' => 'OFFLINE',
+                'transDate' => $event_reg->created_at,
+                'bankName' => 'OFFLINE'
+            ];
+            
+            $pdf = PDF::loadView('ticket', $data);
+            return $pdf->stream($event_reg->event->slug . '-ticket.pdf');   
+        }
+
         $payment_paytm = Payment::find($orderId);
         if(!$payment_paytm){
             $payment_insta = Payment_Insta::find($orderId);
@@ -59,6 +78,24 @@ class GenerateInvoicePDF extends Controller
             ['order_id', '=', $orderId],
             ['is_reg_success', '=', true]
         ])->firstOrFail();
+
+        if($workshop_reg->type != 'ONLINE')
+        {
+            $data = [
+                'orderId' => $orderId,
+                'name' => $workshop_reg->user->name,
+                'email' => $workshop_reg->user->email,
+                'mobileNumber' => $workshop_reg->user->mobile_number,
+                'event' => $workshop_reg->workshop->name,
+                'paid' => ($workshop_reg->type != 'OFFLINE') ? 0 : $workshop_reg->workshop->reg_fee,
+                'transId' => 'OFFLINE',
+                'transDate' => $workshop_reg->created_at,
+                'bankName' => 'OFFLINE'
+            ];
+            
+            $pdf = PDF::loadView('ticket', $data);
+            return $pdf->stream($workshop_reg->workshop->slug . '-ticket.pdf');   
+        }
 
         $payment_paytm = Payment::find($orderId);
         if(!$payment_paytm){

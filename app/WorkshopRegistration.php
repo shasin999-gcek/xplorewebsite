@@ -8,7 +8,7 @@ class WorkshopRegistration extends Model
 {
     //
 
-    protected $fillable = ['user_id', 'workshop_id', 'order_id'];
+    protected $fillable = ['user_id', 'workshop_id', 'order_id', 'is_reg_success', 'type'];
 
     public function user()
     {

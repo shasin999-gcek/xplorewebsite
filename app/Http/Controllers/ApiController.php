@@ -246,4 +246,16 @@ class ApiController extends Controller
         return $user;
     }
 
+    public function getUserById(Request $request)
+    {
+        if(!$request->has('id'))
+        {
+            return ['errorMsg' => 'Please specify mail id of the user'];   
+        }
+
+        $user = User::findOrFail($request['id']);
+
+        return $user;
+    }
+
 }
