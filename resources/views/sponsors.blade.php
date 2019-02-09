@@ -40,6 +40,22 @@
               <h4 class="my-2">Media Partner</h4>
             </div>
           </div>
+          <div class="row">
+            <div class="col-md-12 ml-auto col-xl-12 mr-auto">
+                <hr class="line-info">
+                <h2>Travelling Partner</h2>
+            </div>
+          </div>
+          <div class="row row-grid justify-content-center">
+            <div class="col-md-10 ml-auto col-xl-2 mr-auto">              
+              <img class="img-fluid floating" src="{{asset('img/goyathra.png')}}" width="300" height="300">
+            </div>
+          </div>
+           <div class="row">
+            <div class="col-md-12 ml-auto col-xl-12 mr-auto text-center">
+              <h4>Go Yaathra 24x7 Taxi Services</h4>
+            </div>   
+          </div>
         </div>
       </div>
         
