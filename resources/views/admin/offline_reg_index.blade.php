@@ -54,7 +54,7 @@
                 <div class="panel-heading">
                     <div class="row">
                         <div class="col-xs-3">
-                            RS
+                        <i class="fa fa-university fa-5x" aria-hidden="true"></i>
                         </div>
                         <div class="col-xs-9 text-right">
                             <div class="huge">{{ $gcek_count }}</div>
