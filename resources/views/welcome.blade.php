@@ -88,7 +88,34 @@
                     </div>
                 </div>
               </div>
-            </div>  
+            </div> 
+
+            <div class="section section-cultural" style="margin-top: 20vh">
+              <div class="container">
+                <div class="rellax squares square-1"  data-rellax-speed="3" ></div>
+                <div class="rellax squares square-2"  data-rellax-speed="2"></div>
+                <div class="rellax squares square-3"  data-rellax-speed="1"></div>
+                <div class="rellax squares square-4"  data-rellax-speed="2"></div>
+                <div class="row row-grid justify-content-center align-items-center">
+                  <div class="col-lg-6 mb-lg-auto text-center">
+                      <img src="{{ URL::asset('img/xplore-app.png') }}" alt="Raised image" class="img-fluid rounded" style="height: 500px;">
+                  </div>
+                  <div class="col-lg-6">
+                    <div class="px-md-5">
+                        <h3 class="display-3 text-white">The Biggest Tech Event In Malabar Now In Your Pocket
+                            <span class="text-white"></span>
+                          </h3>
+                          <p class="text-white mb-3">Get ready to receive all the future notifications and updates on the plethora of events and workshops at Xplore'19 , all at one spot. </p>
+                          <div class="btn-wrapper">
+                            <a href="{{ route('android') }}" class="btn btn-warning">Download Now</a>
+                          </div>
+                    </div>
+                    </div>
+                </div>
+              </div>
+            </div> 
+        
+
             <section class="section section-lg section-technical">
                 <img src="assets/img/path3.png" class="path">
                 <div class="container">

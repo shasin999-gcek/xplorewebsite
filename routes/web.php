@@ -100,3 +100,5 @@ Route::post('/feedback', 'ContactAdminController@sendMail')->name('contact-admin
 Route::get('/brochure', function() {
     return response()->file(public_path('brochure.pdf'));
 });
+
+Route::redirect('/android', 'https://play.google.com/store/apps/details?id=in.nullify.xplore')->name('android');
