@@ -94,36 +94,41 @@ fjs.parentNode.insertBefore(js, fjs);
                 <li class="@if($active_menu == 'dashboard') active @endif">
                     <a href="{{ route('admin.dashboard') }}"><i class="fa fa-fw fa-dashboard"></i> Dashboard</a>
                 </li>
-                <li class="@if($active_menu == 'events') active @endif">
-                    <a href="{{ route('admin.events.index') }}"><i class="fa fa-fw fa-calendar"></i> Events</a>
-                </li>
-                <li class="@if($active_menu == 'workshops') active @endif">
-                    <a href="{{ route('admin.workshops.index') }}"><i class="fa fa-fw fa-cogs"></i> Workshops</a>
-                </li>
-                <li class="@if($active_menu == 'event_regs') active @endif">
-                    <a href="{{ route('admin.event_regs.index') }}"><i class="fa fa-fw fa-list"></i> Event Registrations</a>
-                </li>
-                <li class="@if($active_menu == 'workshop_regs') active @endif">
-                    <a href="{{ route('admin.workshop_regs.index') }}"><i class="fa fa-fw fa-list"></i> Workshop Registrations</a>
-                </li>
+                @if(Auth::user()->email != 'moderator@xplore19.in')
+                    <li class="@if($active_menu == 'events') active @endif">
+                        <a href="{{ route('admin.events.index') }}"><i class="fa fa-fw fa-calendar"></i> Events</a>
+                    </li>
+                    <li class="@if($active_menu == 'workshops') active @endif">
+                        <a href="{{ route('admin.workshops.index') }}"><i class="fa fa-fw fa-cogs"></i> Workshops</a>
+                    </li>
+                    <li class="@if($active_menu == 'event_regs') active @endif">
+                        <a href="{{ route('admin.event_regs.index') }}"><i class="fa fa-fw fa-list"></i> Event Registrations</a>
+                    </li>
+                    <li class="@if($active_menu == 'workshop_regs') active @endif">
+                        <a href="{{ route('admin.workshop_regs.index') }}"><i class="fa fa-fw fa-list"></i> Workshop Registrations</a>
+                    </li>
+                @endif    
                 <li class="@if($active_menu == 'offline-regs') active @endif">
                     <a href="{{ route('admin.offline-regs.index') }}"><i class="fa fa-fw fa-user-plus"></i> Offline Registrations</a>
                 </li>
-                <li class="@if($active_menu == 'payments-paytm') active @endif">
-                    <a href="{{ route('admin.payments.paytm') }}"><i class="fa fa-fw fa-credit-card-alt" aria-hidden="true"></i> Paytm Payments</a>
-                </li>
-                <li class="@if($active_menu == 'payments-instamojo') active @endif">
-                    <a href="{{ route('admin.payments.instamojo') }}"><i class="fa fa-fw fa-credit-card-alt" aria-hidden="true"></i> Instamojo Payments</a>
-                </li>
-                <li class="@if($active_menu == 'banners') active @endif">
-                    <a href="{{ route('admin.banners.index') }}"><i class="fa fa-fw fa-android" aria-hidden="true"></i>App Banners</a>
-                </li>
-                <li class="@if($active_menu == 'report') active @endif">
-                    <a href="{{ route('admin.report.show') }}"><i class="fa fa-fw fa-file-archive-o" aria-hidden="true"></i>Reports</a>
-                </li>
-                <li class="@if($active_menu == 'logs') active @endif">
-                    <a href="{{ route('admin.logs') }}"><i class="fa fa-fw fa-bug" aria-hidden="true"></i>Server Logs</a>
-                </li>
+
+                @if(Auth::user()->email != 'moderator@xplore19.in')
+                    <li class="@if($active_menu == 'payments-paytm') active @endif">
+                        <a href="{{ route('admin.payments.paytm') }}"><i class="fa fa-fw fa-credit-card-alt" aria-hidden="true"></i> Paytm Payments</a>
+                    </li>
+                    <li class="@if($active_menu == 'payments-instamojo') active @endif">
+                        <a href="{{ route('admin.payments.instamojo') }}"><i class="fa fa-fw fa-credit-card-alt" aria-hidden="true"></i> Instamojo Payments</a>
+                    </li>
+                    <li class="@if($active_menu == 'banners') active @endif">
+                        <a href="{{ route('admin.banners.index') }}"><i class="fa fa-fw fa-android" aria-hidden="true"></i>App Banners</a>
+                    </li>
+                    <li class="@if($active_menu == 'report') active @endif">
+                        <a href="{{ route('admin.report.show') }}"><i class="fa fa-fw fa-file-archive-o" aria-hidden="true"></i>Reports</a>
+                    </li>
+                    <li class="@if($active_menu == 'logs') active @endif">
+                        <a href="{{ route('admin.logs') }}"><i class="fa fa-fw fa-bug" aria-hidden="true"></i>Server Logs</a>
+                    </li>
+                @endif    
             </ul>
         </div>
         <!-- /.navbar-collapse -->

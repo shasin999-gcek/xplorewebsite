@@ -17,8 +17,8 @@ class IsAdmin
     {
         if($request->user()->isAdmin()) {
             return $next($request);
-        }
-
+        } 
+        
         return redirect()->route('home');
     }
 }
