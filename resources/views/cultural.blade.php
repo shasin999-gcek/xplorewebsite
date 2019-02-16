@@ -32,7 +32,7 @@
                 
         </div>
         <div class="category-absolute">
-            <img src="{{ asset('img/catch.png') }}" class="img-raised"/>   
+            <img src="{{ asset('img/catch.png') }}" class="img-raised d-none d-md-block d-lg-block"/>   
         </div>
         
         </div>
