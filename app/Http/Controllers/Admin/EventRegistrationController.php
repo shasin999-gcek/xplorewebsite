@@ -20,18 +20,26 @@ class EventRegistrationController extends Controller
     {
         $event_regs = EventRegistration::with('event', 'user')
                         ->where('is_reg_success', true)->get();
+
         $event_stats = DB::table('events as e')
                             ->join('event_registrations as er', 'e.id', '=', 'er.event_id')
-                            ->select(DB::raw('count(*) as count, e.name'))
-                            ->where('er.is_reg_success', true)
+                            ->select(DB::raw('count(*) as count, sum(e.reg_fee) as online_t_amount, e.name'))
+                            ->where([['er.is_reg_success', true], ['er.type', 'ONLINE']])
                             ->groupBy('e.name')
                             ->orderBy('count', 'desc')
                             ->get();
 
+        $event_total =  DB::table('events as e')
+                            ->join('event_registrations as er', 'e.id', '=', 'er.event_id')
+                            ->select(DB::raw('sum(e.reg_fee) as amount'))
+                            ->where([['er.is_reg_success', true], ['er.type', 'ONLINE']])
+                            ->first();    
+
         $data = [
             'active_menu' => 'event_regs',
             'event_regs' => $event_regs,
-            'event_stats' => $event_stats
+            'event_stats' => $event_stats,
+            'event_total' => $event_total
         ];
 
         return view('admin.eventregs_index', $data);

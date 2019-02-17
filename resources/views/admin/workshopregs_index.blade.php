@@ -27,11 +27,13 @@
                 </div>
 
                 <div class="panel-body">
+                    <h4 class="well">Total of <code><i class="fa fa-inr" aria-hidden="true"></i>&nbsp;{{ $workshop_total->amount }}</code> collected through online workshop registrations</h4>
                     <table id="workshop-stats" class="table table-striped table-bordered" style="width:100%;">
                         <thead>
                         <tr>
                             <th>Workshop Name</th>
-                            <th>Reg Count</th>
+                            <th>Online Reg Count</th>
+                            <th>Online Total Amount</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -39,13 +41,15 @@
                             <tr>
                                 <td>{{ $stat->name }}</td>
                                 <td><kbd>{{ $stat->count }}</kbd></td>
+                                <td><code><i class="fa fa-inr" aria-hidden="true"></i> {{ $stat->online_t_amount }}</code></td>
                             </tr>
                         @endforeach
                         </tbody>
                         <tfoot>
                         <tr>
                             <th>Workshop Name</th>
-                            <th>Reg Count</th>
+                            <th>Online Reg Count</th>
+                            <th>Online Total Amount</th>
                         </tr>
                         </tfoot>
                     </table>
