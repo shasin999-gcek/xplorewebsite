@@ -1,8 +1,8 @@
 {
-  "name": "Xplore'19 Web App",
-  "short_name": "Xplore'19",
-  "theme_color": "#2196f3",
-  "background_color": "#2196f3",
+  "name": "Dabble in the Extraordinary",
+  "short_name": "Xplore '19",
+  "theme_color": "#171841",
+  "background_color": "#171841",
   "display": "standalone",
   "orientation": "portrait",
   "Scope": "/",
