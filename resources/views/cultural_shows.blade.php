@@ -51,7 +51,8 @@
                   
                 </div>
                 <div class="container">
-                    <p style="white-space: pre-line;">{{ $event->description }}</p><br><br>
+                    <p style="white-space: pre-line;">{{ $event->description }}</p>
+                    <p>*Entry pass will be provided at the venue on confirmation of your online booking.</p><br><br>
 
                     @if($event->slug != 'sunburn-campus-masala-coffee-combo')
                         <h4>Date: {{ $event->date->format('D d-M-Y h:i A') }} </h4> <br>

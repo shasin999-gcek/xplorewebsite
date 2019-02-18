@@ -181,9 +181,12 @@
         	<b>PROCESSED PAYMENT</b>: Transaction id: {{ $transId  }}, Bank : {{ $bankName  }},
         	Transaction Date: {{ $transDate->toDayDateTimeString() }}
         </div>
-        <div class="info">
-            <p>*Entry pass will be provided at the venue on confirmation of your online booking.</p>
-        </div>
+
+        @if($category === 'cultural-shows')
+            <div class="info">
+                <p>*Entry pass will be provided at the venue on confirmation of your online booking.</p>
+            </div>
+        @endif    
     </div>
     
 </body>
