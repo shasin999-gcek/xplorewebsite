@@ -96,6 +96,13 @@
         border-top: 2px solid #eee;
         font-weight: bold;
     }
+
+    .info {
+        bottom:0;
+        font-family: 'Helvetica Neue', 'Helvetica', Helvetica, Arial, sans-serif;
+        font-size: 10px;
+        margin-left: 15px;
+    }
     
     @media only screen and (max-width: 600px) {
         .invoice-box table tr.top table td {
@@ -174,6 +181,10 @@
         	<b>PROCESSED PAYMENT</b>: Transaction id: {{ $transId  }}, Bank : {{ $bankName  }},
         	Transaction Date: {{ $transDate->toDayDateTimeString() }}
         </div>
+        <div class="info">
+            <p>*Entry pass will be provided at the venue on confirmation of your online booking.</p>
+        </div>
     </div>
+    
 </body>
 </html>
