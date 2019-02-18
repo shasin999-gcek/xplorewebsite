@@ -37,7 +37,7 @@
     gtag('config', 'UA-132483432-1');
   </script>
 
-  <script src="/js/sw-register.js"></script>
+  <!-- <script src="/js/sw-register.js"></script> -->
 </head>
 
 <body class="{{ $bodyclass }}">
