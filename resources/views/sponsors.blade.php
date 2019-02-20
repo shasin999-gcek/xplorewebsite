@@ -54,7 +54,7 @@
               
             </div>
             <div class="col-md-10 ml-auto col-xl-4 mr-auto text-center">
-              <img class="img-fluid floating" src="{{ asset('img/buddha.png') }}"/>
+              <a href="https://digitalbuddha.in/"><img class="img-fluid floating" src="{{ asset('img/buddha.png') }}"/></a>
               
             </div>     
           </div>

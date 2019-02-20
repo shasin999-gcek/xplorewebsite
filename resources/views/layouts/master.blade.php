@@ -101,7 +101,12 @@
               <a class="nav-link" href="{{ URL::to( '/brochure') }}">
                 <p>Brochure</p>
               </a>
-          </li>  
+          </li>
+          <li class="nav-item ">
+            <a class="nav-link" href="{{ URL::to( '/generalrule.pdf') }}">
+              <p>General Rule</p>
+            </a>
+        </li>  
           <li class="nav-item">
             @if (Route::has('login'))
                 @auth
