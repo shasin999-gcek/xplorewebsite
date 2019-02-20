@@ -12,7 +12,7 @@
           </div>
           <div class="row row-grid justify-content-center">
             <div class="col-md-10 ml-auto col-xl-4 mr-auto text-center">              
-              <img class="img-fluid floating" src="{{asset('img/byju.png')}}" width="300" height="300">
+              <a href="https://byjus.com"><img class="img-fluid floating" src="{{asset('img/byju.png')}}" width="300" height="300"></a>
             </div>
           </div>
           <div class="row">
