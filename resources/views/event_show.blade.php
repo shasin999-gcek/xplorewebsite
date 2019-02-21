@@ -77,7 +77,7 @@
                         <input type="text" name="event_id" value="{{ $event->id }}">
                       </form>
                     @else
-                    <button class="btn btn-default" disabled>Registration Closed</button><br>
+                    <button class="btn btn-default" disabled>Offline Registrations Only</button><br>
                     @endif  
                   @endisset
               @else
@@ -85,7 +85,7 @@
                   <a href="{{ route('login') }}" class=" btn btn-lg btn-warning"  >
                     <i class="tim-icons icon-cloud-download-93"></i> Login to Buy Ticket </a><br>
                 @else
-                  <button class="btn btn-default" disabled>Registration Closed</button><br>
+                  <button class="btn btn-default" disabled>Offline Registrations Only</button><br>
                 @endif    
               @endauth
           @endif
