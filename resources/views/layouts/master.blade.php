@@ -109,7 +109,7 @@
           </li>  
           <li class="nav-item ">
             <a class="nav-link" href="{{ URL::to( '/eventschedule.pdf') }}">
-              <p>Events Schedule</p>
+              <p>Schedule</p>
             </a>
           </li>
           <li class="nav-item">
