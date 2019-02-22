@@ -194,6 +194,11 @@
                 </a>
               </li>
               <li class="nav-item">
+                <a href="{{URL::to('/floormap.pdf')}}" class="nav-link">
+                  GCEK Floor Map
+                </a>
+              </li>
+              <li class="nav-item">
                 <a href="{{URL::to('/register')}}" class="nav-link">
                   Register/Login
                 </a>
