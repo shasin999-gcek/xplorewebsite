@@ -20,7 +20,26 @@
               
             </div>
             <div class="card-footer text-center">
+                @if($errors->has('college_name'))
+                    <div class="alert alert-danger alert-with-icon">
 
+                        <button type="button" aria-hidden="true" class="close" data-dismiss="alert" aria-label="Close">
+                            <i class="tim-icons icon-simple-remove"></i>
+                        </button>
+
+                        <span><b> Error! - </b> {{ $errors->first('college_name') }}</span>
+                    </div>
+                @endif
+                    @if(session('success'))
+                        <div class="alert alert-success alert-with-icon">
+
+                            <button type="button" aria-hidden="true" class="close" data-dismiss="alert" aria-label="Close">
+                                <i class="tim-icons icon-simple-remove"></i>
+                            </button>
+
+                            <span>{{ session('success') }}</span>
+                        </div>
+                    @endif
                 <form action="{{ route('user.addcollege') }}" method="post">
                     {{ csrf_field() }}
                     <div class="input-group {{ $errors->has('password') ? ' has-error' : '' }}">

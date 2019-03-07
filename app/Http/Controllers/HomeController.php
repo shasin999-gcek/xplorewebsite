@@ -98,7 +98,7 @@ class HomeController extends Controller
         $authUser->college_name = $validatedData['college_name'];
         $authUser->save();
 
-        return back();
+        return back()->with('success', 'College Name updated successfully, You can edit this at any time');
     }
 
     public function savePaymentDetails($orderId)
