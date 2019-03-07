@@ -120,6 +120,7 @@
                                 <th>Name</th>
                                 <th>Email</th>
                                 <th>Mobile Number</th>
+                                <th>College</th>
                                 <th>Referral ID</th>
                                 <th>Referred By</th>
                                 <th>Invited Friends</th>
@@ -131,6 +132,7 @@
                                     <td>{{ $user->name }}</td>
                                     <td>{{ $user->email }}</td>
                                     <td>{{ $user->mobile_number }}</td>
+                                    <td>{{ $user->college_name }}</td>
                                     <td><kbd>{{ $user->referral_id }}</kbd></td>
                                     <td><kbd>{{ ($user->referred_by) ? $user->referred_by : 'No one' }}</kbd></td>
                                     <td><code>{{ $user->getInvitedFriends() }}</code></td>
@@ -142,6 +144,7 @@
                                 <th>Name</th>
                                 <th>Email</th>
                                 <th>Mobile Number</th>
+                                <th>College</th>
                                 <th>Referral ID</th>
                                 <th>Referred By</th>
                                 <th>Invited Friends</th>

@@ -87,6 +87,20 @@ class HomeController extends Controller
 
     }
 
+
+    public function addCollege(Request $request)
+    {
+        $validatedData = $request->validate([
+           'college_name' => 'required|max:50'
+        ]);
+
+        $authUser = $request->user();
+        $authUser->college_name = $validatedData['college_name'];
+        $authUser->save();
+
+        return back();
+    }
+
     public function savePaymentDetails($orderId)
     {
       $key = config('services.paytm.key');

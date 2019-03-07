@@ -20,16 +20,25 @@
               
             </div>
             <div class="card-footer text-center">
-            
-            <button id="refid" class="btn btn-info" data-toggle="tooltip" data-placement="top" title="Copy" data-container="body" data-animation="true" data-original-title="Copy" onclick="event.preventDefault(); copyRefToClipboard('{{ url('?ref_code=').Auth::user()->referral_id }}');">Invite Friends</button><br>
-            <small>Copy referral link and share to friends</small><br>
-            <a href="whatsapp://send" data-text="Are you ready to breathe in the excitement to Xplore the Unexplored?
-Then tune into Xplore'19, The 5th National Techno Management Cultural Festival of Govt. College of Engineering Kannur from February 22nd - 24th 2019!
 
-Dabble in the extraordinary!
+                <form action="{{ route('user.addcollege') }}" method="post">
+                    {{ csrf_field() }}
+                    <div class="input-group {{ $errors->has('password') ? ' has-error' : '' }}">
+                        <input type="text" name="college_name" class="form-control" placeholder="Enter College Name" value="{{ old('college_name', $currentUser->college_name) }}" />
+                    </div>
+                    <div>
+                        <button class="btn btn-info btn-round btn-lg">Save</button>
+                    </div>
+                </form>
+            {{--<button id="refid" class="btn btn-info" data-toggle="tooltip" data-placement="top" title="Copy" data-container="body" data-animation="true" data-original-title="Copy" onclick="event.preventDefault(); copyRefToClipboard('{{ url('?ref_code=').Auth::user()->referral_id }}');">Invite Friends</button><br>--}}
+            {{--<small>Copy referral link and share to friends</small><br>--}}
+            {{--<a href="whatsapp://send" data-text="Are you ready to breathe in the excitement to Xplore the Unexplored?--}}
+{{--Then tune into Xplore'19, The 5th National Techno Management Cultural Festival of Govt. College of Engineering Kannur from February 22nd - 24th 2019!--}}
 
-" data-href="{{ secure_url('/').'/?ref_code='.Auth::user()->referral_id }}" class="wa_btn wa_btn_l" style="display:none">Share</a>
-            <br><small>For any queries related to Payment , Please Contact Web admin - +918129151079</small>
+{{--Dabble in the extraordinary!--}}
+
+{{--" data-href="{{ secure_url('/').'/?ref_code='.Auth::user()->referral_id }}" class="wa_btn wa_btn_l" style="display:none">Share</a>--}}
+            {{--<br><small>For any queries related to Payment , Please Contact Web admin - +918129151079</small>--}}
 
             </div>
           </div>

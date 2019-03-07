@@ -49,6 +49,7 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => 'is_admin',
 
 
 Route::get('/user/profile', 'HomeController@index')->name('home');
+Route::post('/user/addcollege', 'HomeController@addCollege')->name('user.addcollege');
 
 
 Route::get('/events/{category}/', 'EventController@getEventsByCategory')->name('events');
