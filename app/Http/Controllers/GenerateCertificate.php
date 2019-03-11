@@ -16,7 +16,7 @@ class GenerateCertificate extends Controller
      * @param Codedge\Fpdf\Fpdf\Fpdf $fpdf
      */
     public function createEventCertificate($orderId, Fpdf $fpdf) {
-        $certificate_path = storage_path('event-certificate.png');
+        $certificate_path = public_path('img/event-certificate.png');
 
         $im = imagecreatefrompng($certificate_path);
         $text_font_filepath = public_path("fonts/nexa-bold.ttf");
@@ -85,7 +85,7 @@ class GenerateCertificate extends Controller
      */
     public function createWorkshopCertificate($orderId, Fpdf $fpdf)
     {
-        $certificate_path = storage_path('workshop-certificate.png');
+        $certificate_path = public_path('img/workshop-certificate.png');
 
         $im = imagecreatefrompng($certificate_path);
         $text_font_filepath = public_path("fonts/nexa-bold.ttf");
