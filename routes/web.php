@@ -95,6 +95,9 @@ Route::get('payment/status', ['as' => 'payment.status', 'uses' => 'PaymentContro
 Route::get('/event/get-ticket/{orderId}', 'GenerateInvoicePDF@generateEventTicket')->name('event.ticket');
 Route::get('/workshop/get-ticket/{orderId}', 'GenerateInvoicePDF@generateWorkshopTicket')->name('workshop.ticket');
 
+Route::get('/event/get-certificate/{orderId}', 'GenerateCertificate@createEventCertificate')->name('event.certificate');
+Route::get('/workshop/get-certificate/{orderId}', 'GenerateCertificate@createWorkshopCertificate')->name('workshop.certificate');
+
 Route::post('/feedback', 'ContactAdminController@sendMail')->name('contact-admin');
 
 

@@ -9,6 +9,11 @@
       <div class="row">
         <div class="col-md-4 ml-auto mr-auto">
           <div class="card card-plain" style="margin-top: 30%">
+              @if($is_college_empty)
+                  <div class="alert alert-info alert-with-icon">
+                      <span>Please update your college name, Inorder to download certificates</span>
+                  </div>
+              @endif
             <div class="card-header text-center">
               <img class="img-center img-fluid rounded-circle" src="{{ asset('img/user.png') }}" width="150" height="150" />
                 <h4 class="title" style="text-align: center;">{{ $currentUser->name }}</h4>
@@ -19,7 +24,7 @@
               <h5>{{ $currentUser->mobile_number }}</h5>
               
             </div>
-            <div class="card-footer text-center">
+            <div class="card-footer text-center" id="college_update_area">
                 @if($errors->has('college_name'))
                     <div class="alert alert-danger alert-with-icon">
 
@@ -84,7 +89,7 @@
                     </div>
                     <div class="card-body">
                       <h3>{{ $e->name }}</h3>
-                        <a class="btn btn-info" href="{{ route('event.ticket', $e->pivot->order_id) }}">Download Ticket</a>
+                        <a class="btn btn-info" href="{{ route('event.certificate', $e->pivot->order_id) }}" @if($is_college_empty) disabled="" @endif>Download Certificate</a>
                     </div>
                   </div>
                 </div>
@@ -97,7 +102,7 @@
                             </div>
                             <div class="card-body">
                                 <h3>{{ $w->name }}</h3>
-                                <a class="btn btn-info" href="{{ route('workshop.ticket', $w->pivot->order_id) }}">Download Ticket</a>
+                                <a class="btn btn-info" href="{{ route('workshop.certificate', $w->pivot->order_id) }}" @if($is_college_empty) disabled="" @endif>Download Certificate</a>
                             </div>
                         </div>
                     </div>

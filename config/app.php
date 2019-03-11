@@ -171,6 +171,7 @@ return [
         Barryvdh\Debugbar\ServiceProvider::class,
         Barryvdh\Snappy\ServiceProvider::class,
         Rap2hpoutre\LaravelLogViewer\LaravelLogViewerServiceProvider::class,
+        Codedge\Fpdf\FpdfServiceProvider::class,
 
         /*
          * Application Service Providers...
@@ -182,8 +183,7 @@ return [
         App\Providers\RouteServiceProvider::class,
 
         // Firebase Admin Sdk
-        App\Providers\FirebaseServiceProvider::class,
-
+        App\Providers\FirebaseServiceProvider::class
     ],
 
     /*
@@ -234,6 +234,7 @@ return [
         'View' => Illuminate\Support\Facades\View::class,
         'PDF' => Barryvdh\Snappy\Facades\SnappyPdf::class,
         'SnappyImage' => Barryvdh\Snappy\Facades\SnappyImage::class,
+        'Fpdf' => Codedge\Fpdf\Facades\Fpdf::class
     ],
 
 ];

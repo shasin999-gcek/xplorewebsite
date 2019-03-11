@@ -14,6 +14,7 @@ use App\EventRegistration;
 use App\WorkshopRegistration;
 use App\Payment;
 use DB;
+use Illuminate\Support\Facades\Validator;
 
 class HomeController extends Controller
 {
@@ -70,6 +71,7 @@ class HomeController extends Controller
 //          }
 //       }
 
+       $is_college_empty = empty($user->college_name);
        $registered_events = $user->s_events;
        $registered_workshops = $user->s_workshops;
 
@@ -77,6 +79,7 @@ class HomeController extends Controller
        $workshops = Workshop::with('category')->get();
 
        return view('home', [
+           'is_college_empty' => $is_college_empty,
            'registered_events' => $registered_events,
            'registered_workshops' => $registered_workshops,
            'currentUser' => $user,
@@ -90,12 +93,22 @@ class HomeController extends Controller
 
     public function addCollege(Request $request)
     {
-        $validatedData = $request->validate([
-           'college_name' => 'required|max:50'
+//        $validatedData = $request->validate([
+//           'college_name' => 'required|max:50'
+//        ]);
+
+        $validator = Validator::make($request->all(), [
+            'college_name' => 'required|max:50'
         ]);
 
+        if ($validator->fails()) {
+            return redirect('user/profile#college_update_area')
+                ->withErrors($validator)
+                ->withInput();
+        }
+
         $authUser = $request->user();
-        $authUser->college_name = $validatedData['college_name'];
+        $authUser->college_name = $request['college_name'];
         $authUser->save();
 
         return back()->with('success', 'College Name updated successfully, You can edit this at any time');
